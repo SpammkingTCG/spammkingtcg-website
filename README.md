@@ -1,2 +1,1 @@
-# spammkingtcg-website
-Official website for SpammKing TCG
+Upload these files to your GitHub repository. Cloudflare Pages will deploy automatically.

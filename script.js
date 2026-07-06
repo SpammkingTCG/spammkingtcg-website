@@ -1,0 +1,1 @@
+console.log('SpammKing TCG Website v2 loaded');
