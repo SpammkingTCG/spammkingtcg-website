@@ -1,1 +1,1 @@
-console.log('SpammKing TCG Website v2 loaded');
+document.querySelectorAll('.card').forEach(c=>c.onmousemove=()=>c.style.boxShadow='0 0 24px rgba(212,175,55,.45)');
