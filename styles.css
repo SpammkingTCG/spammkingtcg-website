@@ -116,7 +116,7 @@ h4{
 
     line-height:1.15;
 
-    letter-spacing:-1px;
+    letter-spacing:0;
 
 }
 
@@ -252,7 +252,7 @@ header{
     font-size:2.25rem;
     font-weight:800;
     line-height:1;
-    letter-spacing:-1px;
+    letter-spacing:0;
 }
 
 .logo-tcg{
@@ -262,7 +262,7 @@ header{
     font-family:"Poppins",sans-serif;
     font-size:.82rem;
     font-weight:700;
-    letter-spacing:.35rem;
+    letter-spacing:0;
     color:var(--gold);
 }
 
@@ -273,9 +273,50 @@ header{
     align-items:center;
 }
 
+/* ==========================================================
+   Navigation Links
+========================================================== */
+
 .nav-links a{
-    font-weight:600;
+    position:relative;
+    display:inline-block;
     color:var(--white);
+    text-decoration:none;
+    font-weight:600;
+    font-size:1rem;
+    padding:.35rem 0;
+    transition:color .3s ease;
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--gold);
+
+    transition:width .35s ease;
+
+}
+
+.nav-links a:hover{
+
+    color:var(--gold);
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
 }
 
 .nav-links a:hover{
@@ -283,15 +324,37 @@ header{
 }
 
 .ebay-button{
-    padding:.9rem 1.4rem;
-    border:1px solid var(--gold);
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:1rem 1.75rem;
+
     border-radius:999px;
+
+    border:1px solid var(--gold);
+
     color:var(--gold);
+
+    font-weight:600;
+
+    transition:all .35s ease;
+
 }
 
 .ebay-button:hover{
+
     background:var(--gold);
+
     color:#111;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 40px rgba(212,175,55,.25);
+
 }
 
 .hero{
@@ -311,7 +374,7 @@ header{
 .hero-tag{
     color:var(--gold);
     text-transform:uppercase;
-    letter-spacing:.18rem;
+    letter-spacing:0;
     font-size:.95rem;
     margin-bottom:2rem;
 }
@@ -368,4 +431,310 @@ header{
     align-items:center;
     gap:.45rem;
     color:var(--white);
+}
+
+.trust-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:2rem;
+    height:2rem;
+    border:1px solid rgba(212,175,55,.34);
+    border-radius:50%;
+    color:var(--gold);
+    font-size:.72rem;
+    font-weight:800;
+}
+
+
+/* ==========================================================
+   SHOP BY CATEGORY
+========================================================== */
+
+.categories-section{
+    padding-top:110px;
+}
+
+.section-header{
+    max-width:780px;
+    margin-bottom:3.5rem;
+}
+
+.section-kicker,
+.category-label{
+    color:var(--gold);
+    font-size:.82rem;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.section-kicker{
+    margin-bottom:1rem;
+}
+
+.section-header h2{
+    margin-bottom:1.25rem;
+}
+
+.section-header p:not(.section-kicker){
+    max-width:650px;
+    font-size:1.08rem;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:1.25rem;
+}
+
+.category-card{
+    position:relative;
+    min-height:440px;
+    grid-column:span 2;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:var(--radius-large);
+    background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+    box-shadow:var(--shadow);
+    isolation:isolate;
+    transition:transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.category-card:nth-child(1),
+.category-card:nth-child(2){
+    grid-column:span 3;
+}
+
+.category-card::before,
+.category-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+}
+
+.category-card::before{
+    background:
+        linear-gradient(180deg,rgba(11,13,16,.08) 0%,rgba(11,13,16,.76) 68%,rgba(11,13,16,.96) 100%),
+        radial-gradient(circle at 24% 18%,rgba(212,175,55,.18),transparent 32%);
+}
+
+.category-card::after{
+    border-radius:inherit;
+    background:linear-gradient(135deg,rgba(255,255,255,.16),transparent 42%,rgba(212,175,55,.12));
+    opacity:.55;
+    pointer-events:none;
+}
+
+.category-card:hover,
+.category-card:focus-within{
+    transform:translateY(-8px);
+    border-color:rgba(212,175,55,.5);
+    box-shadow:var(--shadow-hover);
+}
+
+.category-visual{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    transform:scale(1.02);
+    transition:transform .55s ease, filter .55s ease;
+}
+
+.category-card:hover .category-visual,
+.category-card:focus-within .category-visual{
+    transform:scale(1.08);
+    filter:saturate(1.08);
+}
+
+.category-card-pokemon .category-visual{
+    background:
+        radial-gradient(circle at 72% 24%,rgba(212,175,55,.32),transparent 24%),
+        linear-gradient(135deg,#101724,#26384b 46%,#0b0d10);
+}
+
+.category-card-one-piece .category-visual{
+    background:
+        radial-gradient(circle at 28% 22%,rgba(212,175,55,.28),transparent 24%),
+        linear-gradient(135deg,#16120f,#3b2a1d 48%,#0b0d10);
+}
+
+.category-card-lorcana .category-visual{
+    background:
+        radial-gradient(circle at 74% 24%,rgba(212,175,55,.24),transparent 25%),
+        linear-gradient(135deg,#141625,#2e314e 46%,#0b0d10);
+}
+
+.category-card-yugioh .category-visual{
+    background:
+        radial-gradient(circle at 70% 22%,rgba(212,175,55,.26),transparent 25%),
+        linear-gradient(135deg,#18121a,#37233a 48%,#0b0d10);
+}
+
+.category-card-magic .category-visual{
+    background:
+        radial-gradient(circle at 28% 24%,rgba(212,175,55,.25),transparent 25%),
+        linear-gradient(135deg,#101612,#22362b 48%,#0b0d10);
+}
+
+.category-content{
+    width:100%;
+    padding:2rem;
+}
+
+.category-label{
+    margin-bottom:.8rem;
+}
+
+.category-content h3{
+    margin-bottom:.9rem;
+}
+
+.category-content p:not(.category-label){
+    max-width:34rem;
+    margin-bottom:1.6rem;
+}
+
+.category-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:48px;
+    padding:.85rem 1.25rem;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    color:var(--white);
+    font-weight:800;
+}
+
+.category-link:hover,
+.category-link:focus-visible{
+    border-color:var(--gold);
+    background:rgba(212,175,55,.12);
+    color:var(--gold);
+}
+
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+a:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:4px;
+}
+
+
+/* ==========================================================
+   MEDIA QUERIES
+========================================================== */
+
+@media (max-width:1050px){
+    .navbar{
+        height:auto;
+        min-height:88px;
+        flex-wrap:wrap;
+        padding:1.25rem 0;
+    }
+
+    .nav-links{
+        order:3;
+        width:100%;
+        justify-content:center;
+        gap:1.35rem;
+        flex-wrap:wrap;
+    }
+
+    .category-card,
+    .category-card:nth-child(1),
+    .category-card:nth-child(2){
+        grid-column:span 3;
+    }
+}
+
+@media (max-width:720px){
+    :root{
+        --section-spacing:86px;
+    }
+
+    .navbar{
+        justify-content:center;
+        gap:1.3rem;
+    }
+
+    .logo{
+        width:100%;
+        text-align:center;
+    }
+
+    .logo-main{
+        font-size:1.95rem;
+    }
+
+    .logo-tcg{
+        right:calc(50% - 92px);
+    }
+
+    .ebay-button{
+        width:100%;
+    }
+
+    .hero{
+        min-height:auto;
+        padding-top:90px;
+        padding-bottom:80px;
+    }
+
+    .hero-tag{
+        font-size:.78rem;
+    }
+
+    .hero-description{
+        font-size:1rem;
+    }
+
+    .hero-buttons a{
+        width:100%;
+    }
+
+    .hero-trust{
+        gap:.8rem;
+    }
+
+    .trust-item{
+        width:100%;
+        justify-content:center;
+    }
+
+    .hero-scroll{
+        display:none;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+    .category-card,
+    .category-card:nth-child(1),
+    .category-card:nth-child(2){
+        grid-column:1;
+        min-height:360px;
+    }
+
+    .category-content{
+        padding:1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+    }
 }
