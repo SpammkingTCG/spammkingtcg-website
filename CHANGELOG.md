@@ -6,6 +6,45 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.6.2
+
+Design System Styleguide
+
+## Added
+
+- Added a hidden `styleguide.html` page for reusable design system components
+- Documented live examples for colours, typography, buttons, tags, product cards, forms, pagination, empty states and accordions
+- Added styleguide-specific responsive layout styles
+
+## Improved
+
+- Created a clearer internal reference point before building dynamic collection and set pages
+- Kept the styleguide hidden from main navigation while making it directly accessible for development
+
+---
+
+# v0.6.1
+
+Ecommerce QA and Polish
+
+## Added
+
+- Expanded the product catalogue to 12 realistic Pokemon placeholder products across sealed products, singles, graded cards and accessories
+- Added clear placeholder image paths for future product photography
+- Added product detail gallery placeholders
+- Added shipping, returns and authenticity information blocks to product detail pages
+- Added premium empty states for wishlist, recently viewed, related products and filtered product results
+
+## Improved
+
+- Tightened product JSON consistency across all current products
+- Improved product card information hierarchy with price, game, category, rarity, availability and status
+- Improved wishlist removal behaviour so saved items can be removed cleanly
+- Polished ecommerce controls, card hover states, focus states and mobile stacking
+- Removed stray copied separator characters from dynamic product rendering
+
+---
+
 # v0.6.0
 
 Core Ecommerce Foundation

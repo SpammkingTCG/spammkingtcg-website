@@ -3,7 +3,6 @@ const WISHLIST_KEY = "spammking-wishlist";
 const RECENTLY_VIEWED_KEY = "spammking-recently-viewed";
 
 let products = [];
-const gridStates = new WeakMap();
 
 document.addEventListener("DOMContentLoaded", async () => {
     products = await loadProducts();
@@ -23,11 +22,34 @@ async function loadProducts(){
             throw new Error("Product data unavailable");
         }
 
-        return await response.json();
+        const data = await response.json();
+        return data.map(normalizeProduct);
     }catch(error){
         console.warn(error.message);
         return [];
     }
+}
+
+function normalizeProduct(product){
+    return {
+        id:"",
+        name:"",
+        category:"",
+        game:"",
+        set:"",
+        rarity:"",
+        condition:"",
+        price:0,
+        salePrice:null,
+        stock:0,
+        images:[],
+        description:"",
+        releaseDate:"",
+        tags:[],
+        featured:false,
+        comingSoon:false,
+        ...product
+    };
 }
 
 function setupProductGrids(){
@@ -55,7 +77,6 @@ function setupProductGrids(){
             sort:"featured"
         };
 
-        gridStates.set(grid,state);
         populateFilters(state);
         bindControls(grid,state);
         renderProductGrid(grid,state);
@@ -67,8 +88,8 @@ function populateFilters(state){
         return;
     }
 
-    populateSelect(state.controls.querySelector('[data-filter="set"]'), uniqueValues(state.catalogue,"set"));
-    populateSelect(state.controls.querySelector('[data-filter="category"]'), uniqueValues(state.catalogue,"category"));
+    populateSelect(state.controls.querySelector('[data-filter="set"]'),uniqueValues(state.catalogue,"set"));
+    populateSelect(state.controls.querySelector('[data-filter="category"]'),uniqueValues(state.catalogue,"category"));
 }
 
 function populateSelect(select,values){
@@ -97,20 +118,20 @@ function bindControls(grid,state){
     const sort = state.controls.querySelector("[data-product-sort]");
     const filters = state.controls.querySelectorAll("[data-filter]");
 
-    search?.addEventListener("input", () => {
+    search?.addEventListener("input",() => {
         state.search = search.value.trim().toLowerCase();
         state.currentPage = 1;
         renderProductGrid(grid,state);
     });
 
-    sort?.addEventListener("change", () => {
+    sort?.addEventListener("change",() => {
         state.sort = sort.value;
         state.currentPage = 1;
         renderProductGrid(grid,state);
     });
 
     filters.forEach((filter) => {
-        filter.addEventListener("change", () => {
+        filter.addEventListener("change",() => {
             state.filters[filter.dataset.filter] = filter.value;
             state.currentPage = 1;
             renderProductGrid(grid,state);
@@ -128,10 +149,11 @@ function renderProductGrid(grid,state){
 
     grid.innerHTML = pageProducts.length
         ? pageProducts.map(productCard).join("")
-        : emptyState("No products match those filters yet.");
+        : emptyState("Try a different search term, product type or availability filter.","No Products Found");
 
     if(state.count){
-        state.count.textContent = `${filtered.length} Pokemon product${filtered.length === 1 ? "" : "s"} found`;
+        const productLabel = state.catalogue[0]?.game || "Product";
+        state.count.textContent = `${filtered.length} ${productLabel} product${filtered.length === 1 ? "" : "s"} found`;
     }
 
     renderPagination(state,pageCount,() => renderProductGrid(grid,state));
@@ -140,7 +162,7 @@ function renderProductGrid(grid,state){
 
 function filterProducts(items,state){
     return items.filter((product) => {
-        const matchesSearch = !state.search || [
+        const searchable = [
             product.name,
             product.category,
             product.game,
@@ -149,8 +171,9 @@ function filterProducts(items,state){
             product.condition,
             product.description,
             ...(product.tags || [])
-        ].join(" ").toLowerCase().includes(state.search);
+        ].join(" ").toLowerCase();
 
+        const matchesSearch = !state.search || searchable.includes(state.search);
         const matchesSet = !state.filters.set || product.set === state.filters.set;
         const matchesCategory = !state.filters.category || product.category === state.filters.category;
         const matchesAvailability = !state.filters.availability || getAvailability(product) === state.filters.availability;
@@ -198,7 +221,7 @@ function renderPagination(state,pageCount,onChange){
     `;
 
     state.pagination.querySelectorAll("button").forEach((button) => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click",() => {
             state.currentPage += button.dataset.pageAction === "next" ? 1 : -1;
             onChange();
         });
@@ -218,10 +241,10 @@ function setupComingSoon(){
                 <article class="coming-soon-card">
                     <span>${formatDate(product.releaseDate)}</span>
                     <h3>${escapeHtml(product.name)}</h3>
-                    <p>${escapeHtml(product.set)} · ${escapeHtml(product.category)}</p>
+                    <p>${escapeHtml(product.set)} | ${escapeHtml(product.category)}</p>
                 </article>
             `).join("")
-            : emptyState("No coming soon products are listed yet.");
+            : emptyState("No coming soon products are listed yet.","Coming Soon");
     });
 }
 
@@ -236,13 +259,13 @@ function setupProductDetail(){
     const product = products.find((item) => item.id === id);
 
     if(!product){
-        target.innerHTML = emptyState("Product not found.");
+        target.innerHTML = emptyState("This product could not be found.","Product Not Found");
         return;
     }
 
     addRecentlyViewed(product.id);
-
     document.title = `${product.name} | SpammKing TCG`;
+
     target.innerHTML = `
         <nav class="breadcrumb-nav product-breadcrumb" aria-label="Breadcrumb">
             <ol>
@@ -256,9 +279,12 @@ function setupProductDetail(){
                 <div class="shop-product-image product-detail-image" aria-hidden="true">
                     <span>${productInitials(product)}</span>
                 </div>
+                <div class="product-gallery" aria-label="Product image gallery placeholders">
+                    ${galleryButtons(product)}
+                </div>
             </div>
             <div class="product-detail-content">
-                <p class="section-kicker">${escapeHtml(product.game)} · ${escapeHtml(product.category)}</p>
+                <p class="section-kicker">${escapeHtml(product.game)} | ${escapeHtml(product.category)}</p>
                 <h1 id="product-title">${escapeHtml(product.name)}</h1>
                 <p>${escapeHtml(product.description)}</p>
                 <div class="product-price-row">
@@ -273,9 +299,23 @@ function setupProductDetail(){
                 </dl>
                 <div class="product-action-row">
                     <a href="contact.html" class="primary-button">Enquire</a>
-                    <button class="wishlist-button" type="button" data-wishlist-id="${product.id}" aria-pressed="${isWishlisted(product.id)}">
+                    <button class="wishlist-button" type="button" data-wishlist-id="${product.id}" aria-label="Save ${escapeHtml(product.name)} to wishlist" aria-pressed="${isWishlisted(product.id)}">
                         ${isWishlisted(product.id) ? "Saved" : "Save"}
                     </button>
+                </div>
+                <div class="product-service-grid" aria-label="Product service information">
+                    <article>
+                        <h2>Shipping</h2>
+                        <p>UK dispatch with collector-standard packaging.</p>
+                    </article>
+                    <article>
+                        <h2>Returns</h2>
+                        <p>Returns information will be confirmed as checkout launches.</p>
+                    </article>
+                    <article>
+                        <h2>Authenticity</h2>
+                        <p>Products are sourced with genuine stock and buyer confidence in mind.</p>
+                    </article>
                 </div>
             </div>
         </section>
@@ -292,22 +332,27 @@ function renderRelatedProducts(product){
             .filter((item) => item.category === product.category || item.set === product.set || item.featured)
             .slice(0,3);
 
-        grid.innerHTML = related.length ? related.map(productCard).join("") : emptyState("Related products will appear here.");
+        grid.innerHTML = related.length
+            ? related.map(productCard).join("")
+            : emptyState("Related products will appear here.","Related Products");
+
         bindWishlistButtons(grid);
     });
 }
 
 function setupWishlistPage(){
-    document.querySelectorAll("[data-wishlist-grid]").forEach((grid) => {
-        const wishlist = getWishlist();
-        const savedProducts = products.filter((product) => wishlist.includes(product.id));
+    document.querySelectorAll("[data-wishlist-grid]").forEach(renderWishlistGrid);
+}
 
-        grid.innerHTML = savedProducts.length
-            ? savedProducts.map(productCard).join("")
-            : emptyState("Your wishlist is empty for now.");
+function renderWishlistGrid(grid){
+    const wishlist = getWishlist();
+    const savedProducts = products.filter((product) => wishlist.includes(product.id));
 
-        bindWishlistButtons(grid);
-    });
+    grid.innerHTML = savedProducts.length
+        ? savedProducts.map(productCard).join("")
+        : emptyState("Save products while browsing and they will appear here on this device.","Your Wishlist Is Empty");
+
+    bindWishlistButtons(grid);
 }
 
 function setupRecentlyViewed(){
@@ -321,7 +366,7 @@ function setupRecentlyViewed(){
 
         grid.innerHTML = recentProducts.length
             ? recentProducts.map(productCard).join("")
-            : emptyState("Products you view will appear here.");
+            : emptyState("Products you view will appear here.","Recently Viewed");
 
         bindWishlistButtons(grid);
     });
@@ -334,16 +379,20 @@ function productCard(product){
                 <div class="shop-product-image" aria-hidden="true">
                     <span>${productInitials(product)}</span>
                 </div>
-                <p class="release-category">${escapeHtml(product.game)} · ${escapeHtml(product.category)}</p>
+                <p class="release-category">${escapeHtml(product.game)} | ${escapeHtml(product.category)}</p>
                 <h3>${escapeHtml(product.name)}</h3>
-                <p>${escapeHtml(product.set)} · ${escapeHtml(product.condition)}</p>
+                <p>${escapeHtml(product.set)} | ${escapeHtml(product.condition)}</p>
+                <ul class="product-card-meta" aria-label="Product details">
+                    <li>${escapeHtml(product.rarity)}</li>
+                    <li>${product.stock > 0 ? `${product.stock} available` : statusLabel(product)}</li>
+                </ul>
             </a>
             <div class="product-card-footer">
                 <div>
                     ${priceMarkup(product)}
                     <span>${statusLabel(product)}</span>
                 </div>
-                <button class="wishlist-button" type="button" data-wishlist-id="${product.id}" aria-pressed="${isWishlisted(product.id)}">
+                <button class="wishlist-button" type="button" data-wishlist-id="${product.id}" aria-label="Save ${escapeHtml(product.name)} to wishlist" aria-pressed="${isWishlisted(product.id)}">
                     ${isWishlisted(product.id) ? "Saved" : "Save"}
                 </button>
             </div>
@@ -353,9 +402,10 @@ function productCard(product){
 
 function bindWishlistButtons(scope){
     scope.querySelectorAll("[data-wishlist-id]").forEach((button) => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click",() => {
             const saved = toggleWishlist(button.dataset.wishlistId);
             updateWishlistButtons(button.dataset.wishlistId,saved);
+            document.querySelectorAll("[data-wishlist-grid]").forEach(renderWishlistGrid);
         });
     });
 }
@@ -458,12 +508,27 @@ function productInitials(product){
         .toUpperCase();
 }
 
+function galleryButtons(product){
+    const images = product.images.length ? product.images : [`assets/images/products/${product.id}-front.jpg`];
+
+    return images.map((image,index) => `
+        <button type="button" class="gallery-thumb" aria-label="Product image placeholder ${index + 1}: ${escapeHtml(image)}">
+            ${index + 1}
+        </button>
+    `).join("");
+}
+
 function gamePageUrl(game){
     return game === "Pokemon" ? "pokemon.html" : "latest-releases.html";
 }
 
-function emptyState(message){
-    return `<div class="empty-state"><p>${escapeHtml(message)}</p></div>`;
+function emptyState(message,title = "Nothing Found"){
+    return `
+        <div class="empty-state">
+            <h3>${escapeHtml(title)}</h3>
+            <p>${escapeHtml(message)}</p>
+        </div>
+    `;
 }
 
 function escapeHtml(value){
