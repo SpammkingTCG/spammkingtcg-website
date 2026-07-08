@@ -6,6 +6,29 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.4.0
+
+Homepage Polish
+
+## Added
+
+- Premium SVG-style illustrations for hero, category and release cards
+- Realistic latest release placeholder data
+- Stronger trust messaging for authentic products, UK shipping and collector ownership
+- Footer social links and payment method placeholders
+- Subtle section reveal and hover animations
+
+## Improved
+
+- Homepage spacing and section rhythm
+- Card hover states and gold glow effects
+- Release card presentation
+- Footer information architecture
+- Responsive grid behaviour for desktop, tablet and mobile
+- Accessibility focus states and semantic section structure
+
+---
+
 # v0.3.0
 
 Current Development
@@ -44,7 +67,7 @@ Added:
 
 ## v0.4.0
 
-Planned
+Complete
 
 - Featured Categories
 - Homepage cards
