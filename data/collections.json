@@ -1,0 +1,68 @@
+[
+  {
+    "game": "Pokemon",
+    "setName": "Journey Together",
+    "slug": "journey-together",
+    "description": "A modern Pokemon set page placeholder for sealed products, singles and collector-focused releases from Journey Together.",
+    "releaseDate": "2026-03-15",
+    "productCount": 1,
+    "status": "Coming Soon",
+    "banner": "assets/images/sets/pokemon/journey-together-banner.jpg",
+    "relatedSets": ["prismatic-evolutions", "surging-sparks", "destined-rivals"]
+  },
+  {
+    "game": "Pokemon",
+    "setName": "Prismatic Evolutions",
+    "slug": "prismatic-evolutions",
+    "description": "A premium Pokemon collector set placeholder featuring sealed products and singles ready for future inventory.",
+    "releaseDate": "2026-02-01",
+    "productCount": 2,
+    "status": "Coming Soon",
+    "banner": "assets/images/sets/pokemon/prismatic-evolutions-banner.jpg",
+    "relatedSets": ["journey-together", "surging-sparks", "destined-rivals"]
+  },
+  {
+    "game": "Pokemon",
+    "setName": "Surging Sparks",
+    "slug": "surging-sparks",
+    "description": "A Pokemon set page for booster boxes, singles and collector stock connected to Surging Sparks.",
+    "releaseDate": "2026-01-18",
+    "productCount": 2,
+    "status": "Available",
+    "banner": "assets/images/sets/pokemon/surging-sparks-banner.jpg",
+    "relatedSets": ["prismatic-evolutions", "journey-together", "black-bolt"]
+  },
+  {
+    "game": "Pokemon",
+    "setName": "Destined Rivals",
+    "slug": "destined-rivals",
+    "description": "A future-ready collection page for Destined Rivals sealed products and premium collector releases.",
+    "releaseDate": "2026-04-05",
+    "productCount": 1,
+    "status": "Coming Soon",
+    "banner": "assets/images/sets/pokemon/destined-rivals-banner.jpg",
+    "relatedSets": ["journey-together", "black-bolt", "white-flare"]
+  },
+  {
+    "game": "Pokemon",
+    "setName": "Black Bolt",
+    "slug": "black-bolt",
+    "description": "A Pokemon collection placeholder for Black Bolt sealed products, tins and future set inventory.",
+    "releaseDate": "2026-05-10",
+    "productCount": 1,
+    "status": "Available",
+    "banner": "assets/images/sets/pokemon/black-bolt-banner.jpg",
+    "relatedSets": ["white-flare", "destined-rivals", "surging-sparks"]
+  },
+  {
+    "game": "Pokemon",
+    "setName": "White Flare",
+    "slug": "white-flare",
+    "description": "A future set page for White Flare sleeved boosters, sealed products and collector singles.",
+    "releaseDate": "2026-05-24",
+    "productCount": 1,
+    "status": "Coming Soon",
+    "banner": "assets/images/sets/pokemon/white-flare-banner.jpg",
+    "relatedSets": ["black-bolt", "destined-rivals", "journey-together"]
+  }
+]

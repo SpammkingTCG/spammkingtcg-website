@@ -1,13 +1,17 @@
-const PRODUCT_DATA_URL = "data/products.json";
+const PRODUCT_DATA_URL = "/data/products.json";
+const COLLECTION_DATA_URL = "/data/collections.json";
 const WISHLIST_KEY = "spammking-wishlist";
 const RECENTLY_VIEWED_KEY = "spammking-recently-viewed";
 
 let products = [];
+let collections = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
-    products = await loadProducts();
+    [products,collections] = await Promise.all([loadProducts(),loadCollections()]);
 
     setupProductGrids();
+    setupSetLanding();
+    setupSetDetail();
     setupComingSoon();
     setupProductDetail();
     setupWishlistPage();
@@ -30,13 +34,34 @@ async function loadProducts(){
     }
 }
 
+async function loadCollections(){
+    try{
+        const response = await fetch(COLLECTION_DATA_URL);
+
+        if(!response.ok){
+            throw new Error("Collection data unavailable");
+        }
+
+        const data = await response.json();
+        return data.map(normalizeCollection);
+    }catch(error){
+        console.warn(error.message);
+        return [];
+    }
+}
+
 function normalizeProduct(product){
     return {
         id:"",
         name:"",
         category:"",
+        productType:product.category || "",
         game:"",
         set:"",
+        collectionSlug:"",
+        setSlug:"",
+        productSlug:"",
+        status:"",
         rarity:"",
         condition:"",
         price:0,
@@ -52,6 +77,21 @@ function normalizeProduct(product){
     };
 }
 
+function normalizeCollection(collection){
+    return {
+        game:"",
+        setName:"",
+        slug:"",
+        description:"",
+        releaseDate:"",
+        productCount:0,
+        status:"",
+        banner:"",
+        relatedSets:[],
+        ...collection
+    };
+}
+
 function setupProductGrids(){
     document.querySelectorAll("[data-product-grid]").forEach((grid) => {
         const game = grid.dataset.game || "";
@@ -59,7 +99,12 @@ function setupProductGrids(){
         const count = document.querySelector("[data-product-count]");
         const pagination = document.querySelector("[data-pagination]");
         const pageSize = Number(grid.dataset.pageSize || 6);
-        const catalogue = products.filter((product) => !game || product.game === game);
+        const setSlug = grid.dataset.setSlug || "";
+        const catalogue = products.filter((product) => {
+            const matchesGame = !game || product.game === game;
+            const matchesSet = !setSlug || product.setSlug === setSlug;
+            return matchesGame && matchesSet;
+        });
 
         const state = {
             catalogue,
@@ -72,7 +117,9 @@ function setupProductGrids(){
             filters:{
                 availability:"",
                 category:"",
-                set:""
+                productType:"",
+                set:"",
+                status:""
             },
             sort:"featured"
         };
@@ -90,6 +137,8 @@ function populateFilters(state){
 
     populateSelect(state.controls.querySelector('[data-filter="set"]'),uniqueValues(state.catalogue,"set"));
     populateSelect(state.controls.querySelector('[data-filter="category"]'),uniqueValues(state.catalogue,"category"));
+    populateSelect(state.controls.querySelector('[data-filter="productType"]'),uniqueValues(state.catalogue,"productType"));
+    populateSelect(state.controls.querySelector('[data-filter="status"]'),uniqueValues(state.catalogue,"status"));
 }
 
 function populateSelect(select,values){
@@ -165,8 +214,10 @@ function filterProducts(items,state){
         const searchable = [
             product.name,
             product.category,
+            product.productType,
             product.game,
             product.set,
+            product.status,
             product.rarity,
             product.condition,
             product.description,
@@ -176,9 +227,11 @@ function filterProducts(items,state){
         const matchesSearch = !state.search || searchable.includes(state.search);
         const matchesSet = !state.filters.set || product.set === state.filters.set;
         const matchesCategory = !state.filters.category || product.category === state.filters.category;
+        const matchesProductType = !state.filters.productType || product.productType === state.filters.productType;
+        const matchesStatus = !state.filters.status || product.status === state.filters.status;
         const matchesAvailability = !state.filters.availability || getAvailability(product) === state.filters.availability;
 
-        return matchesSearch && matchesSet && matchesCategory && matchesAvailability;
+        return matchesSearch && matchesSet && matchesCategory && matchesProductType && matchesStatus && matchesAvailability;
     });
 }
 
@@ -248,6 +301,103 @@ function setupComingSoon(){
     });
 }
 
+function setupSetLanding(){
+    document.querySelectorAll("[data-sets-grid]").forEach((grid) => {
+        const game = grid.dataset.game || "";
+        const setItems = collections
+            .filter((collection) => !game || collection.game === game)
+            .sort((a,b) => new Date(b.releaseDate) - new Date(a.releaseDate));
+
+        grid.innerHTML = setItems.length
+            ? setItems.map(setCard).join("")
+            : emptyState("Sets will appear here as collection data is added.","No Sets Found");
+    });
+}
+
+function setupSetDetail(){
+    const target = document.querySelector("[data-set-detail]");
+
+    if(!target){
+        return;
+    }
+
+    const slug = target.dataset.setSlug || "";
+    const collection = collections.find((item) => item.slug === slug);
+
+    if(!collection){
+        target.innerHTML = emptyState("This set could not be found.","Set Not Found");
+        return;
+    }
+
+    const setProducts = products.filter((product) => product.game === collection.game && product.setSlug === collection.slug);
+    document.title = `${collection.setName} | ${collection.game} Sets | SpammKing TCG`;
+    updateMetaDescription(`${collection.setName} Pokemon products, release information and collector stock from SpammKing TCG.`);
+
+    target.innerHTML = `
+        <nav class="breadcrumb-nav product-breadcrumb" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/pokemon.html">${escapeHtml(collection.game)}</a></li>
+                <li><a href="/pokemon/sets/">Sets</a></li>
+                <li aria-current="page">${escapeHtml(collection.setName)}</li>
+            </ol>
+        </nav>
+        <section class="set-hero" aria-labelledby="set-title">
+            <div class="set-hero-content">
+                <p class="section-kicker">${escapeHtml(collection.game)} Set</p>
+                <h1 id="set-title">${escapeHtml(collection.setName)}</h1>
+                <p>${escapeHtml(collection.description)}</p>
+                <div class="set-stat-row" aria-label="Set details">
+                    <span>${formatDate(collection.releaseDate)}</span>
+                    <span>${setProducts.length} product${setProducts.length === 1 ? "" : "s"}</span>
+                    <span>${escapeHtml(collection.status)}</span>
+                </div>
+            </div>
+            <div class="set-hero-art" aria-hidden="true">
+                <span>${setInitials(collection.setName)}</span>
+            </div>
+        </section>
+    `;
+
+    document.querySelectorAll("[data-set-product-count]").forEach((node) => {
+        node.textContent = `${setProducts.length} product${setProducts.length === 1 ? "" : "s"} in this set`;
+    });
+
+    document.querySelectorAll("[data-related-sets]").forEach((grid) => {
+        const related = collection.relatedSets
+            .map((relatedSlug) => collections.find((item) => item.slug === relatedSlug))
+            .filter(Boolean)
+            .slice(0,3);
+
+        grid.innerHTML = related.length
+            ? related.map(setCard).join("")
+            : emptyState("Related sets will appear here.","Related Sets");
+    });
+}
+
+function setCard(collection){
+    const productCount = products.filter((product) => product.game === collection.game && product.setSlug === collection.slug).length || collection.productCount;
+
+    return `
+        <article class="set-card">
+            <a href="${setUrl(collection)}" aria-label="View ${escapeHtml(collection.setName)} set">
+                <div class="set-card-art" aria-hidden="true">
+                    <span>${setInitials(collection.setName)}</span>
+                </div>
+                <p class="release-category">${escapeHtml(collection.game)} Set</p>
+                <h3>${escapeHtml(collection.setName)}</h3>
+                <p>${escapeHtml(collection.description)}</p>
+                <div class="set-card-meta">
+                    <span>${formatDate(collection.releaseDate)}</span>
+                    <span>${productCount} product${productCount === 1 ? "" : "s"}</span>
+                    <span>${escapeHtml(collection.status)}</span>
+                </div>
+                <span class="category-link">View Set</span>
+            </a>
+        </article>
+    `;
+}
+
 function setupProductDetail(){
     const target = document.querySelector("[data-product-detail]");
 
@@ -269,7 +419,7 @@ function setupProductDetail(){
     target.innerHTML = `
         <nav class="breadcrumb-nav product-breadcrumb" aria-label="Breadcrumb">
             <ol>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="${gamePageUrl(product.game)}">${escapeHtml(product.game)}</a></li>
                 <li aria-current="page">${escapeHtml(product.name)}</li>
             </ol>
@@ -298,7 +448,7 @@ function setupProductDetail(){
                     <div><dt>Release</dt><dd>${formatDate(product.releaseDate)}</dd></div>
                 </dl>
                 <div class="product-action-row">
-                    <a href="contact.html" class="primary-button">Enquire</a>
+                    <a href="/contact.html" class="primary-button">Enquire</a>
                     <button class="wishlist-button" type="button" data-wishlist-id="${product.id}" aria-label="Save ${escapeHtml(product.name)} to wishlist" aria-pressed="${isWishlisted(product.id)}">
                         ${isWishlisted(product.id) ? "Saved" : "Save"}
                     </button>
@@ -375,7 +525,7 @@ function setupRecentlyViewed(){
 function productCard(product){
     return `
         <article class="shop-product-card">
-            <a href="product.html?id=${encodeURIComponent(product.id)}" class="product-card-link" aria-label="View ${escapeHtml(product.name)}">
+            <a href="/product.html?id=${encodeURIComponent(product.id)}" class="product-card-link" aria-label="View ${escapeHtml(product.name)}">
                 <div class="shop-product-image" aria-hidden="true">
                     <span>${productInitials(product)}</span>
                 </div>
@@ -519,7 +669,29 @@ function galleryButtons(product){
 }
 
 function gamePageUrl(game){
-    return game === "Pokemon" ? "pokemon.html" : "latest-releases.html";
+    return game === "Pokemon" ? "/pokemon.html" : "/latest-releases.html";
+}
+
+function setUrl(collection){
+    const collectionSlug = collection.game.toLowerCase().replaceAll(" ","-");
+    return `/${collectionSlug}/sets/${collection.slug}/`;
+}
+
+function setInitials(value){
+    return value
+        .split(/\s+/)
+        .map((word) => word.charAt(0))
+        .join("")
+        .slice(0,3)
+        .toUpperCase();
+}
+
+function updateMetaDescription(content){
+    const meta = document.querySelector('meta[name="description"]');
+
+    if(meta){
+        meta.setAttribute("content",content);
+    }
 }
 
 function emptyState(message,title = "Nothing Found"){

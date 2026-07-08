@@ -6,6 +6,27 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.7.0
+
+Collection and Set System
+
+## Added
+
+- Added `data/collections.json` for reusable game and set metadata
+- Extended product data with product type, status, collection slug, set slug and product slug fields
+- Added a Pokemon sets landing page at `/pokemon/sets/`
+- Added static-friendly set routes for Journey Together, Prismatic Evolutions, Surging Sparks, Destined Rivals, Black Bolt and White Flare
+- Added dynamic set hero rendering, product counts, related sets and set product grids powered by JSON data
+- Added collection and set card styles using the existing premium dark/gold design system
+
+## Improved
+
+- Updated Pokemon product filtering to use product type and status fields
+- Added a Pokemon page link into the new sets library
+- Made product card and game/set links work from nested static routes
+
+---
+
 # v0.6.2
 
 Design System Styleguide

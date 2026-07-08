@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ===========================
+         Basic Page Information
+    ============================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pokemon Sets | SpammKing TCG</title>
+    <meta name="description" content="Explore Pokemon TCG sets at SpammKing TCG, including Journey Together, Prismatic Evolutions, Surging Sparks, Destined Rivals, Black Bolt and White Flare.">
+    <meta name="author" content="SpammKing TCG">
+    <link rel="canonical" href="https://spammkingtcg.co.uk/pokemon/sets/">
+    <meta name="theme-color" content="#0B0D10">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <!-- ===========================
+         Header
+    ============================ -->
+    <header class="site-header">
+        <nav class="navbar" aria-label="Primary navigation">
+            <a href="/" class="logo" aria-label="SpammKing TCG home">
+                <span class="logo-crown" aria-hidden="true"></span>
+                <span class="logo-main">SPAMMKING</span>
+                <span class="logo-tcg">TCG</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pokemon.html" aria-current="page">Pokemon</a></li>
+                <li><a href="/latest-releases.html">Latest Releases</a></li>
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+
+            <a href="https://www.ebay.co.uk/usr/spammkingtcg" target="_blank" rel="noopener" class="ebay-button">
+                Visit our eBay Store
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/pokemon.html">Pokemon</a></li>
+                <li aria-current="page">Sets</li>
+            </ol>
+        </nav>
+
+        <section class="set-landing-hero" aria-labelledby="sets-title">
+            <p class="section-kicker">Pokemon Sets</p>
+            <h1 id="sets-title">Explore Pokemon by set.</h1>
+            <p>
+                Browse current and upcoming Pokemon collections. Each set page is generated from shared collection and
+                product data, ready to scale as new releases arrive.
+            </p>
+        </section>
+
+        <section class="product-section" aria-labelledby="all-sets-title">
+            <div class="section-header">
+                <p class="section-kicker">Collections</p>
+                <h2 id="all-sets-title">Pokemon set library.</h2>
+            </div>
+
+            <div class="sets-grid" data-sets-grid data-game="Pokemon"></div>
+        </section>
+
+        <section class="newsletter-section" aria-labelledby="sets-newsletter-title">
+            <div>
+                <p class="section-kicker">Release Updates</p>
+                <h2 id="sets-newsletter-title">Follow upcoming Pokemon sets.</h2>
+                <p>Get collector-relevant release updates as the store grows.</p>
+            </div>
+
+            <form class="newsletter-form" aria-describedby="sets-newsletter-note">
+                <label class="sr-only" for="sets-newsletter-email">Email address</label>
+                <input id="sets-newsletter-email" name="email" type="email" autocomplete="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p id="sets-newsletter-note" class="sr-only">Newsletter signup is planned for a future website release.</p>
+        </section>
+    </main>
+
+    <script src="/script.js" defer></script>
+</body>
+
+</html>
