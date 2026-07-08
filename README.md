@@ -10,9 +10,9 @@ Each product should use this schema:
 - `name`: customer-facing product name
 - `category`: product type, such as Booster Box, Singles, Graded Cards or Accessories
 - `productType`: product type used by filters and collection pages
-- `game`: trading card game, such as Pokemon
+- `game`: trading card game, such as Pokemon or One Piece
 - `set`: product set or range
-- `collectionSlug`: game-level slug, such as `pokemon`
+- `collectionSlug`: game-level slug, such as `pokemon` or `one-piece`
 - `setSlug`: set-level slug, such as `prismatic-evolutions`
 - `productSlug`: product-level slug for future clean product URLs
 - `status`: customer-facing product status, such as Available or Coming Soon
@@ -38,7 +38,7 @@ Set metadata is stored in `data/collections.json`.
 
 Each set should include:
 
-- `game`: trading card game, such as Pokemon
+- `game`: trading card game, such as Pokemon or One Piece
 - `setName`: customer-facing set name
 - `slug`: URL-safe set slug
 - `description`: short set description
@@ -48,13 +48,16 @@ Each set should include:
 - `banner`: future banner or illustration placeholder path
 - `relatedSets`: array of related set slugs
 
-Pokemon set pages currently use static-friendly folders such as:
+Game set pages currently use static-friendly folders such as:
 
 - `pokemon/sets/`
 - `pokemon/sets/journey-together/`
 - `pokemon/sets/prismatic-evolutions/`
+- `one-piece/sets/`
+- `one-piece/sets/op-09-emperors-in-the-new-world/`
+- `one-piece/sets/op-10-royal-blood/`
 
-The page content is rendered from `collections.json` and `products.json`, so future games can reuse the same structure.
+The page content is rendered from `collections.json` and `products.json`, so One Piece and future games can reuse the same structure.
 
 ## Release Data
 
@@ -80,13 +83,13 @@ Each release should include:
 - `releaseWindow`: display month, such as `August 2026`
 - `displayOrder`: manual sort order
 
-The Latest Releases page, homepage release section and Pokemon release watch all use this shared release data.
+The Latest Releases page, homepage release section, Pokemon release watch and One Piece release sections all use this shared release data.
 
 ## SEO and Routing
 
 Core SEO files live at the site root:
 
-- `sitemap.xml`: lists the main public pages and Pokemon set routes
+- `sitemap.xml`: lists the main public pages plus Pokemon and One Piece set routes
 - `robots.txt`: allows indexing and points to the sitemap
 - `404.html`: branded fallback page for missing routes
 

@@ -382,21 +382,22 @@ function setupSetDetail(){
     }
 
     const setProducts = products.filter((product) => product.game === collection.game && product.setSlug === collection.slug);
+    const collectionSlug = collectionSlugFromGame(collection.game);
     document.title = `${collection.setName} | ${collection.game} Sets | SpammKing TCG`;
-    updateMetaDescription(`${collection.setName} Pokemon products, release information and collector stock from SpammKing TCG.`);
+    updateMetaDescription(`${collection.setName} ${collection.game} products, release information and collector stock from SpammKing TCG.`);
     injectJsonLd(breadcrumbSchema([
         ["Home","https://spammkingtcg.co.uk/"],
-        [collection.game,`https://spammkingtcg.co.uk/${collection.game.toLowerCase()}.html`],
-        ["Sets","https://spammkingtcg.co.uk/pokemon/sets/"],
-        [collection.setName,`https://spammkingtcg.co.uk/pokemon/sets/${collection.slug}/`]
+        [collection.game,`https://spammkingtcg.co.uk/${collectionSlug}.html`],
+        ["Sets",`https://spammkingtcg.co.uk/${collectionSlug}/sets/`],
+        [collection.setName,`https://spammkingtcg.co.uk/${collectionSlug}/sets/${collection.slug}/`]
     ]));
 
     target.innerHTML = `
         <nav class="breadcrumb-nav product-breadcrumb" aria-label="Breadcrumb">
             <ol>
                 <li><a href="/">Home</a></li>
-                <li><a href="/pokemon.html">${escapeHtml(collection.game)}</a></li>
-                <li><a href="/pokemon/sets/">Sets</a></li>
+                <li><a href="/${collectionSlug}.html">${escapeHtml(collection.game)}</a></li>
+                <li><a href="/${collectionSlug}/sets/">Sets</a></li>
                 <li aria-current="page">${escapeHtml(collection.setName)}</li>
             </ol>
         </nav>
@@ -904,12 +905,25 @@ function galleryButtons(product){
 }
 
 function gamePageUrl(game){
-    return game === "Pokemon" ? "/pokemon.html" : "/latest-releases.html";
+    const slug = collectionSlugFromGame(game);
+    return slug ? `/${slug}.html` : "/latest-releases.html";
 }
 
 function setUrl(collection){
-    const collectionSlug = collection.game.toLowerCase().replaceAll(" ","-");
+    const collectionSlug = collectionSlugFromGame(collection.game);
     return `/${collectionSlug}/sets/${collection.slug}/`;
+}
+
+function collectionSlugFromGame(game){
+    const slugs = {
+        "Pokemon":"pokemon",
+        "One Piece":"one-piece",
+        "Disney Lorcana":"lorcana",
+        "Yu-Gi-Oh!":"yu-gi-oh",
+        "Magic: The Gathering":"magic"
+    };
+
+    return slugs[game] || game.toLowerCase().replaceAll(":","").replaceAll("!","").replaceAll(" ","-");
 }
 
 function setInitials(value){

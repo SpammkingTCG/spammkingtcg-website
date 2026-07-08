@@ -6,6 +6,28 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.9.0
+
+One Piece TCG Expansion
+
+## Added
+
+- Added a One Piece TCG category page at `one-piece.html`
+- Added a One Piece sets library at `/one-piece/sets/`
+- Added static-friendly One Piece set routes for OP-09, OP-10, OP-11, OP-12 and EB-02
+- Added One Piece collection metadata to `data/collections.json`
+- Added 11 One Piece placeholder products across sealed products, singles, graded cards and accessories
+- Added One Piece release entries to the shared release hub data
+- Added One Piece pages to `sitemap.xml`
+
+## Improved
+
+- Updated shared set routing so non-Pokemon games can reuse the same collection templates
+- Linked One Piece from the homepage category section and footer shop links
+- Kept the new One Piece section aligned with the existing premium black/gold design system
+
+---
+
 # v0.8.1
 
 Site-wide SEO, Routing and Launch Readiness

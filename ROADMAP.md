@@ -6,22 +6,31 @@
 
 # Current Milestone
 
-## v0.8.0
+## v0.9.0
 
-Release Calendar and Latest Releases Hub
+One Piece TCG Expansion
 
-- Shared release data
-- Latest Releases hub
-- Release calendar grouped by month
-- Featured upcoming releases
-- Available now, coming soon and recently released sections
-- Game, product type, status and month filters
-- Homepage release data integration
-- Pokemon release watch integration
+- One Piece landing page
+- One Piece collection and set data
+- One Piece set library and individual set routes
+- One Piece products in the shared catalogue
+- One Piece release hub data
+- Cross-game routing using the shared shop system
 
 ---
 
 # Completed Foundations
+
+## v0.8.x
+
+SEO, Routing and Release Hub
+
+- Latest Releases hub
+- Shared release data
+- Release calendar grouped by month
+- Homepage release data integration
+- Sitemap, robots and 404 page
+- Metadata and structured data pass
 
 ## v0.7.0
 
@@ -72,7 +81,7 @@ Homepage Polish
 
 # Next Priorities
 
-## v0.9.0
+## v0.9.1
 
 Product Content and Imagery
 
@@ -85,7 +94,6 @@ Product Content and Imagery
 
 Additional Game Sections
 
-- One Piece
 - Disney Lorcana
 - Yu-Gi-Oh!
 - Magic: The Gathering

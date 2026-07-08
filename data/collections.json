@@ -64,5 +64,60 @@
     "status": "Coming Soon",
     "banner": "assets/images/sets/pokemon/white-flare-banner.jpg",
     "relatedSets": ["black-bolt", "destined-rivals", "journey-together"]
+  },
+  {
+    "game": "One Piece",
+    "setName": "OP-09 Emperors in the New World",
+    "slug": "op-09-emperors-in-the-new-world",
+    "description": "A One Piece Card Game placeholder set page for sealed products, singles and collector-focused releases.",
+    "releaseDate": "2026-09-20",
+    "productCount": 3,
+    "status": "Available",
+    "banner": "assets/images/sets/one-piece/op-09-emperors-in-the-new-world-banner.jpg",
+    "relatedSets": ["op-10-royal-blood", "op-11-a-fist-of-divine-speed", "op-12-legacy-of-the-master"]
+  },
+  {
+    "game": "One Piece",
+    "setName": "OP-10 Royal Blood",
+    "slug": "op-10-royal-blood",
+    "description": "A One Piece collection placeholder for booster boxes, starter decks and future set inventory.",
+    "releaseDate": "2026-10-18",
+    "productCount": 2,
+    "status": "Available",
+    "banner": "assets/images/sets/one-piece/op-10-royal-blood-banner.jpg",
+    "relatedSets": ["op-09-emperors-in-the-new-world", "op-11-a-fist-of-divine-speed", "eb-02-anime-25th-collection"]
+  },
+  {
+    "game": "One Piece",
+    "setName": "OP-11 A Fist of Divine Speed",
+    "slug": "op-11-a-fist-of-divine-speed",
+    "description": "A future-ready One Piece set page for upcoming sealed products and collector singles.",
+    "releaseDate": "2026-11-22",
+    "productCount": 2,
+    "status": "Coming Soon",
+    "banner": "assets/images/sets/one-piece/op-11-a-fist-of-divine-speed-banner.jpg",
+    "relatedSets": ["op-10-royal-blood", "op-12-legacy-of-the-master", "op-09-emperors-in-the-new-world"]
+  },
+  {
+    "game": "One Piece",
+    "setName": "OP-12 Legacy of the Master",
+    "slug": "op-12-legacy-of-the-master",
+    "description": "A One Piece placeholder collection page for future releases, sealed products and collector inventory.",
+    "releaseDate": "2026-12-12",
+    "productCount": 1,
+    "status": "Coming Soon",
+    "banner": "assets/images/sets/one-piece/op-12-legacy-of-the-master-banner.jpg",
+    "relatedSets": ["op-11-a-fist-of-divine-speed", "eb-02-anime-25th-collection", "op-10-royal-blood"]
+  },
+  {
+    "game": "One Piece",
+    "setName": "EB-02 Anime 25th Collection",
+    "slug": "eb-02-anime-25th-collection",
+    "description": "A One Piece extra booster placeholder set page for anniversary-focused collector products.",
+    "releaseDate": "2026-12-28",
+    "productCount": 1,
+    "status": "Register Interest",
+    "banner": "assets/images/sets/one-piece/eb-02-anime-25th-collection-banner.jpg",
+    "relatedSets": ["op-12-legacy-of-the-master", "op-10-royal-blood", "op-09-emperors-in-the-new-world"]
   }
 ]
