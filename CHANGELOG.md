@@ -6,6 +6,26 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.9.2
+
+eBay Buying Journey and Product CTA System
+
+## Added
+
+- Added optional product purchase fields including `ebayUrl`, `purchaseUrl`, `purchaseType`, `ctaLabel`, `availabilityMessage`, `preorderAvailable`, `registerInterest` and `externalCheckout`
+- Added dynamic product card CTAs for eBay, coming soon, sold out, register interest and unavailable states
+- Added a product detail purchase panel with price, status, availability messaging, main CTA, wishlist and support links
+- Added `how-to-buy.html` explaining the current eBay-first buying journey
+
+## Improved
+
+- Updated available placeholder products to use an eBay-first purchase flow instead of implying direct checkout
+- Added How to Buy links into support footers across public pages
+- Added disabled CTA styling for products that cannot currently be purchased
+- Updated `sitemap.xml`, `README.md` and `ROADMAP.md` for the buying journey milestone
+
+---
+
 # v0.9.1
 
 Trust, Policy and Customer Confidence Pages

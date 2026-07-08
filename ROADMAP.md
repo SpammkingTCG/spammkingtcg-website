@@ -6,17 +6,16 @@
 
 # Current Milestone
 
-## v0.9.1
+## v0.9.2
 
-Trust, Policy and Customer Confidence Pages
+eBay Buying Journey and Product CTA System
 
-- Shipping & Delivery page
-- Returns & Refunds page
-- Authenticity Guarantee page
-- FAQ page
-- Professional contact page
-- Footer support links
-- Customer confidence blocks
+- Product purchase data fields
+- Dynamic product card CTAs
+- Product detail purchase panel
+- How to Buy page
+- eBay-first buying journey
+- Honest no-checkout messaging
 
 ---
 
@@ -43,6 +42,18 @@ One Piece TCG Expansion
 - One Piece products in the shared catalogue
 - One Piece release hub data
 - Cross-game routing using the shared shop system
+
+## v0.9.1
+
+Trust, Policy and Customer Confidence Pages
+
+- Shipping & Delivery page
+- Returns & Refunds page
+- Authenticity Guarantee page
+- FAQ page
+- Professional contact page
+- Footer support links
+- Customer confidence blocks
 
 ## v0.7.0
 

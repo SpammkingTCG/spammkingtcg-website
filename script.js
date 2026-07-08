@@ -102,6 +102,14 @@ function normalizeProduct(product){
         tags:[],
         featured:false,
         comingSoon:false,
+        ebayUrl:"",
+        purchaseUrl:"",
+        purchaseType:"",
+        ctaLabel:"",
+        availabilityMessage:"",
+        preorderAvailable:false,
+        registerInterest:false,
+        externalCheckout:false,
         ...product
     };
 }
@@ -677,18 +685,24 @@ function setupProductDetail(){
                     ${priceMarkup(product)}
                     <span class="product-status">${statusLabel(product)}</span>
                 </div>
+                <div class="purchase-panel" aria-label="Purchase options">
+                    <p class="section-kicker">Buying Options</p>
+                    <h2>How to buy this product.</h2>
+                    <p>${escapeHtml(purchaseMessage(product))}</p>
+                    ${product.externalCheckout ? `<p class="purchase-note">Checkout is currently completed securely through eBay while the SpammKing TCG website shop is being developed.</p>` : ""}
+                    <div class="product-action-row">
+                        ${detailCta(product)}
+                        <button class="wishlist-button" type="button" data-wishlist-id="${product.id}" aria-label="Save ${escapeHtml(product.name)} to wishlist" aria-pressed="${isWishlisted(product.id)}">
+                            ${isWishlisted(product.id) ? "Saved" : "Save"}
+                        </button>
+                    </div>
+                </div>
                 <dl class="product-spec-list">
                     <div><dt>Set</dt><dd>${escapeHtml(product.set)}</dd></div>
                     <div><dt>Condition</dt><dd>${escapeHtml(product.condition)}</dd></div>
                     <div><dt>Rarity</dt><dd>${escapeHtml(product.rarity)}</dd></div>
                     <div><dt>Release</dt><dd>${formatDate(product.releaseDate)}</dd></div>
                 </dl>
-                <div class="product-action-row">
-                    <a href="/contact.html" class="primary-button">Enquire</a>
-                    <button class="wishlist-button" type="button" data-wishlist-id="${product.id}" aria-label="Save ${escapeHtml(product.name)} to wishlist" aria-pressed="${isWishlisted(product.id)}">
-                        ${isWishlisted(product.id) ? "Saved" : "Save"}
-                    </button>
-                </div>
                 <div class="product-service-grid" aria-label="Product service information">
                     <article>
                         <h2>Shipping</h2>
@@ -778,6 +792,7 @@ function productCard(product){
                     ${priceMarkup(product)}
                     <span>${statusLabel(product)}</span>
                 </div>
+                ${cardCta(product)}
                 <button class="wishlist-button" type="button" data-wishlist-id="${product.id}" aria-label="Save ${escapeHtml(product.name)} to wishlist" aria-pressed="${isWishlisted(product.id)}">
                     ${isWishlisted(product.id) ? "Saved" : "Save"}
                 </button>
@@ -847,11 +862,124 @@ function getAvailability(product){
 }
 
 function statusLabel(product){
+    if(product.purchaseType === "sold-out"){
+        return "Sold Out";
+    }
+
+    if(product.purchaseType === "register-interest"){
+        return "Register Interest";
+    }
+
     if(product.comingSoon){
         return "Coming Soon";
     }
 
     return product.stock > 0 ? "In Stock" : "Out of Stock";
+}
+
+function purchaseInfo(product){
+    const type = product.purchaseType || inferredPurchaseType(product);
+    const label = product.ctaLabel || ctaLabelForType(type);
+    const url = product.purchaseUrl || product.ebayUrl || "";
+
+    return {
+        type,
+        label,
+        url,
+        external:type === "ebay" && Boolean(url),
+        disabled:type === "sold-out",
+        detailOnly:type === "coming-soon" || type === "unavailable"
+    };
+}
+
+function inferredPurchaseType(product){
+    if(product.stock > 0 && !product.comingSoon){
+        return "ebay";
+    }
+
+    if(product.status === "Register Interest"){
+        return "register-interest";
+    }
+
+    if(product.comingSoon){
+        return "coming-soon";
+    }
+
+    return product.stock <= 0 ? "sold-out" : "unavailable";
+}
+
+function ctaLabelForType(type){
+    const labels = {
+        "ebay":"View on eBay",
+        "coming-soon":"Coming Soon",
+        "sold-out":"Sold Out",
+        "register-interest":"Register Interest",
+        "unavailable":"View Details"
+    };
+
+    return labels[type] || "View Details";
+}
+
+function purchaseMessage(product){
+    if(product.availabilityMessage){
+        return product.availabilityMessage;
+    }
+
+    const info = purchaseInfo(product);
+
+    if(info.type === "ebay"){
+        return "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.";
+    }
+
+    if(info.type === "register-interest"){
+        return "Register interest or contact SpammKing TCG for updates before this product becomes available.";
+    }
+
+    if(info.type === "coming-soon"){
+        return "This product is planned for a future release and is not available to buy through the website yet.";
+    }
+
+    if(info.type === "sold-out"){
+        return "This product is currently sold out. Save it to your wishlist or check back later.";
+    }
+
+    return "This product is not currently available to purchase online.";
+}
+
+function cardCta(product){
+    const info = purchaseInfo(product);
+
+    if(info.external){
+        return `<a href="${escapeHtml(info.url)}" target="_blank" rel="noopener" class="category-link product-cta" aria-label="View ${escapeHtml(product.name)} on eBay">${escapeHtml(info.label)}</a>`;
+    }
+
+    if(info.type === "register-interest"){
+        return `<a href="/contact.html" class="category-link product-cta" aria-label="Register interest in ${escapeHtml(product.name)}">${escapeHtml(info.label)}</a>`;
+    }
+
+    if(info.disabled){
+        return `<span class="category-link product-cta is-disabled" aria-disabled="true">${escapeHtml(info.label)}</span>`;
+    }
+
+    return `<a href="/product.html?id=${encodeURIComponent(product.id)}" class="category-link product-cta" aria-label="View details for ${escapeHtml(product.name)}">${escapeHtml(info.label)}</a>`;
+}
+
+function detailCta(product){
+    const info = purchaseInfo(product);
+
+    if(info.external){
+        return `<a href="${escapeHtml(info.url)}" target="_blank" rel="noopener" class="primary-button" aria-label="View ${escapeHtml(product.name)} on eBay">View on eBay</a>`;
+    }
+
+    if(info.type === "register-interest"){
+        return `<a href="/contact.html" class="primary-button" aria-label="Register interest in ${escapeHtml(product.name)}">Register Interest</a>`;
+    }
+
+    if(info.disabled){
+        return `<span class="primary-button is-disabled" aria-disabled="true">Sold Out</span>`;
+    }
+
+    return `<a href="/how-to-buy.html" class="secondary-button" aria-label="Learn how to buy ${escapeHtml(product.name)}">${escapeHtml(info.label)}</a>`;
 }
 
 function getDisplayPrice(product){

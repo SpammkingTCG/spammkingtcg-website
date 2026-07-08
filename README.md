@@ -27,10 +27,30 @@ Each product should use this schema:
 - `tags`: searchable tags
 - `featured`: `true` or `false`
 - `comingSoon`: `true` or `false`
+- `ebayUrl`: optional external eBay listing or store URL
+- `purchaseUrl`: optional URL used by the primary purchase CTA
+- `purchaseType`: controls the CTA state, such as `ebay`, `coming-soon`, `sold-out`, `register-interest` or `unavailable`
+- `ctaLabel`: optional customer-facing CTA label
+- `availabilityMessage`: customer-facing product availability note
+- `preorderAvailable`: `true` or `false`
+- `registerInterest`: `true` or `false`
+- `externalCheckout`: `true` when the purchase is completed outside the website
 
 Use clear placeholder image paths until real photography is available, for example:
 
 `assets/images/products/pokemon/product-name-front.jpg`
+
+### Purchase CTA Logic
+
+The website does not currently run direct checkout. Product CTAs are generated from product data:
+
+- `ebay`: shows `View on eBay` and opens the eBay URL
+- `coming-soon`: shows a coming soon CTA and keeps the customer on the product journey
+- `sold-out`: shows a disabled sold out state
+- `register-interest`: links customers to contact SpammKing TCG
+- `unavailable`: keeps the CTA as a product detail action
+
+Do not add fake basket, cart or payment CTAs until real checkout is implemented.
 
 ## Collections and Sets
 
@@ -115,6 +135,7 @@ Draft customer confidence pages live at the site root:
 - `returns.html`: draft returns and refunds guidance for owner review
 - `authenticity.html`: genuine product, condition and packaging standards
 - `faq.html`: common customer questions
+- `how-to-buy.html`: explains the current eBay-first buying journey
 - `contact.html`: email, business details and enquiry type guidance
 
 These pages should stay honest and avoid legal or checkout claims until the full ecommerce setup is confirmed.
