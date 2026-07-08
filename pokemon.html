@@ -79,6 +79,12 @@
     </header>
 
     <main>
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Pokemon</li>
+            </ol>
+        </nav>
 
         <!-- ===========================
              Pokemon Hero
@@ -187,42 +193,73 @@
             <div class="section-header">
                 <p class="section-kicker">Latest Releases</p>
                 <h2 id="pokemon-latest-title">Pokemon products in focus.</h2>
+                <p>
+                    Search, filter and sort Pokemon products from the shared product catalogue.
+                </p>
             </div>
 
-            <div class="product-grid">
-                <article class="shop-product-card">
-                    <div class="shop-product-image pokemon-product-one" aria-hidden="true"></div>
-                    <p class="release-category">Elite Trainer Box</p>
-                    <h3>Mega Evolution Elite Trainer Box</h3>
-                    <p>Premium sealed placeholder for an upcoming Pokemon release.</p>
-                    <div class="product-card-footer">
-                        <span>Coming Soon</span>
-                        <a href="contact.html" class="category-link">Enquire</a>
-                    </div>
-                </article>
+            <div class="shop-controls" data-product-controls data-game="Pokemon">
+                <div class="shop-control-field shop-control-search">
+                    <label for="product-search">Search Pokemon</label>
+                    <input id="product-search" type="search" data-product-search placeholder="Search by product, set or tag">
+                </div>
 
-                <article class="shop-product-card">
-                    <div class="shop-product-image pokemon-product-two" aria-hidden="true"></div>
-                    <p class="release-category">Booster Box</p>
-                    <h3>Scarlet & Violet Booster Box</h3>
-                    <p>Display-ready sealed product placeholder for future stock.</p>
-                    <div class="product-card-footer">
-                        <span>Register Interest</span>
-                        <a href="contact.html" class="category-link">Enquire</a>
-                    </div>
-                </article>
+                <div class="shop-control-field">
+                    <label for="product-set-filter">Set</label>
+                    <select id="product-set-filter" data-filter="set">
+                        <option value="">All sets</option>
+                    </select>
+                </div>
 
-                <article class="shop-product-card">
-                    <div class="shop-product-image pokemon-product-three" aria-hidden="true"></div>
-                    <p class="release-category">Premium Collection</p>
-                    <h3>Collector Premium Box</h3>
-                    <p>A premium collection placeholder for collector-focused releases.</p>
-                    <div class="product-card-footer">
-                        <span>Coming Soon</span>
-                        <a href="contact.html" class="category-link">Enquire</a>
-                    </div>
-                </article>
+                <div class="shop-control-field">
+                    <label for="product-category-filter">Type</label>
+                    <select id="product-category-filter" data-filter="category">
+                        <option value="">All types</option>
+                    </select>
+                </div>
+
+                <div class="shop-control-field">
+                    <label for="product-availability-filter">Availability</label>
+                    <select id="product-availability-filter" data-filter="availability">
+                        <option value="">All products</option>
+                        <option value="in-stock">In stock</option>
+                        <option value="coming-soon">Coming soon</option>
+                        <option value="out-of-stock">Out of stock</option>
+                    </select>
+                </div>
+
+                <div class="shop-control-field">
+                    <label for="product-sort">Sort</label>
+                    <select id="product-sort" data-product-sort>
+                        <option value="featured">Featured</option>
+                        <option value="newest">Newest</option>
+                        <option value="name">Name A-Z</option>
+                        <option value="price-low">Price low to high</option>
+                        <option value="price-high">Price high to low</option>
+                    </select>
+                </div>
             </div>
+
+            <div class="shop-results-bar" aria-live="polite">
+                <p data-product-count>Loading Pokemon products...</p>
+                <a href="wishlist.html" class="category-link">View Wishlist</a>
+            </div>
+
+            <div class="product-grid" data-product-grid data-game="Pokemon" data-page-size="6"></div>
+
+            <div class="pagination-controls" data-pagination aria-label="Product pagination"></div>
+        </section>
+
+        <!-- ===========================
+             Recently Viewed
+        ============================ -->
+        <section class="product-section" aria-labelledby="recently-viewed-title">
+            <div class="section-header">
+                <p class="section-kicker">Recently Viewed</p>
+                <h2 id="recently-viewed-title">Pick up where you left off.</h2>
+            </div>
+
+            <div class="product-grid compact-product-grid" data-recently-viewed data-game="Pokemon"></div>
         </section>
 
         <!-- ===========================
@@ -234,25 +271,7 @@
                 <h2 id="pokemon-coming-title">Upcoming Pokemon placeholders.</h2>
             </div>
 
-            <div class="coming-soon-list">
-                <article class="coming-soon-card">
-                    <span>Pre-order</span>
-                    <h3>Mega Evolution Booster Bundle</h3>
-                    <p>Placeholder listing for launch planning.</p>
-                </article>
-
-                <article class="coming-soon-card">
-                    <span>Register Interest</span>
-                    <h3>Special Illustration Collection</h3>
-                    <p>Collector-focused placeholder for future releases.</p>
-                </article>
-
-                <article class="coming-soon-card">
-                    <span>Watchlist</span>
-                    <h3>Mini Tin Display</h3>
-                    <p>Future sealed product slot for incoming stock.</p>
-                </article>
-            </div>
+            <div class="coming-soon-list" data-coming-soon data-game="Pokemon"></div>
         </section>
 
         <!-- ===========================
@@ -400,6 +419,7 @@
         </div>
     </footer>
 
+    <script src="script.js" defer></script>
 </body>
 
 </html>

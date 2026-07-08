@@ -6,6 +6,28 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.6.0
+
+Core Ecommerce Foundation
+
+## Added
+
+- Added a reusable JSON product catalogue for future dynamic products
+- Added a shared product rendering system for product cards, search, filtering, sorting and pagination
+- Added wishlist support using local browser storage
+- Added recently viewed product support
+- Added a reusable product detail page powered by product data
+- Added related product rendering for product detail pages
+- Added breadcrumb navigation for product and category journeys
+- Added a wishlist page for saved products
+
+## Improved
+
+- Updated the Pokemon page so its product grid and coming soon section are generated from product data instead of hardcoded cards
+- Added ecommerce component styling that matches the existing premium design system
+
+---
+
 # v0.5.0
 
 Pokemon Category Page

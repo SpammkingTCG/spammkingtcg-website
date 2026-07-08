@@ -1311,6 +1311,262 @@ input:focus-visible{
 
 
 /* ==========================================================
+   ECOMMERCE SYSTEM
+========================================================== */
+
+.breadcrumb-nav{
+    padding-top:112px;
+    padding-bottom:0;
+}
+
+.product-breadcrumb{
+    width:100%;
+    padding-top:0;
+}
+
+.breadcrumb-nav ol{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.55rem;
+    list-style:none;
+    color:var(--text);
+    font-size:.82rem;
+    font-weight:700;
+}
+
+.breadcrumb-nav li:not(:last-child)::after{
+    content:"/";
+    margin-left:.55rem;
+    color:var(--muted);
+}
+
+.breadcrumb-nav [aria-current="page"]{
+    color:var(--gold);
+}
+
+.shop-controls{
+    display:grid;
+    grid-template-columns:minmax(240px,1.4fr) repeat(4,minmax(150px,1fr));
+    gap:1rem;
+    margin-bottom:1.2rem;
+    padding:1rem;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    background:rgba(255,255,255,.025);
+}
+
+.shop-control-field{
+    display:flex;
+    flex-direction:column;
+    gap:.4rem;
+}
+
+.shop-control-field label{
+    color:var(--white);
+    font-size:.74rem;
+    font-weight:900;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
+
+.shop-control-field input,
+.shop-control-field select{
+    width:100%;
+    min-height:48px;
+    padding:.7rem .85rem;
+    border:1px solid var(--border);
+    border-radius:999px;
+    background:rgba(0,0,0,.22);
+    color:var(--white);
+    font:inherit;
+}
+
+.shop-control-field select{
+    cursor:pointer;
+}
+
+.shop-results-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    margin-bottom:1.2rem;
+}
+
+.product-card-link{
+    display:block;
+}
+
+.shop-product-image span{
+    position:absolute;
+    left:50%;
+    top:50%;
+    z-index:2;
+    transform:translate(-50%,-50%);
+    color:var(--gold);
+    font-family:"Poppins",sans-serif;
+    font-size:clamp(2.2rem,4vw,4.2rem);
+    font-weight:800;
+    letter-spacing:0;
+}
+
+.product-price{
+    margin:.2rem 0;
+    color:var(--white);
+    font-weight:900;
+}
+
+.product-price s{
+    color:var(--muted);
+    font-size:.85rem;
+    font-weight:700;
+}
+
+.sale-price{
+    color:var(--gold);
+}
+
+.wishlist-button,
+.pagination-controls button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:40px;
+    padding:.7rem 1rem;
+    border:1px solid var(--gold-border);
+    border-radius:999px;
+    background:rgba(212,175,55,.08);
+    color:var(--gold);
+    font-weight:900;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:var(--transition);
+}
+
+.wishlist-button:hover,
+.wishlist-button:focus-visible,
+.pagination-controls button:hover,
+.pagination-controls button:focus-visible{
+    background:rgba(212,175,55,.16);
+    color:var(--white);
+}
+
+.wishlist-button[aria-pressed="true"]{
+    background:var(--gold);
+    color:#08090B;
+}
+
+.pagination-controls{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+    margin-top:1.8rem;
+}
+
+.pagination-controls span{
+    color:var(--text);
+    font-weight:800;
+}
+
+.pagination-controls button:disabled{
+    cursor:not-allowed;
+    opacity:.4;
+}
+
+.empty-state{
+    grid-column:1 / -1;
+    padding:1.4rem;
+    border:1px dashed var(--gold-border);
+    border-radius:var(--radius);
+    background:rgba(212,175,55,.04);
+}
+
+.compact-product-grid{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.product-detail-section{
+    display:grid;
+    grid-template-columns:minmax(320px,.85fr) minmax(0,1fr);
+    align-items:center;
+    gap:3rem;
+    padding-top:60px;
+}
+
+.product-detail-media{
+    min-width:0;
+}
+
+.product-detail-image{
+    min-height:460px;
+    margin:0;
+    border-radius:var(--radius-large);
+}
+
+.product-detail-content h1{
+    margin-bottom:1.2rem;
+    font-size:clamp(2.4rem,4.4vw,5rem);
+}
+
+.product-price-row{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:1rem;
+    margin:1.4rem 0;
+}
+
+.product-status{
+    display:inline-flex;
+    padding:.45rem .75rem;
+    border:1px solid var(--gold-border);
+    border-radius:999px;
+    color:var(--gold);
+    font-size:.76rem;
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+.product-spec-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:.8rem;
+    margin:1.5rem 0;
+}
+
+.product-spec-list div{
+    padding:1rem;
+    border:1px solid var(--border);
+    border-radius:var(--radius-small);
+    background:rgba(255,255,255,.025);
+}
+
+.product-spec-list dt{
+    color:var(--muted);
+    font-size:.75rem;
+    font-weight:900;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
+
+.product-spec-list dd{
+    color:var(--white);
+    font-weight:800;
+}
+
+.product-action-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1rem;
+}
+
+.wishlist-section h1{
+    font-size:clamp(2.4rem,4.5vw,5rem);
+}
+
+
+/* ==========================================================
    FOOTER
 ========================================================== */
 
@@ -1476,6 +1732,18 @@ input:focus-visible{
         grid-template-columns:repeat(2,1fr);
     }
 
+    .shop-controls{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .shop-control-search{
+        grid-column:1 / -1;
+    }
+
+    .product-detail-section{
+        grid-template-columns:1fr;
+    }
+
     .compact-feature-grid{
         grid-template-columns:repeat(3,1fr);
     }
@@ -1577,6 +1845,32 @@ input:focus-visible{
 
     .product-card-footer .category-link{
         width:100%;
+    }
+
+    .breadcrumb-nav{
+        padding-top:84px;
+    }
+
+    .shop-controls,
+    .product-spec-list{
+        grid-template-columns:1fr;
+    }
+
+    .shop-results-bar,
+    .pagination-controls{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .shop-results-bar .category-link,
+    .pagination-controls button,
+    .product-action-row .primary-button,
+    .product-action-row .wishlist-button{
+        width:100%;
+    }
+
+    .product-detail-image{
+        min-height:320px;
     }
 
     .about-image{
