@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setupProductDetail();
     setupWishlistPage();
     setupRecentlyViewed();
+    setupPlaceholderForms();
     setupStaticStructuredData();
 });
 
@@ -950,7 +951,7 @@ function cardCta(product){
     const info = purchaseInfo(product);
 
     if(info.external){
-        return `<a href="${escapeHtml(info.url)}" target="_blank" rel="noopener" class="category-link product-cta" aria-label="View ${escapeHtml(product.name)} on eBay">${escapeHtml(info.label)}</a>`;
+        return `<a href="${escapeHtml(info.url)}" target="_blank" rel="noopener noreferrer" class="category-link product-cta" aria-label="View ${escapeHtml(product.name)} on eBay">${escapeHtml(info.label)}</a>`;
     }
 
     if(info.type === "register-interest"){
@@ -968,7 +969,7 @@ function detailCta(product){
     const info = purchaseInfo(product);
 
     if(info.external){
-        return `<a href="${escapeHtml(info.url)}" target="_blank" rel="noopener" class="primary-button" aria-label="View ${escapeHtml(product.name)} on eBay">View on eBay</a>`;
+        return `<a href="${escapeHtml(info.url)}" target="_blank" rel="noopener noreferrer" class="primary-button" aria-label="View ${escapeHtml(product.name)} on eBay">View on eBay</a>`;
     }
 
     if(info.type === "register-interest"){
@@ -980,6 +981,25 @@ function detailCta(product){
     }
 
     return `<a href="/how-to-buy.html" class="secondary-button" aria-label="Learn how to buy ${escapeHtml(product.name)}">${escapeHtml(info.label)}</a>`;
+}
+
+function setupPlaceholderForms(){
+    document.querySelectorAll(".newsletter-form").forEach((form) => {
+        form.addEventListener("submit",(event) => {
+            event.preventDefault();
+            const note = form.nextElementSibling?.classList.contains("form-privacy-note")
+                ? form.nextElementSibling
+                : null;
+
+            if(note){
+                note.textContent = "Newsletter sign-up is not connected yet. No details have been submitted.";
+            }
+        });
+
+        if(!form.nextElementSibling?.classList.contains("form-privacy-note")){
+            form.insertAdjacentHTML("afterend",'<p class="form-privacy-note">Newsletter sign-up is planned but not connected yet. No details are submitted from this form. See the <a href="/privacy-policy.html">Privacy Policy</a>.</p>');
+        }
+    });
 }
 
 function getDisplayPrice(product){

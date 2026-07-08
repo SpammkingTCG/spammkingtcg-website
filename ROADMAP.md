@@ -6,16 +6,16 @@
 
 # Current Milestone
 
-## v0.9.2
+## v0.9.3
 
-eBay Buying Journey and Product CTA System
+Privacy, Cookies, Terms and Launch Compliance
 
-- Product purchase data fields
-- Dynamic product card CTAs
-- Product detail purchase panel
-- How to Buy page
-- eBay-first buying journey
-- Honest no-checkout messaging
+- Privacy Policy page
+- Cookie Policy page
+- Terms of Use page
+- Footer policy links
+- Newsletter placeholder privacy notes
+- External link audit
 
 ---
 
@@ -54,6 +54,17 @@ Trust, Policy and Customer Confidence Pages
 - Professional contact page
 - Footer support links
 - Customer confidence blocks
+
+## v0.9.2
+
+eBay Buying Journey and Product CTA System
+
+- Product purchase data fields
+- Dynamic product card CTAs
+- Product detail purchase panel
+- How to Buy page
+- eBay-first buying journey
+- Honest no-checkout messaging
 
 ## v0.7.0
 

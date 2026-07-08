@@ -137,5 +137,10 @@ Draft customer confidence pages live at the site root:
 - `faq.html`: common customer questions
 - `how-to-buy.html`: explains the current eBay-first buying journey
 - `contact.html`: email, business details and enquiry type guidance
+- `privacy-policy.html`: draft privacy wording for owner review
+- `cookie-policy.html`: draft cookie and localStorage wording
+- `terms.html`: draft terms of use
 
 These pages should stay honest and avoid legal or checkout claims until the full ecommerce setup is confirmed.
+
+Newsletter forms are currently placeholders. They should not submit visitor details until a real newsletter provider and privacy process are connected.

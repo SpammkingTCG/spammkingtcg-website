@@ -6,6 +6,26 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.9.3
+
+Privacy, Cookies, Terms and Launch Compliance
+
+## Added
+
+- Added `privacy-policy.html` with draft owner-review privacy wording
+- Added `cookie-policy.html` covering localStorage, wishlist storage, analytics placeholders and third-party links
+- Added `terms.html` with draft plain-English website terms
+- Added visible placeholder privacy notices for newsletter forms
+
+## Improved
+
+- Updated footer policy links across public pages
+- Prevented newsletter forms from pretending to submit while they are not connected
+- Updated external eBay links to use `rel="noopener noreferrer"`
+- Updated `sitemap.xml`, `README.md` and `ROADMAP.md` for launch compliance pages
+
+---
+
 # v0.9.2
 
 eBay Buying Journey and Product CTA System

@@ -1418,6 +1418,16 @@ input:focus-visible{
     outline-offset:3px;
 }
 
+.form-privacy-note{
+    margin-top:.75rem;
+    color:var(--muted);
+    font-size:.86rem;
+}
+
+.form-privacy-note a{
+    color:var(--gold);
+}
+
 
 /* ==========================================================
    ECOMMERCE SYSTEM
