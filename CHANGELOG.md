@@ -6,6 +6,43 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.5.0
+
+Pokemon Category Page
+
+## Added
+
+- Created a premium Pokemon TCG landing page using the existing black and gold design language
+- Added Pokemon product-type cards for Booster Boxes, Elite Trainer Boxes, Premium Collections, Booster Bundles, Mini Tins, Sleeved Boosters, Accessories, Singles and Graded Cards
+- Added latest release and coming soon placeholder sections for future inventory
+- Added a Pokemon-specific trust section focused on sealed stock, authenticity and UK dispatch
+- Added an accessible FAQ accordion for sealed products, UK shipping, returns, authenticity and pre-orders
+- Reused the homepage newsletter and footer patterns for consistency
+
+## Improved
+
+- Added reusable category page, product card, coming soon and FAQ styles for future game pages
+- Linked the homepage Pokemon category and footer links to the new Pokemon page
+
+---
+
+# v0.4.1
+
+Homepage QA and Production Polish
+
+## Improved
+
+- Refined homepage SEO metadata, canonical URL, Open Graph tags and Twitter card tags
+- Improved keyboard focus visibility for links, buttons and form controls
+- Tightened navigation behaviour across desktop, tablet and mobile layouts
+- Replaced placeholder `#` links with current working pages or sections
+- Improved newsletter form semantics and email autocomplete support
+- Added safer accessibility attributes to decorative inline SVG artwork
+- Wrapped scroll reveal animations in feature support checks for better browser compatibility
+- Polished footer link consistency and responsive wrapping
+
+---
+
 # v0.4.0
 
 Homepage Polish
