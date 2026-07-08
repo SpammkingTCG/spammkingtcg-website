@@ -9,7 +9,15 @@ let collections = [];
 let releases = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
-    [products,collections,releases] = await Promise.all([loadProducts(),loadCollections(),loadReleases()]);
+    const needsProducts = Boolean(document.querySelector("[data-product-grid], [data-product-detail], [data-wishlist-grid], [data-recently-viewed], [data-coming-soon], [data-set-detail], [data-related-products]"));
+    const needsCollections = Boolean(document.querySelector("[data-sets-grid], [data-set-detail], [data-related-sets]"));
+    const needsReleases = Boolean(document.querySelector("[data-release-hub], [data-release-grid], [data-release-calendar]"));
+
+    [products,collections,releases] = await Promise.all([
+        needsProducts ? loadProducts() : Promise.resolve([]),
+        needsCollections ? loadCollections() : Promise.resolve([]),
+        needsReleases ? loadReleases() : Promise.resolve([])
+    ]);
 
     setupProductGrids();
     setupSetLanding();
@@ -20,6 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setupProductDetail();
     setupWishlistPage();
     setupRecentlyViewed();
+    setupStaticStructuredData();
 });
 
 async function loadProducts(){
@@ -375,6 +384,12 @@ function setupSetDetail(){
     const setProducts = products.filter((product) => product.game === collection.game && product.setSlug === collection.slug);
     document.title = `${collection.setName} | ${collection.game} Sets | SpammKing TCG`;
     updateMetaDescription(`${collection.setName} Pokemon products, release information and collector stock from SpammKing TCG.`);
+    injectJsonLd(breadcrumbSchema([
+        ["Home","https://spammkingtcg.co.uk/"],
+        [collection.game,`https://spammkingtcg.co.uk/${collection.game.toLowerCase()}.html`],
+        ["Sets","https://spammkingtcg.co.uk/pokemon/sets/"],
+        [collection.setName,`https://spammkingtcg.co.uk/pokemon/sets/${collection.slug}/`]
+    ]));
 
     target.innerHTML = `
         <nav class="breadcrumb-nav product-breadcrumb" aria-label="Breadcrumb">
@@ -629,6 +644,12 @@ function setupProductDetail(){
 
     addRecentlyViewed(product.id);
     document.title = `${product.name} | SpammKing TCG`;
+    injectJsonLd(breadcrumbSchema([
+        ["Home","https://spammkingtcg.co.uk/"],
+        [product.game,`https://spammkingtcg.co.uk/${product.collectionSlug || product.game.toLowerCase()}.html`],
+        [product.name,`https://spammkingtcg.co.uk/product.html?id=${encodeURIComponent(product.id)}`]
+    ]));
+    injectJsonLd(productSchema(product));
 
     target.innerHTML = `
         <nav class="breadcrumb-nav product-breadcrumb" aria-label="Breadcrumb">
@@ -906,6 +927,58 @@ function updateMetaDescription(content){
     if(meta){
         meta.setAttribute("content",content);
     }
+}
+
+function setupStaticStructuredData(){
+    if(document.body.dataset.schema === "home"){
+        injectJsonLd({
+            "@context":"https://schema.org",
+            "@type":"Organization",
+            "name":"SpammKing TCG",
+            "url":"https://spammkingtcg.co.uk/",
+            "sameAs":["https://www.ebay.co.uk/usr/spammkingtcg"]
+        });
+        injectJsonLd({
+            "@context":"https://schema.org",
+            "@type":"WebSite",
+            "name":"SpammKing TCG",
+            "url":"https://spammkingtcg.co.uk/"
+        });
+    }
+}
+
+function breadcrumbSchema(items){
+    return {
+        "@context":"https://schema.org",
+        "@type":"BreadcrumbList",
+        "itemListElement":items.map(([name,item],index) => ({
+            "@type":"ListItem",
+            "position":index + 1,
+            "name":name,
+            "item":item
+        }))
+    };
+}
+
+function productSchema(product){
+    return {
+        "@context":"https://schema.org",
+        "@type":"Product",
+        "name":product.name,
+        "description":product.description,
+        "category":`${product.game} ${product.productType || product.category}`,
+        "brand":{
+            "@type":"Brand",
+            "name":product.game
+        }
+    };
+}
+
+function injectJsonLd(data){
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(data);
+    document.head.appendChild(script);
 }
 
 function emptyState(message,title = "Nothing Found"){

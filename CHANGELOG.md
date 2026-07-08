@@ -6,6 +6,27 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.8.1
+
+Site-wide SEO, Routing and Launch Readiness
+
+## Added
+
+- Added `sitemap.xml` for crawlable public pages
+- Added `robots.txt` pointing search engines to the sitemap
+- Added a branded `404.html` page
+- Added Organization, WebSite, BreadcrumbList and safe Product JSON-LD support
+- Added Open Graph and Twitter card metadata to utility and set pages
+
+## Improved
+
+- Rebuilt placeholder About and Contact pages with proper metadata, navigation and accessible structure
+- Improved script loading so pages only fetch the data files they need
+- Audited internal routes, sitemap coverage and static-friendly set paths
+- Kept `styleguide.html` marked as noindex for internal use
+
+---
+
 # v0.8.0
 
 Release Calendar and Latest Releases Hub

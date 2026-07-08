@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spammkingtcg.co.uk/sitemap.xml

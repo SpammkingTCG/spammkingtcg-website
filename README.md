@@ -81,3 +81,25 @@ Each release should include:
 - `displayOrder`: manual sort order
 
 The Latest Releases page, homepage release section and Pokemon release watch all use this shared release data.
+
+## SEO and Routing
+
+Core SEO files live at the site root:
+
+- `sitemap.xml`: lists the main public pages and Pokemon set routes
+- `robots.txt`: allows indexing and points to the sitemap
+- `404.html`: branded fallback page for missing routes
+
+Important page expectations:
+
+- Public pages should have a unique title, meta description and canonical URL
+- Key public pages should include Open Graph and Twitter card metadata
+- Internal-only pages such as `styleguide.html` should remain `noindex`
+- Static-friendly collection routes use folder `index.html` files, for example `pokemon/sets/prismatic-evolutions/index.html`
+
+Structured data is added through `script.js` where useful:
+
+- Organization schema on the homepage
+- WebSite schema on the homepage
+- BreadcrumbList schema on product and set pages
+- Product schema on product detail pages without making misleading stock claims
