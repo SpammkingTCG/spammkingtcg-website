@@ -6,16 +6,16 @@
 
 # Current Milestone
 
-## v0.9.3
+## v0.9.4
 
-Privacy, Cookies, Terms and Launch Compliance
+Public Launch Cleanup and Consistency Pass
 
-- Privacy Policy page
-- Cookie Policy page
-- Terms of Use page
-- Footer policy links
-- Newsletter placeholder privacy notes
-- External link audit
+- Remove unfinished public wording
+- Standardise header and footer links
+- Clean product, collection and release copy
+- Add branded social preview image
+- Remove generic product template from sitemap
+- Final launch-readiness checks
 
 ---
 
@@ -66,6 +66,17 @@ eBay Buying Journey and Product CTA System
 - eBay-first buying journey
 - Honest no-checkout messaging
 
+## v0.9.3
+
+Privacy, Cookies, Terms and Launch Compliance
+
+- Privacy Policy page
+- Cookie Policy page
+- Terms of Use page
+- Footer policy links
+- Newsletter privacy notes
+- External link audit
+
 ## v0.7.0
 
 Collection and Set System
@@ -115,11 +126,11 @@ Homepage Polish
 
 # Next Priorities
 
-## v0.9.1
+## v0.9.5
 
 Product Content and Imagery
 
-- Replace placeholder visuals with real product images
+- Replace preview visuals with real product images
 - Improve product descriptions
 - Add real release dates and preorder data
 - Add stronger collector-focused copy

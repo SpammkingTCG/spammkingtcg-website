@@ -6,16 +6,35 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.9.4
+
+Public Launch Cleanup and Consistency Pass
+
+## Added
+
+- Added a branded social preview image for shared links
+
+## Improved
+
+- Removed unfinished public wording from policy, support, product and release content
+- Standardised header and footer links across public pages, set pages and the 404 page
+- Removed the generic product template from `sitemap.xml`
+- Cleaned product, collection and release data consistency before public sharing
+- Updated generic eBay store CTAs to use clearer `View eBay Store` wording
+- Updated `README.md` and `ROADMAP.md` for launch cleanup status
+
+---
+
 # v0.9.3
 
 Privacy, Cookies, Terms and Launch Compliance
 
 ## Added
 
-- Added `privacy-policy.html` with draft owner-review privacy wording
-- Added `cookie-policy.html` covering localStorage, wishlist storage, analytics placeholders and third-party links
-- Added `terms.html` with draft plain-English website terms
-- Added visible placeholder privacy notices for newsletter forms
+- Added `privacy-policy.html` with privacy information
+- Added `cookie-policy.html` covering localStorage, wishlist storage, analytics and third-party links
+- Added `terms.html` with plain-English website terms
+- Added visible privacy notices for newsletter forms
 
 ## Improved
 
@@ -39,7 +58,7 @@ eBay Buying Journey and Product CTA System
 
 ## Improved
 
-- Updated available placeholder products to use an eBay-first purchase flow instead of implying direct checkout
+- Updated available preview products to use an eBay-first purchase flow instead of implying direct checkout
 - Added How to Buy links into support footers across public pages
 - Added disabled CTA styling for products that cannot currently be purchased
 - Updated `sitemap.xml`, `README.md` and `ROADMAP.md` for the buying journey milestone
@@ -52,8 +71,8 @@ Trust, Policy and Customer Confidence Pages
 
 ## Added
 
-- Added `shipping.html` with draft UK shipping, dispatch, packaging and pre-order delivery guidance
-- Added `returns.html` with draft customer-friendly returns and refunds wording
+- Added `shipping.html` with UK shipping, dispatch, packaging and pre-order delivery guidance
+- Added `returns.html` with customer-friendly returns and refunds wording
 - Added `authenticity.html` for genuine product, sealed product, singles, graded card and packaging standards
 - Added `faq.html` with customer FAQs covering products, authenticity, shipping, returns, pre-orders and contact
 - Added reusable customer-confidence blocks to product and category journeys
@@ -77,7 +96,7 @@ One Piece TCG Expansion
 - Added a One Piece sets library at `/one-piece/sets/`
 - Added static-friendly One Piece set routes for OP-09, OP-10, OP-11, OP-12 and EB-02
 - Added One Piece collection metadata to `data/collections.json`
-- Added 11 One Piece placeholder products across sealed products, singles, graded cards and accessories
+- Added 11 One Piece preview products across sealed products, singles, graded cards and accessories
 - Added One Piece release entries to the shared release hub data
 - Added One Piece pages to `sitemap.xml`
 
@@ -103,7 +122,7 @@ Site-wide SEO, Routing and Launch Readiness
 
 ## Improved
 
-- Rebuilt placeholder About and Contact pages with proper metadata, navigation and accessible structure
+- Rebuilt About and Contact pages with proper metadata, navigation and accessible structure
 - Improved script loading so pages only fetch the data files they need
 - Audited internal routes, sitemap coverage and static-friendly set paths
 - Kept `styleguide.html` marked as noindex for internal use
@@ -175,9 +194,9 @@ Ecommerce QA and Polish
 
 ## Added
 
-- Expanded the product catalogue to 12 realistic Pokemon placeholder products across sealed products, singles, graded cards and accessories
-- Added clear placeholder image paths for future product photography
-- Added product detail gallery placeholders
+- Expanded the product catalogue to 12 realistic Pokemon preview products across sealed products, singles, graded cards and accessories
+- Added clear preview image paths for future product photography
+- Added product detail gallery previews
 - Added shipping, returns and authenticity information blocks to product detail pages
 - Added premium empty states for wishlist, recently viewed, related products and filtered product results
 
@@ -221,7 +240,7 @@ Pokemon Category Page
 
 - Created a premium Pokemon TCG landing page using the existing black and gold design language
 - Added Pokemon product-type cards for Booster Boxes, Elite Trainer Boxes, Premium Collections, Booster Bundles, Mini Tins, Sleeved Boosters, Accessories, Singles and Graded Cards
-- Added latest release and coming soon placeholder sections for future inventory
+- Added latest release and coming soon sections for future inventory
 - Added a Pokemon-specific trust section focused on sealed stock, authenticity and UK dispatch
 - Added an accessible FAQ accordion for sealed products, UK shipping, returns, authenticity and pre-orders
 - Reused the homepage newsletter and footer patterns for consistency
@@ -242,7 +261,7 @@ Homepage QA and Production Polish
 - Refined homepage SEO metadata, canonical URL, Open Graph tags and Twitter card tags
 - Improved keyboard focus visibility for links, buttons and form controls
 - Tightened navigation behaviour across desktop, tablet and mobile layouts
-- Replaced placeholder `#` links with current working pages or sections
+- Replaced inactive `#` links with current working pages or sections
 - Improved newsletter form semantics and email autocomplete support
 - Added safer accessibility attributes to decorative inline SVG artwork
 - Wrapped scroll reveal animations in feature support checks for better browser compatibility
@@ -257,9 +276,9 @@ Homepage Polish
 ## Added
 
 - Premium SVG-style illustrations for hero, category and release cards
-- Realistic latest release placeholder data
+- Realistic latest release preview data
 - Stronger trust messaging for authentic products, UK shipping and collector ownership
-- Footer social links and payment method placeholders
+- Footer social links and payment method previews
 - Subtle section reveal and hover animations
 
 ## Improved

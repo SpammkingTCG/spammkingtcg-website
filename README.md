@@ -36,7 +36,7 @@ Each product should use this schema:
 - `registerInterest`: `true` or `false`
 - `externalCheckout`: `true` when the purchase is completed outside the website
 
-Use clear placeholder image paths until real photography is available, for example:
+Use clear preview image paths until real photography is available, for example:
 
 `assets/images/products/pokemon/product-name-front.jpg`
 
@@ -65,7 +65,7 @@ Each set should include:
 - `releaseDate`: ISO date in `YYYY-MM-DD` format
 - `productCount`: fallback product count
 - `status`: set status, such as Available or Coming Soon
-- `banner`: future banner or illustration placeholder path
+- `banner`: future banner or illustration preview path
 - `relatedSets`: array of related set slugs
 
 Game set pages currently use static-friendly folders such as:
@@ -93,7 +93,7 @@ Each release should include:
 - `preorderDate`: ISO date for preorder or register-interest timing
 - `status`: release status, such as Coming Soon, Pre-order, Register Interest, Available Now, Sold Out or Recently Released
 - `shortDescription`: short collector-facing description
-- `image`: future release image placeholder path
+- `image`: future release image preview path
 - `relatedProducts`: array of related product IDs
 - `slug`: URL-safe release slug
 - `priority`: sorting importance
@@ -129,18 +129,18 @@ Structured data is added through `script.js` where useful:
 
 ## Customer Support Pages
 
-Draft customer confidence pages live at the site root:
+Customer confidence pages live at the site root:
 
 - `shipping.html`: UK shipping, dispatch, packaging and pre-order delivery notes
-- `returns.html`: draft returns and refunds guidance for owner review
+- `returns.html`: returns and refunds guidance
 - `authenticity.html`: genuine product, condition and packaging standards
 - `faq.html`: common customer questions
 - `how-to-buy.html`: explains the current eBay-first buying journey
 - `contact.html`: email, business details and enquiry type guidance
-- `privacy-policy.html`: draft privacy wording for owner review
-- `cookie-policy.html`: draft cookie and localStorage wording
-- `terms.html`: draft terms of use
+- `privacy-policy.html`: privacy information
+- `cookie-policy.html`: cookie and localStorage information
+- `terms.html`: terms of use
 
 These pages should stay honest and avoid legal or checkout claims until the full ecommerce setup is confirmed.
 
-Newsletter forms are currently placeholders. They should not submit visitor details until a real newsletter provider and privacy process are connected.
+Newsletter forms currently act as passive interest forms. They should not submit visitor details until a real newsletter provider and privacy process are connected.

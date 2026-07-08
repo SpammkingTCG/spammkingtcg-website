@@ -20,7 +20,7 @@
                        "assets/images/products/pokemon/prismatic-evolutions-etb-box.jpg",
                        "assets/images/products/pokemon/prismatic-evolutions-etb-contents.jpg"
                    ],
-        "description":  "A premium sealed Elite Trainer Box placeholder for future Pokemon stock, built for collectors who care about condition and presentation.",
+        "description":  "A premium sealed Elite Trainer Box listing preview for future Pokemon stock, built for collectors who care about condition and presentation.",
         "releaseDate":  "2026-02-01",
         "tags":  [
                      "sealed",
@@ -60,7 +60,7 @@
                        "assets/images/products/pokemon/surging-sparks-booster-box-side.jpg",
                        "assets/images/products/pokemon/surging-sparks-booster-box-seal.jpg"
                    ],
-        "description":  "Display-ready sealed booster box placeholder for future inventory, packed with collector-standard care.",
+        "description":  "Display-ready sealed booster box listing preview for future inventory, packed with collector-standard care.",
         "releaseDate":  "2026-01-18",
         "tags":  [
                      "sealed",
@@ -73,7 +73,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -99,7 +99,7 @@
                        "assets/images/products/pokemon/journey-together-booster-bundle-front.jpg",
                        "assets/images/products/pokemon/journey-together-booster-bundle-back.jpg"
                    ],
-        "description":  "Compact sealed booster bundle placeholder for collectors who want a clean, simple way into a new Pokemon set.",
+        "description":  "Compact sealed booster bundle listing preview for collectors who want a clean, simple way into a new Pokemon set.",
         "releaseDate":  "2026-03-15",
         "tags":  [
                      "sealed",
@@ -137,7 +137,7 @@
                        "assets/images/products/pokemon/destined-rivals-premium-collection-front.jpg",
                        "assets/images/products/pokemon/destined-rivals-premium-collection-promos.jpg"
                    ],
-        "description":  "Collector-focused premium collection placeholder for promo cards, packs and display-ready sealed stock.",
+        "description":  "Collector-focused premium collection listing preview for promo cards, packs and display-ready sealed stock.",
         "releaseDate":  "2026-04-05",
         "tags":  [
                      "sealed",
@@ -175,7 +175,7 @@
                        "assets/images/products/pokemon/black-bolt-mini-tin-front.jpg",
                        "assets/images/products/pokemon/black-bolt-mini-tin-display.jpg"
                    ],
-        "description":  "Small sealed product placeholder with strong gifting and collector appeal.",
+        "description":  "Small sealed product listing preview with strong gifting and collector appeal.",
         "releaseDate":  "2026-05-10",
         "tags":  [
                      "sealed",
@@ -187,7 +187,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -213,7 +213,7 @@
                        "assets/images/products/pokemon/white-flare-sleeved-booster-front.jpg",
                        "assets/images/products/pokemon/white-flare-sleeved-booster-seal.jpg"
                    ],
-        "description":  "Single sleeved booster placeholder for casual openings and set collectors.",
+        "description":  "Single sleeved booster listing preview for casual openings and set collectors.",
         "releaseDate":  "2026-05-24",
         "tags":  [
                      "sealed",
@@ -239,7 +239,7 @@
         "game":  "Pokemon",
         "set":  "Scarlet \u0026 Violet",
         "collectionSlug":  "pokemon",
-        "setSlug":  "scarlet-violet",
+        "setSlug":  "",
         "productSlug":  "scarlet-violet-binder-bundle",
         "status":  "Available",
         "rarity":  "Accessory",
@@ -251,7 +251,7 @@
                        "assets/images/products/pokemon/scarlet-violet-binder-bundle-front.jpg",
                        "assets/images/products/pokemon/scarlet-violet-binder-bundle-open.jpg"
                    ],
-        "description":  "Future-ready placeholder for binders, sleeves and collector storage products.",
+        "description":  "Future-ready listing preview for binders, sleeves and collector storage products.",
         "releaseDate":  "2026-01-05",
         "tags":  [
                      "accessories",
@@ -263,7 +263,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -277,7 +277,7 @@
         "game":  "Pokemon",
         "set":  "Collector Supplies",
         "collectionSlug":  "pokemon",
-        "setSlug":  "collector-supplies",
+        "setSlug":  "",
         "productSlug":  "premium-card-sleeve-pack",
         "status":  "Available",
         "rarity":  "Accessory",
@@ -289,7 +289,7 @@
                        "assets/images/products/pokemon/premium-card-sleeve-pack-front.jpg",
                        "assets/images/products/pokemon/premium-card-sleeve-pack-detail.jpg"
                    ],
-        "description":  "Protective sleeve placeholder for keeping pulls clean, safe and display-ready.",
+        "description":  "Protective sleeve listing preview for keeping pulls clean, safe and display-ready.",
         "releaseDate":  "2026-01-09",
         "tags":  [
                      "accessories",
@@ -301,7 +301,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -327,7 +327,7 @@
                        "assets/images/products/pokemon/prismatic-evolutions-illustration-rare-front.jpg",
                        "assets/images/products/pokemon/prismatic-evolutions-illustration-rare-back.jpg"
                    ],
-        "description":  "Individual card placeholder for future singles inventory with condition clearly displayed.",
+        "description":  "Individual card listing preview for future singles inventory with condition clearly displayed.",
         "releaseDate":  "2026-02-14",
         "tags":  [
                      "single",
@@ -339,7 +339,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -365,7 +365,7 @@
                        "assets/images/products/pokemon/surging-sparks-holo-single-front.jpg",
                        "assets/images/products/pokemon/surging-sparks-holo-single-back.jpg"
                    ],
-        "description":  "Affordable singles placeholder for collectors filling binder gaps.",
+        "description":  "Affordable singles listing preview for collectors filling binder gaps.",
         "releaseDate":  "2026-01-28",
         "tags":  [
                      "single",
@@ -377,7 +377,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -391,7 +391,7 @@
         "game":  "Pokemon",
         "set":  "Collector Vault",
         "collectionSlug":  "pokemon",
-        "setSlug":  "collector-vault",
+        "setSlug":  "",
         "productSlug":  "graded-charizard-slab",
         "status":  "Available",
         "rarity":  "Graded",
@@ -404,7 +404,7 @@
                        "assets/images/products/pokemon/charizard-collector-slab-label.jpg",
                        "assets/images/products/pokemon/charizard-collector-slab-back.jpg"
                    ],
-        "description":  "Premium graded card placeholder for future slab listings and collector vault stock.",
+        "description":  "Premium graded card listing preview for future slab listings and collector vault stock.",
         "releaseDate":  "2026-01-30",
         "tags":  [
                      "graded",
@@ -417,7 +417,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -431,7 +431,7 @@
         "game":  "Pokemon",
         "set":  "Collector Vault",
         "collectionSlug":  "pokemon",
-        "setSlug":  "collector-vault",
+        "setSlug":  "",
         "productSlug":  "graded-pikachu-slab",
         "status":  "Available",
         "rarity":  "Graded",
@@ -444,7 +444,7 @@
                        "assets/images/products/pokemon/pikachu-display-slab-label.jpg",
                        "assets/images/products/pokemon/pikachu-display-slab-back.jpg"
                    ],
-        "description":  "Display-focused graded card placeholder for premium collector inventory.",
+        "description":  "Display-focused graded card listing preview for premium collector inventory.",
         "releaseDate":  "2026-02-20",
         "tags":  [
                      "graded",
@@ -456,7 +456,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -483,7 +483,7 @@
                        "assets/images/products/one-piece/op-09-booster-box-side.jpg",
                        "assets/images/products/one-piece/op-09-booster-box-seal.jpg"
                    ],
-        "description":  "A sealed One Piece booster box placeholder for OP-09 collectors, ready to be replaced with live inventory details.",
+        "description":  "A sealed One Piece booster box listing preview for OP-09 collectors, with availability and listing details to be confirmed.",
         "releaseDate":  "2026-09-20",
         "tags":  [
                      "sealed",
@@ -496,7 +496,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -522,7 +522,7 @@
                        "assets/images/products/one-piece/op-09-sleeved-booster-front.jpg",
                        "assets/images/products/one-piece/op-09-sleeved-booster-back.jpg"
                    ],
-        "description":  "Single booster placeholder for casual openings and collectors building out OP-09 products.",
+        "description":  "Single booster listing preview for casual openings and collectors building out OP-09 products.",
         "releaseDate":  "2026-09-20",
         "tags":  [
                      "sealed",
@@ -534,7 +534,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -560,7 +560,7 @@
                        "assets/images/products/one-piece/op-09-leader-single-front.jpg",
                        "assets/images/products/one-piece/op-09-leader-single-back.jpg"
                    ],
-        "description":  "A One Piece single-card placeholder with condition and set metadata ready for future stock.",
+        "description":  "A One Piece single-card listing preview with condition and set metadata ready for future stock.",
         "releaseDate":  "2026-09-20",
         "tags":  [
                      "single",
@@ -573,7 +573,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -599,7 +599,7 @@
                        "assets/images/products/one-piece/op-10-booster-box-front.jpg",
                        "assets/images/products/one-piece/op-10-booster-box-side.jpg"
                    ],
-        "description":  "A sealed OP-10 booster box placeholder for the shared product catalogue.",
+        "description":  "A sealed OP-10 booster box listing preview for the shared product catalogue.",
         "releaseDate":  "2026-10-18",
         "tags":  [
                      "sealed",
@@ -612,7 +612,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -638,7 +638,7 @@
                        "assets/images/products/one-piece/op-10-starter-deck-front.jpg",
                        "assets/images/products/one-piece/op-10-starter-deck-back.jpg"
                    ],
-        "description":  "Starter deck placeholder for One Piece players and collectors browsing sealed entry products.",
+        "description":  "Starter deck listing preview for One Piece players and collectors browsing sealed entry products.",
         "releaseDate":  "2026-10-18",
         "tags":  [
                      "sealed",
@@ -650,7 +650,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -676,7 +676,7 @@
                        "assets/images/products/one-piece/op-11-double-pack-front.jpg",
                        "assets/images/products/one-piece/op-11-double-pack-contents.jpg"
                    ],
-        "description":  "Future One Piece double pack placeholder for register-interest and upcoming release flows.",
+        "description":  "Future One Piece double pack listing preview for register-interest and upcoming release flows.",
         "releaseDate":  "2026-11-22",
         "tags":  [
                      "sealed",
@@ -715,7 +715,7 @@
                        "assets/images/products/one-piece/op-11-booster-box-front.jpg",
                        "assets/images/products/one-piece/op-11-booster-box-side.jpg"
                    ],
-        "description":  "Upcoming OP-11 booster box placeholder prepared for the release hub and set pages.",
+        "description":  "Upcoming OP-11 booster box listing preview prepared for the release hub and set pages.",
         "releaseDate":  "2026-11-22",
         "tags":  [
                      "sealed",
@@ -754,7 +754,7 @@
                        "assets/images/products/one-piece/op-12-starter-deck-front.jpg",
                        "assets/images/products/one-piece/op-12-starter-deck-back.jpg"
                    ],
-        "description":  "A future One Piece starter deck placeholder for a scalable multi-game catalogue.",
+        "description":  "A future One Piece starter deck listing preview for a scalable multi-game catalogue.",
         "releaseDate":  "2026-12-12",
         "tags":  [
                      "sealed",
@@ -793,7 +793,7 @@
                        "assets/images/products/one-piece/eb-02-booster-box-front.jpg",
                        "assets/images/products/one-piece/eb-02-booster-box-side.jpg"
                    ],
-        "description":  "Anniversary-focused One Piece extra booster placeholder for future release planning.",
+        "description":  "Anniversary-focused One Piece extra booster listing preview for future release planning.",
         "releaseDate":  "2026-12-28",
         "tags":  [
                      "sealed",
@@ -820,7 +820,7 @@
         "game":  "One Piece",
         "set":  "Collector Supplies",
         "collectionSlug":  "one-piece",
-        "setSlug":  "collector-supplies",
+        "setSlug":  "",
         "productSlug":  "one-piece-premium-sleeve-pack",
         "status":  "Available",
         "rarity":  "Accessory",
@@ -832,7 +832,7 @@
                        "assets/images/products/one-piece/premium-sleeve-pack-front.jpg",
                        "assets/images/products/one-piece/premium-sleeve-pack-detail.jpg"
                    ],
-        "description":  "Accessory placeholder for sleeves and collector protection products.",
+        "description":  "Accessory listing preview for sleeves and collector protection products.",
         "releaseDate":  "2026-09-05",
         "tags":  [
                      "accessories",
@@ -844,7 +844,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
@@ -858,7 +858,7 @@
         "game":  "One Piece",
         "set":  "Collector Vault",
         "collectionSlug":  "one-piece",
-        "setSlug":  "collector-vault",
+        "setSlug":  "",
         "productSlug":  "luffy-collector-slab",
         "status":  "Available",
         "rarity":  "Graded",
@@ -871,7 +871,7 @@
                        "assets/images/products/one-piece/luffy-collector-slab-label.jpg",
                        "assets/images/products/one-piece/luffy-collector-slab-back.jpg"
                    ],
-        "description":  "Premium graded card placeholder for One Piece collector vault listings.",
+        "description":  "Premium graded card listing preview for One Piece collector vault listings.",
         "releaseDate":  "2026-09-12",
         "tags":  [
                      "graded",
@@ -884,7 +884,7 @@
         "ebayUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseUrl":  "https://www.ebay.co.uk/usr/spammkingtcg",
         "purchaseType":  "ebay",
-        "ctaLabel":  "View on eBay",
+        "ctaLabel":  "View eBay Store",
         "availabilityMessage":  "Available to buy through the SpammKing TCG eBay store while website checkout is being developed.",
         "preorderAvailable":  false,
         "registerInterest":  false,
