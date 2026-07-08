@@ -1,17 +1,21 @@
 const PRODUCT_DATA_URL = "/data/products.json";
 const COLLECTION_DATA_URL = "/data/collections.json";
+const RELEASE_DATA_URL = "/data/releases.json";
 const WISHLIST_KEY = "spammking-wishlist";
 const RECENTLY_VIEWED_KEY = "spammking-recently-viewed";
 
 let products = [];
 let collections = [];
+let releases = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
-    [products,collections] = await Promise.all([loadProducts(),loadCollections()]);
+    [products,collections,releases] = await Promise.all([loadProducts(),loadCollections(),loadReleases()]);
 
     setupProductGrids();
     setupSetLanding();
     setupSetDetail();
+    setupReleaseHub();
+    setupReleaseSections();
     setupComingSoon();
     setupProductDetail();
     setupWishlistPage();
@@ -28,6 +32,22 @@ async function loadProducts(){
 
         const data = await response.json();
         return data.map(normalizeProduct);
+    }catch(error){
+        console.warn(error.message);
+        return [];
+    }
+}
+
+async function loadReleases(){
+    try{
+        const response = await fetch(RELEASE_DATA_URL);
+
+        if(!response.ok){
+            throw new Error("Release data unavailable");
+        }
+
+        const data = await response.json();
+        return data.map(normalizeRelease);
     }catch(error){
         console.warn(error.message);
         return [];
@@ -89,6 +109,29 @@ function normalizeCollection(collection){
         banner:"",
         relatedSets:[],
         ...collection
+    };
+}
+
+function normalizeRelease(release){
+    return {
+        title:"",
+        game:"",
+        set:"",
+        productType:"",
+        releaseDate:"",
+        preorderDate:"",
+        status:"",
+        shortDescription:"",
+        image:"",
+        relatedProducts:[],
+        slug:"",
+        priority:3,
+        featured:false,
+        comingSoon:false,
+        availableNow:false,
+        releaseWindow:"",
+        displayOrder:99,
+        ...release
     };
 }
 
@@ -373,6 +416,177 @@ function setupSetDetail(){
             ? related.map(setCard).join("")
             : emptyState("Related sets will appear here.","Related Sets");
     });
+}
+
+function setupReleaseHub(){
+    const hub = document.querySelector("[data-release-hub]");
+
+    if(!hub){
+        return;
+    }
+
+    const state = {
+        controls:document.querySelector("[data-release-controls]"),
+        game:"",
+        month:"",
+        productType:"",
+        status:""
+    };
+
+    populateReleaseFilters(state);
+    bindReleaseFilters(state);
+    renderReleaseHub(state);
+}
+
+function populateReleaseFilters(state){
+    if(!state.controls){
+        return;
+    }
+
+    populateSelect(state.controls.querySelector('[data-release-filter="game"]'),uniqueReleaseValues("game"));
+    populateSelect(state.controls.querySelector('[data-release-filter="productType"]'),uniqueReleaseValues("productType"));
+    populateSelect(state.controls.querySelector('[data-release-filter="status"]'),uniqueReleaseValues("status"));
+    populateSelect(state.controls.querySelector('[data-release-filter="month"]'),uniqueReleaseValues("releaseWindow"));
+}
+
+function uniqueReleaseValues(key){
+    return [...new Set(releases.map((release) => release[key]).filter(Boolean))].sort((a,b) => {
+        if(key === "releaseWindow"){
+            return new Date(`1 ${a}`) - new Date(`1 ${b}`);
+        }
+
+        return a.localeCompare(b);
+    });
+}
+
+function bindReleaseFilters(state){
+    if(!state.controls){
+        return;
+    }
+
+    state.controls.querySelectorAll("[data-release-filter]").forEach((filter) => {
+        filter.addEventListener("change",() => {
+            state[filter.dataset.releaseFilter] = filter.value;
+            renderReleaseHub(state);
+        });
+    });
+}
+
+function renderReleaseHub(state){
+    const filtered = filterReleases(releases,state);
+
+    renderReleaseList("[data-featured-releases]",filtered.filter((release) => release.featured).slice(0,3),"No featured releases match those filters.");
+    renderReleaseList("[data-available-releases]",filtered.filter((release) => release.availableNow).slice(0,4),"No available releases match those filters.");
+    renderReleaseList("[data-coming-releases]",filtered.filter((release) => release.comingSoon).slice(0,4),"No coming soon releases match those filters.");
+    renderReleaseList("[data-recent-releases]",filtered.filter((release) => release.status === "Recently Released").slice(0,4),"No recent releases match those filters.");
+    renderReleaseCalendar(filtered);
+}
+
+function setupReleaseSections(){
+    document.querySelectorAll("[data-release-grid]").forEach((grid) => {
+        const game = grid.dataset.game || "";
+        const limit = Number(grid.dataset.limit || 4);
+        const mode = grid.dataset.releaseMode || "featured";
+        let items = releases.filter((release) => !game || release.game === game);
+
+        if(mode === "coming"){
+            items = items.filter((release) => release.comingSoon);
+        }else if(mode === "available"){
+            items = items.filter((release) => release.availableNow);
+        }else{
+            items = items.filter((release) => release.featured);
+        }
+
+        items = sortReleases(items).slice(0,limit);
+        grid.innerHTML = items.length ? items.map(releaseCard).join("") : emptyState("Release data will appear here.","No Releases Found");
+    });
+}
+
+function filterReleases(items,state){
+    return sortReleases(items.filter((release) => {
+        const matchesGame = !state.game || release.game === state.game;
+        const matchesType = !state.productType || release.productType === state.productType;
+        const matchesStatus = !state.status || release.status === state.status;
+        const matchesMonth = !state.month || release.releaseWindow === state.month;
+
+        return matchesGame && matchesType && matchesStatus && matchesMonth;
+    }));
+}
+
+function sortReleases(items){
+    return [...items].sort((a,b) => a.displayOrder - b.displayOrder || new Date(a.releaseDate) - new Date(b.releaseDate));
+}
+
+function renderReleaseList(selector,items,emptyMessage){
+    document.querySelectorAll(selector).forEach((grid) => {
+        grid.innerHTML = items.length ? items.map(releaseCard).join("") : emptyState(emptyMessage,"No Releases Found");
+    });
+}
+
+function renderReleaseCalendar(items){
+    document.querySelectorAll("[data-release-calendar]").forEach((calendar) => {
+        if(!items.length){
+            calendar.innerHTML = emptyState("Try a different game, product type, status or month.","No Calendar Results");
+            return;
+        }
+
+        const groups = items.reduce((months,release) => {
+            const key = release.releaseWindow || formatMonth(release.releaseDate);
+            months[key] = months[key] || [];
+            months[key].push(release);
+            return months;
+        },{});
+
+        calendar.innerHTML = Object.entries(groups).map(([month,monthReleases]) => `
+            <article class="release-month">
+                <h3>${escapeHtml(month)}</h3>
+                <div class="release-timeline-list">
+                    ${sortReleases(monthReleases).map((release) => `
+                        <a href="${releaseCtaUrl(release)}" class="release-timeline-item">
+                            <span>${formatDate(release.releaseDate)}</span>
+                            <strong>${escapeHtml(release.title)}</strong>
+                            <em>${escapeHtml(release.game)} | ${escapeHtml(release.status)}</em>
+                        </a>
+                    `).join("")}
+                </div>
+            </article>
+        `).join("");
+    });
+}
+
+function releaseCard(release){
+    return `
+        <article class="release-hub-card">
+            <a href="${releaseCtaUrl(release)}" aria-label="View ${escapeHtml(release.title)}">
+                <div class="release-card-art" aria-hidden="true">
+                    <span>${setInitials(release.game)}</span>
+                </div>
+                <div class="release-card-body">
+                    <p class="release-category">${escapeHtml(release.game)} | ${escapeHtml(release.productType)}</p>
+                    <h3>${escapeHtml(release.title)}</h3>
+                    <p>${escapeHtml(release.shortDescription)}</p>
+                    <div class="set-card-meta">
+                        <span>${escapeHtml(release.set)}</span>
+                        <span>${formatDate(release.releaseDate)}</span>
+                        <span>${escapeHtml(release.status)}</span>
+                    </div>
+                    <span class="category-link">View Release</span>
+                </div>
+            </a>
+        </article>
+    `;
+}
+
+function releaseCtaUrl(release){
+    const firstProduct = release.relatedProducts?.[0];
+    return firstProduct ? `/product.html?id=${encodeURIComponent(firstProduct)}` : "/latest-releases.html";
+}
+
+function formatMonth(value){
+    return new Intl.DateTimeFormat("en-GB",{
+        month:"long",
+        year:"numeric"
+    }).format(new Date(value));
 }
 
 function setCard(collection){

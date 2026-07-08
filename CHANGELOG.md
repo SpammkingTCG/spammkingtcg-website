@@ -6,6 +6,27 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.8.0
+
+Release Calendar and Latest Releases Hub
+
+## Added
+
+- Added `data/releases.json` for shared release data across all games
+- Rebuilt `latest-releases.html` as a premium release hub
+- Added featured upcoming releases, release calendar, available now, coming soon and recently released sections
+- Added release filtering by game, product type, status and month
+- Added a grouped month-by-month release timeline
+- Added release cards powered by JSON data
+
+## Improved
+
+- Updated the homepage Latest Releases section to render from shared release data
+- Added a Pokemon-specific release watch section powered by the same release data
+- Added reusable release hub styling and responsive mobile layouts
+
+---
+
 # v0.7.0
 
 Collection and Set System

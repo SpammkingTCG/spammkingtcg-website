@@ -1,6 +1,205 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><link rel='stylesheet' href='styles.css'><title>Latest Releases</title></head><body><nav><div class='logo'>SpammKing <span>TCG</span></div></nav><section><h1>Latest & Upcoming Releases</h1><div class='grid'>
-<div class='card'><h3>Pokémon</h3><p>Mega Evolution</p><span class='badge'>Coming Soon</span></div>
-<div class='card'><h3>One Piece</h3><p>Upcoming Set</p><span class='badge'>Coming Soon</span></div>
-<div class='card'><h3>Lorcana</h3><p>Upcoming Chapter</p><span class='badge'>Coming Soon</span></div>
-<div class='card'><h3>Magic</h3><p>Upcoming Release</p><span class='badge'>Coming Soon</span></div>
-</div></section></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ===========================
+         Basic Page Information
+    ============================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Latest Releases | SpammKing TCG</title>
+    <meta name="description" content="Track latest and upcoming TCG releases across Pokemon, One Piece, Disney Lorcana, Yu-Gi-Oh! and Magic: The Gathering at SpammKing TCG.">
+    <meta name="author" content="SpammKing TCG">
+    <link rel="canonical" href="https://spammkingtcg.co.uk/latest-releases.html">
+    <meta name="theme-color" content="#0B0D10">
+
+    <meta property="og:site_name" content="SpammKing TCG">
+    <meta property="og:title" content="Latest Releases | SpammKing TCG">
+    <meta property="og:description" content="A premium release hub for upcoming, available and recently released trading card products.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://spammkingtcg.co.uk/latest-releases.html">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Latest Releases | SpammKing TCG">
+    <meta name="twitter:description" content="Track upcoming TCG releases and collector products at SpammKing TCG.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ===========================
+         Header
+    ============================ -->
+    <header class="site-header">
+        <nav class="navbar" aria-label="Primary navigation">
+            <a href="index.html" class="logo" aria-label="SpammKing TCG home">
+                <span class="logo-crown" aria-hidden="true"></span>
+                <span class="logo-main">SPAMMKING</span>
+                <span class="logo-tcg">TCG</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pokemon.html">Pokemon</a></li>
+                <li><a href="latest-releases.html" aria-current="page">Latest Releases</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <a href="https://www.ebay.co.uk/usr/spammkingtcg" target="_blank" rel="noopener" class="ebay-button">
+                Visit our eBay Store
+            </a>
+        </nav>
+    </header>
+
+    <main data-release-hub>
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Latest Releases</li>
+            </ol>
+        </nav>
+
+        <!-- ===========================
+             Hero
+        ============================ -->
+        <section class="release-hub-hero" aria-labelledby="release-hub-title">
+            <p class="section-kicker">Release Hub</p>
+            <h1 id="release-hub-title">Latest and upcoming TCG releases.</h1>
+            <p>
+                Track new products, upcoming sets, pre-orders and recently released collector stock across the games
+                SpammKing TCG is built around.
+            </p>
+        </section>
+
+        <!-- ===========================
+             Filters
+        ============================ -->
+        <section class="product-section" aria-labelledby="release-filter-title">
+            <div class="section-header">
+                <p class="section-kicker">Browse Releases</p>
+                <h2 id="release-filter-title">Filter by game, type, status or month.</h2>
+            </div>
+
+            <div class="shop-controls release-controls" data-release-controls>
+                <div class="shop-control-field">
+                    <label for="release-game">Game</label>
+                    <select id="release-game" data-release-filter="game">
+                        <option value="">All games</option>
+                    </select>
+                </div>
+
+                <div class="shop-control-field">
+                    <label for="release-type">Product Type</label>
+                    <select id="release-type" data-release-filter="productType">
+                        <option value="">All types</option>
+                    </select>
+                </div>
+
+                <div class="shop-control-field">
+                    <label for="release-status">Status</label>
+                    <select id="release-status" data-release-filter="status">
+                        <option value="">All statuses</option>
+                    </select>
+                </div>
+
+                <div class="shop-control-field">
+                    <label for="release-month">Month</label>
+                    <select id="release-month" data-release-filter="month">
+                        <option value="">All months</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===========================
+             Featured
+        ============================ -->
+        <section class="product-section" aria-labelledby="featured-releases-title">
+            <div class="section-header">
+                <p class="section-kicker">Featured Upcoming</p>
+                <h2 id="featured-releases-title">Collector releases to watch.</h2>
+            </div>
+
+            <div class="release-hub-grid" data-featured-releases></div>
+        </section>
+
+        <!-- ===========================
+             Calendar
+        ============================ -->
+        <section class="product-section" aria-labelledby="release-calendar-title">
+            <div class="section-header">
+                <p class="section-kicker">Calendar</p>
+                <h2 id="release-calendar-title">Release timeline.</h2>
+            </div>
+
+            <div class="release-calendar" data-release-calendar></div>
+        </section>
+
+        <!-- ===========================
+             Available Now
+        ============================ -->
+        <section class="product-section" aria-labelledby="available-now-title">
+            <div class="section-header">
+                <p class="section-kicker">Available Now</p>
+                <h2 id="available-now-title">Ready to browse.</h2>
+            </div>
+
+            <div class="release-hub-grid" data-available-releases></div>
+        </section>
+
+        <!-- ===========================
+             Coming Soon
+        ============================ -->
+        <section class="product-section" aria-labelledby="coming-soon-title">
+            <div class="section-header">
+                <p class="section-kicker">Coming Soon</p>
+                <h2 id="coming-soon-title">Upcoming collector stock.</h2>
+            </div>
+
+            <div class="release-hub-grid" data-coming-releases></div>
+        </section>
+
+        <!-- ===========================
+             Recently Released
+        ============================ -->
+        <section class="product-section" aria-labelledby="recent-releases-title">
+            <div class="section-header">
+                <p class="section-kicker">Recently Released</p>
+                <h2 id="recent-releases-title">Recent additions.</h2>
+            </div>
+
+            <div class="release-hub-grid" data-recent-releases></div>
+        </section>
+
+        <!-- ===========================
+             Newsletter
+        ============================ -->
+        <section class="newsletter-section" aria-labelledby="release-newsletter-title">
+            <div>
+                <p class="section-kicker">Collector Updates</p>
+                <h2 id="release-newsletter-title">Know what is coming next.</h2>
+                <p>Get release updates, product alerts and collector-focused news as the store grows.</p>
+            </div>
+
+            <form class="newsletter-form" aria-describedby="release-newsletter-note">
+                <label class="sr-only" for="release-newsletter-email">Email address</label>
+                <input id="release-newsletter-email" name="email" type="email" autocomplete="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p id="release-newsletter-note" class="sr-only">Newsletter signup is planned for a future website release.</p>
+        </section>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>

@@ -55,3 +55,29 @@ Pokemon set pages currently use static-friendly folders such as:
 - `pokemon/sets/prismatic-evolutions/`
 
 The page content is rendered from `collections.json` and `products.json`, so future games can reuse the same structure.
+
+## Release Data
+
+Release hub data is stored in `data/releases.json` and rendered by `script.js`.
+
+Each release should include:
+
+- `title`: customer-facing release name
+- `game`: trading card game
+- `set`: set or release family
+- `productType`: product type, such as Booster Box or Elite Trainer Box
+- `releaseDate`: ISO date in `YYYY-MM-DD` format
+- `preorderDate`: ISO date for preorder or register-interest timing
+- `status`: release status, such as Coming Soon, Pre-order, Register Interest, Available Now, Sold Out or Recently Released
+- `shortDescription`: short collector-facing description
+- `image`: future release image placeholder path
+- `relatedProducts`: array of related product IDs
+- `slug`: URL-safe release slug
+- `priority`: sorting importance
+- `featured`: `true` or `false`
+- `comingSoon`: `true` or `false`
+- `availableNow`: `true` or `false`
+- `releaseWindow`: display month, such as `August 2026`
+- `displayOrder`: manual sort order
+
+The Latest Releases page, homepage release section and Pokemon release watch all use this shared release data.
