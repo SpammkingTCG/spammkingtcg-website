@@ -692,15 +692,15 @@ function setupProductDetail(){
                 <div class="product-service-grid" aria-label="Product service information">
                     <article>
                         <h2>Shipping</h2>
-                        <p>UK dispatch with collector-standard packaging.</p>
+                        <p>UK-based dispatch standards with collector-focused packaging. <a href="/shipping.html">Read shipping guidance</a>.</p>
                     </article>
                     <article>
                         <h2>Returns</h2>
-                        <p>Returns information will be confirmed as checkout launches.</p>
+                        <p>Draft returns guidance is available for review before checkout launches. <a href="/returns.html">Read returns guidance</a>.</p>
                     </article>
                     <article>
                         <h2>Authenticity</h2>
-                        <p>Products are sourced with genuine stock and buyer confidence in mind.</p>
+                        <p>Products are listed with genuine stock and buyer confidence in mind. <a href="/authenticity.html">Read authenticity standards</a>.</p>
                     </article>
                 </div>
             </div>

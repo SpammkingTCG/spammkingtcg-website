@@ -6,16 +6,17 @@
 
 # Current Milestone
 
-## v0.9.0
+## v0.9.1
 
-One Piece TCG Expansion
+Trust, Policy and Customer Confidence Pages
 
-- One Piece landing page
-- One Piece collection and set data
-- One Piece set library and individual set routes
-- One Piece products in the shared catalogue
-- One Piece release hub data
-- Cross-game routing using the shared shop system
+- Shipping & Delivery page
+- Returns & Refunds page
+- Authenticity Guarantee page
+- FAQ page
+- Professional contact page
+- Footer support links
+- Customer confidence blocks
 
 ---
 
@@ -31,6 +32,17 @@ SEO, Routing and Release Hub
 - Homepage release data integration
 - Sitemap, robots and 404 page
 - Metadata and structured data pass
+
+## v0.9.0
+
+One Piece TCG Expansion
+
+- One Piece landing page
+- One Piece collection and set data
+- One Piece set library and individual set routes
+- One Piece products in the shared catalogue
+- One Piece release hub data
+- Cross-game routing using the shared shop system
 
 ## v0.7.0
 

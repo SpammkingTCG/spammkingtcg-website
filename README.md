@@ -106,3 +106,15 @@ Structured data is added through `script.js` where useful:
 - WebSite schema on the homepage
 - BreadcrumbList schema on product and set pages
 - Product schema on product detail pages without making misleading stock claims
+
+## Customer Support Pages
+
+Draft customer confidence pages live at the site root:
+
+- `shipping.html`: UK shipping, dispatch, packaging and pre-order delivery notes
+- `returns.html`: draft returns and refunds guidance for owner review
+- `authenticity.html`: genuine product, condition and packaging standards
+- `faq.html`: common customer questions
+- `contact.html`: email, business details and enquiry type guidance
+
+These pages should stay honest and avoid legal or checkout claims until the full ecommerce setup is confirmed.

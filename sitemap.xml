@@ -77,6 +77,22 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://spammkingtcg.co.uk/shipping.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://spammkingtcg.co.uk/returns.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://spammkingtcg.co.uk/authenticity.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://spammkingtcg.co.uk/faq.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://spammkingtcg.co.uk/about.html</loc>
     <priority>0.6</priority>
   </url>

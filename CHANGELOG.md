@@ -6,6 +6,27 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.9.1
+
+Trust, Policy and Customer Confidence Pages
+
+## Added
+
+- Added `shipping.html` with draft UK shipping, dispatch, packaging and pre-order delivery guidance
+- Added `returns.html` with draft customer-friendly returns and refunds wording
+- Added `authenticity.html` for genuine product, sealed product, singles, graded card and packaging standards
+- Added `faq.html` with customer FAQs covering products, authenticity, shipping, returns, pre-orders and contact
+- Added reusable customer-confidence blocks to product and category journeys
+
+## Improved
+
+- Upgraded `contact.html` with business details, enquiry reasons, supplier-friendly wording and clearer email guidance
+- Updated footer support links across key public pages
+- Linked product detail Shipping, Returns and Authenticity service notes to the new support pages
+- Updated `sitemap.xml` with the new customer confidence pages
+
+---
+
 # v0.9.0
 
 One Piece TCG Expansion
