@@ -508,7 +508,7 @@ function setupReleaseSections(){
         }
 
         items = sortReleases(items).slice(0,limit);
-        grid.innerHTML = items.length ? items.map(releaseCard).join("") : emptyState("Release data will appear here.","No Releases Found");
+        grid.innerHTML = items.length ? items.map(releaseCard).join("") : emptyState("Release-watch entries will appear here as this category develops.","No Release Watch Entries");
     });
 }
 
@@ -580,7 +580,7 @@ function releaseCard(release){
                         <span>${formatDate(release.releaseDate)}</span>
                         <span>${escapeHtml(release.status)}</span>
                     </div>
-                    <span class="category-link">View Release</span>
+                    <span class="category-link">View Details</span>
                 </div>
             </a>
         </article>

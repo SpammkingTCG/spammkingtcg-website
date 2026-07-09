@@ -6,6 +6,26 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.0.3
+
+Content Accuracy and Bug Fix Pass
+
+## Added
+
+- Added lightweight public landing pages for Disney Lorcana, Yu-Gi-Oh! and Magic: The Gathering
+- Added the new category pages to `sitemap.xml`
+- Added a safe Yu-Gi-Oh! release-watch entry for calendar filtering
+
+## Improved
+
+- Fixed contact and filter dropdown styling so options remain readable on dark UI
+- Reworded the contact form note to explain that enquiries should currently use email or eBay
+- Reframed Latest Releases as a collector release calendar/release watch rather than a confirmed stock promise
+- Updated homepage and footer category links to point to the new public category pages
+- Updated release card CTA wording from `View Release` to `View Details`
+
+---
+
 # v1.0.2
 
 Project Documentation and Operating Manual

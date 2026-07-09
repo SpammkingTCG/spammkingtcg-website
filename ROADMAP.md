@@ -6,15 +6,15 @@
 
 # Current Milestone
 
-## v1.0.2
+## v1.0.3
 
-Project Documentation and Operating Manual
+Content Accuracy and Bug Fix Pass
 
-- Developer documentation under `/docs`
-- Business operating manual
-- Architecture, data model, deployment and coding standards documented
-- Future feature decision rules documented
-- Project prepared for future handover or professional developer support
+- Contact form and dropdown polish
+- Latest Releases reframed as a collector release calendar
+- Lightweight Lorcana, Yu-Gi-Oh! and Magic pages added
+- Homepage, footer and sitemap links completed for public category pages
+- Public wording reviewed for beta accuracy
 
 ---
 
@@ -113,6 +113,16 @@ Trade Information Pack
 - Direct trade email CTA
 - Not linked in the main customer navigation
 - Marked `noindex` so it can be shared directly without becoming a public shop page
+
+## v1.0.2
+
+Project Documentation and Operating Manual
+
+- Developer documentation under `/docs`
+- Business operating manual
+- Architecture, data model, deployment and coding standards documented
+- Future feature decision rules documented
+- Project prepared for future handover or professional developer support
 
 ## v0.7.0
 

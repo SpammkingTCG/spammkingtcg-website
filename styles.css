@@ -1411,14 +1411,27 @@ input:focus-visible{
     width:100%;
     border:1px solid var(--border);
     border-radius:999px;
-    background:rgba(255,255,255,.045);
+    background:#11151B;
     color:var(--white);
     font:inherit;
+    color-scheme:dark;
 }
 
 .contact-form select{
     min-height:48px;
     padding:0 1rem;
+}
+
+.contact-form select option,
+.shop-control-field select option{
+    background:#11151B;
+    color:var(--white);
+}
+
+.contact-form select option:checked,
+.shop-control-field select option:checked{
+    background:#D4AF37;
+    color:#0B0D10;
 }
 
 .contact-form textarea{
@@ -1513,9 +1526,10 @@ input:focus-visible{
     padding:.7rem .85rem;
     border:1px solid var(--border);
     border-radius:999px;
-    background:rgba(0,0,0,.22);
+    background:#11151B;
     color:var(--white);
     font:inherit;
+    color-scheme:dark;
 }
 
 .shop-control-field input:focus-visible,

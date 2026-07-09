@@ -259,7 +259,7 @@
         "releaseDate":  "2026-12-04",
         "preorderDate":  "2026-11-05",
         "status":  "Coming Soon",
-        "shortDescription":  "A Lorcana release listing preview for future cross-game collector planning.",
+        "shortDescription":  "A Lorcana release-watch entry for collector planning. SpammKing TCG availability will be confirmed separately.",
         "image":  "assets/images/releases/lorcana/set-12-booster-box.jpg",
         "relatedProducts":  [
 
@@ -279,8 +279,8 @@
         "productType":  "Booster Box",
         "releaseDate":  "2026-10-16",
         "preorderDate":  "2026-09-20",
-        "status":  "Sold Out",
-        "shortDescription":  "A Magic release listing preview for future multi-game release tracking.",
+        "status":  "Release Watch",
+        "shortDescription":  "A Magic: The Gathering release-watch entry for collector planning. SpammKing TCG availability will be confirmed separately.",
         "image":  "assets/images/releases/magic/play-booster-box.jpg",
         "relatedProducts":  [
 
@@ -288,9 +288,30 @@
         "slug":  "magic-play-booster-box",
         "priority":  4,
         "featured":  false,
-        "comingSoon":  false,
+        "comingSoon":  true,
         "availableNow":  false,
         "releaseWindow":  "October 2026",
         "displayOrder":  14
+    },
+    {
+        "title":  "Yu-Gi-Oh! Release Watch",
+        "game":  "Yu-Gi-Oh!",
+        "set":  "Upcoming Releases",
+        "productType":  "Release Watch",
+        "releaseDate":  "2026-12-31",
+        "preorderDate":  "",
+        "status":  "Release Watch",
+        "shortDescription":  "A Yu-Gi-Oh! release-watch entry for future collector planning. SpammKing TCG availability will be confirmed separately.",
+        "image":  "assets/images/releases/yugioh/release-watch.jpg",
+        "relatedProducts":  [
+
+                            ],
+        "slug":  "yugioh-release-watch",
+        "priority":  4,
+        "featured":  false,
+        "comingSoon":  true,
+        "availableNow":  false,
+        "releaseWindow":  "December 2026",
+        "displayOrder":  15
     }
 ]
