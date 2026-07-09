@@ -21,16 +21,19 @@
 html{
     scroll-behavior:smooth;
     scroll-padding-top:110px;
+    max-width:100%;
 }
 
 body{
     min-width:320px;
+    max-width:100%;
     background:#0B0D10;
     color:#F5F7FA;
     font-family:"Inter",sans-serif;
     font-size:16px;
     line-height:1.7;
     overflow-x:hidden;
+    overflow-wrap:break-word;
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
 }
@@ -125,6 +128,14 @@ a{
     color:inherit;
     text-decoration:none;
     transition:var(--transition);
+}
+
+a,
+button,
+input,
+select,
+textarea{
+    min-width:0;
 }
 
 a:hover{
@@ -297,7 +308,10 @@ input:focus-visible{
     border-radius:999px;
     font-size:.78rem;
     font-weight:800;
+    line-height:1.25;
+    text-align:center;
     text-transform:uppercase;
+    white-space:normal;
 }
 
 .ebay-button{
@@ -659,6 +673,7 @@ input:focus-visible{
 
 .category-card{
     position:relative;
+    min-width:0;
     min-height:300px;
     display:flex;
     flex-direction:column;
@@ -777,6 +792,7 @@ input:focus-visible{
 
 .feature-card,
 .release-card{
+    min-width:0;
     border:1px solid var(--border);
     border-radius:var(--radius);
     background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
@@ -1466,6 +1482,7 @@ input:focus-visible{
 .shop-controls{
     display:grid;
     grid-template-columns:minmax(240px,1.4fr) repeat(4,minmax(150px,1fr));
+    min-width:0;
     gap:1rem;
     margin-bottom:1.2rem;
     padding:1rem;
@@ -1478,6 +1495,7 @@ input:focus-visible{
     display:flex;
     flex-direction:column;
     gap:.4rem;
+    min-width:0;
 }
 
 .shop-control-field label{
@@ -1550,6 +1568,7 @@ input:focus-visible{
 }
 
 .product-card-meta li{
+    max-width:100%;
     padding:.35rem .6rem;
     border:1px solid var(--border);
     border-radius:999px;
@@ -1725,6 +1744,7 @@ input:focus-visible{
 
 .product-status{
     display:inline-flex;
+    max-width:100%;
     padding:.45rem .75rem;
     border:1px solid var(--gold-border);
     border-radius:999px;
@@ -1759,6 +1779,7 @@ input:focus-visible{
 .product-spec-list dd{
     color:var(--white);
     font-weight:800;
+    overflow-wrap:anywhere;
 }
 
 .product-action-row{
@@ -2036,6 +2057,7 @@ input:focus-visible{
 .release-timeline-item{
     display:grid;
     grid-template-columns:120px minmax(0,1fr) minmax(180px,.65fr);
+    min-width:0;
     align-items:center;
     gap:1rem;
     padding:.95rem 1rem;
@@ -2395,14 +2417,23 @@ input:focus-visible{
         gap:1.2rem;
     }
 
+    .logo{
+        min-width:0;
+    }
+
     .nav-links{
-        gap:.85rem 1rem;
+        justify-content:center;
+        gap:.35rem .75rem;
         flex-wrap:wrap;
         padding-bottom:.25rem;
     }
 
     .nav-links a{
+        min-height:44px;
+        display:inline-flex;
+        align-items:center;
         font-size:.72rem;
+        padding:.55rem .1rem;
     }
 
     .ebay-button{
@@ -2487,6 +2518,11 @@ input:focus-visible{
         grid-template-columns:1fr;
     }
 
+    .shop-controls{
+        padding:.85rem;
+        border-radius:16px;
+    }
+
     .shop-results-bar,
     .pagination-controls{
         align-items:stretch;
@@ -2510,6 +2546,10 @@ input:focus-visible{
 
     .product-card-meta{
         gap:.4rem;
+    }
+
+    .product-card-meta li{
+        font-size:.68rem;
     }
 
     .colour-grid,
@@ -2579,6 +2619,40 @@ input:focus-visible{
 @media (max-width:460px){
     h1{
         font-size:clamp(2.45rem,14vw,3.6rem);
+    }
+
+    h2{
+        font-size:clamp(1.85rem,10vw,2.8rem);
+    }
+
+    section,
+    .site-footer{
+        width:min(90%,var(--container));
+    }
+
+    .navbar{
+        width:min(90%,var(--container));
+    }
+
+    .logo-main{
+        font-size:1.18rem;
+    }
+
+    .logo-tcg{
+        font-size:.78rem;
+    }
+
+    .section-header{
+        margin-bottom:1.8rem;
+    }
+
+    .product-detail-section{
+        gap:1.8rem;
+    }
+
+    .purchase-panel,
+    .empty-state{
+        padding:1rem;
     }
 
     .showcase-card{

@@ -6,6 +6,20 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v0.9.5
+
+Mobile and Real Launch QA
+
+## Improved
+
+- Hardened mobile layouts for small phone widths, tablet widths and narrow product journeys
+- Improved tap targets, wrapping and spacing for navigation, buttons, filters, product metadata and policy cards
+- Tightened customer-facing wording around newsletter forms, returns guidance and future website checkout
+- Added consistent social preview image metadata across public pages
+- Rechecked internal links, sitemap coverage, JSON data consistency and template indexing
+
+---
+
 # v0.9.4
 
 Public Launch Cleanup and Consistency Pass

@@ -117,6 +117,7 @@ Important page expectations:
 
 - Public pages should have a unique title, meta description and canonical URL
 - Key public pages should include Open Graph and Twitter card metadata
+- Public pages should use `assets/images/social-preview.jpg` for share previews where metadata is present
 - Internal-only pages such as `styleguide.html` should remain `noindex`
 - Static-friendly collection routes use folder `index.html` files, for example `pokemon/sets/prismatic-evolutions/index.html`
 
@@ -144,3 +145,7 @@ Customer confidence pages live at the site root:
 These pages should stay honest and avoid legal or checkout claims until the full ecommerce setup is confirmed.
 
 Newsletter forms currently act as passive interest forms. They should not submit visitor details until a real newsletter provider and privacy process are connected.
+
+## Launch QA Notes
+
+The v0.9.5 pass focuses on keeping the current site mobile-ready and safe to share before v1.0. New features, new games and checkout should wait until the soft launch checklist is complete.

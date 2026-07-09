@@ -6,16 +6,15 @@
 
 # Current Milestone
 
-## v0.9.4
+## v1.0.0
 
-Public Launch Cleanup and Consistency Pass
+Soft Launch Readiness
 
-- Remove unfinished public wording
-- Standardise header and footer links
-- Clean product, collection and release copy
-- Add branded social preview image
-- Remove generic product template from sitemap
-- Final launch-readiness checks
+- Final branding polish
+- Real contact details
+- Real eBay links
+- Ready-to-share checklist
+- Final customer/distributor review pass
 
 ---
 
@@ -77,6 +76,26 @@ Privacy, Cookies, Terms and Launch Compliance
 - Newsletter privacy notes
 - External link audit
 
+## v0.9.4
+
+Public Launch Cleanup and Consistency Pass
+
+- Removed unfinished public wording
+- Standardised header and footer links
+- Cleaned product, collection and release copy
+- Added branded social preview image
+- Removed generic product template from sitemap
+- Final launch-readiness checks
+
+## v0.9.5
+
+Mobile and Real Launch QA
+
+- Small-screen layout hardening
+- Tap target and wrapping improvements
+- Final link, sitemap, data and metadata checks
+- Customer wording review before soft launch
+
 ## v0.7.0
 
 Collection and Set System
@@ -126,7 +145,7 @@ Homepage Polish
 
 # Next Priorities
 
-## v0.9.5
+## v1.0.1
 
 Product Content and Imagery
 
