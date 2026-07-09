@@ -3,13 +3,18 @@ const COLLECTION_DATA_URL = "/data/collections.json";
 const RELEASE_DATA_URL = "/data/releases.json";
 const WISHLIST_KEY = "spammking-wishlist";
 const RECENTLY_VIEWED_KEY = "spammking-recently-viewed";
+const DATA_SOURCES = {
+    products:PRODUCT_DATA_URL,
+    collections:COLLECTION_DATA_URL,
+    releases:RELEASE_DATA_URL
+};
 
 let products = [];
 let collections = [];
 let releases = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const needsProducts = Boolean(document.querySelector("[data-product-grid], [data-product-detail], [data-wishlist-grid], [data-recently-viewed], [data-coming-soon], [data-set-detail], [data-related-products]"));
+    const needsProducts = Boolean(document.querySelector("[data-product-grid], [data-product-detail], [data-wishlist-grid], [data-recently-viewed], [data-coming-soon], [data-sets-grid], [data-set-detail], [data-related-products]"));
     const needsCollections = Boolean(document.querySelector("[data-sets-grid], [data-set-detail], [data-related-sets]"));
     const needsReleases = Boolean(document.querySelector("[data-release-hub], [data-release-grid], [data-release-calendar]"));
 
@@ -33,47 +38,27 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function loadProducts(){
-    try{
-        const response = await fetch(PRODUCT_DATA_URL);
-
-        if(!response.ok){
-            throw new Error("Product data unavailable");
-        }
-
-        const data = await response.json();
-        return data.map(normalizeProduct);
-    }catch(error){
-        console.warn(error.message);
-        return [];
-    }
+    return loadJsonData(DATA_SOURCES.products,normalizeProduct,"Product data unavailable");
 }
 
 async function loadReleases(){
-    try{
-        const response = await fetch(RELEASE_DATA_URL);
-
-        if(!response.ok){
-            throw new Error("Release data unavailable");
-        }
-
-        const data = await response.json();
-        return data.map(normalizeRelease);
-    }catch(error){
-        console.warn(error.message);
-        return [];
-    }
+    return loadJsonData(DATA_SOURCES.releases,normalizeRelease,"Release data unavailable");
 }
 
 async function loadCollections(){
+    return loadJsonData(DATA_SOURCES.collections,normalizeCollection,"Collection data unavailable");
+}
+
+async function loadJsonData(url,normalizer,errorMessage){
     try{
-        const response = await fetch(COLLECTION_DATA_URL);
+        const response = await fetch(url);
 
         if(!response.ok){
-            throw new Error("Collection data unavailable");
+            throw new Error(errorMessage);
         }
 
         const data = await response.json();
-        return data.map(normalizeCollection);
+        return Array.isArray(data) ? data.map(normalizer) : [];
     }catch(error){
         console.warn(error.message);
         return [];
@@ -833,7 +818,7 @@ function toggleWishlist(id){
     const saved = wishlist.includes(id);
     const nextWishlist = saved ? wishlist.filter((item) => item !== id) : [id,...wishlist];
 
-    localStorage.setItem(WISHLIST_KEY,JSON.stringify(nextWishlist));
+    writeStorageList(WISHLIST_KEY,nextWishlist);
     return !saved;
 }
 
@@ -843,7 +828,7 @@ function isWishlisted(id){
 
 function addRecentlyViewed(id){
     const recent = getRecentlyViewed().filter((item) => item !== id);
-    localStorage.setItem(RECENTLY_VIEWED_KEY,JSON.stringify([id,...recent].slice(0,8)));
+    writeStorageList(RECENTLY_VIEWED_KEY,[id,...recent].slice(0,8));
 }
 
 function getRecentlyViewed(){
@@ -856,6 +841,14 @@ function readStorageList(key){
         return Array.isArray(value) ? value : [];
     }catch(error){
         return [];
+    }
+}
+
+function writeStorageList(key,value){
+    try{
+        localStorage.setItem(key,JSON.stringify(value));
+    }catch(error){
+        console.warn("Unable to save local preference.");
     }
 }
 

@@ -91,22 +91,20 @@ Fully responsive.
 
 Current Version:
 
-v0.3.0
+v1.0.0 Beta
 
-Homepage currently contains:
+Phase 1 is feature complete for beta use. The site currently includes:
 
-- Navigation
-- Hero
-- CTA Buttons
-- Trust Badges
-
-Next planned homepage sections:
-
-1. Featured Categories
-2. Why Buy From Us
-3. Latest Releases
-4. About SpammKing TCG
-5. Footer
+- Premium homepage
+- Pokemon and One Piece category systems
+- Dynamic products, sets and releases
+- Product detail pages
+- Wishlist and recently viewed products
+- Latest Releases hub
+- Support, trust and policy pages
+- eBay-first buying journey
+- SEO files, sitemap, robots and 404 page
+- Internal styleguide and documentation
 
 ---
 
@@ -156,24 +154,24 @@ Quality over speed.
 
 Website Status:
 
-🟢 Active Development
+Active Beta
 
 Current Version:
 
-v0.3.0
+v1.0.0 Beta
 
 Current Priority:
 
-Homepage polish
+Real product content, real imagery, real eBay links and launch confidence
 
 Current Development Focus:
 
-- Premium Featured Categories
-- Responsive improvements
-- Homepage animations
-- Accessibility
-- Performance
-- SEO
+- Maintainability
+- Real inventory data
+- Product imagery
+- Customer trust
+- Distributor readiness
+- Accessibility, performance and SEO upkeep
 
 Primary Developer:
 

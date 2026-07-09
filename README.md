@@ -149,3 +149,15 @@ Newsletter forms currently act as passive interest forms. They should not submit
 ## Launch QA Notes
 
 The v0.9.5 pass focuses on keeping the current site mobile-ready and safe to share before v1.0. New features, new games and checkout should wait until the soft launch checklist is complete.
+
+## v1.0 Beta Maintenance Notes
+
+Phase 1 is now treated as feature complete. Future work should prioritise real product content, real images, real eBay links and customer/distributor feedback before adding major new functionality.
+
+Senior-developer expectations from this point:
+
+- Preserve the current public design unless a change is intentionally approved
+- Keep product, set and release pages data-driven
+- Avoid fake cart, basket or checkout flows until direct ecommerce is implemented
+- Prefer small maintainability improvements over broad rewrites
+- Update this README, `CHANGELOG.md` and `ROADMAP.md` when the site structure changes

@@ -6,6 +6,19 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.0.0-beta
+
+Phase 1 Beta Code Quality Review
+
+## Improved
+
+- Refactored shared JSON loading in `script.js` to reduce repeated data-fetching logic
+- Hardened wishlist and recently viewed storage writes so blocked localStorage does not break browsing
+- Let set library pages load product data for live product counts where collection pages need it
+- Updated project documentation to describe the current Phase 1 Beta state rather than the early homepage-only build
+
+---
+
 # v0.9.5
 
 Mobile and Real Launch QA

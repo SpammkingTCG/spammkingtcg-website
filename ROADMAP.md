@@ -6,15 +6,14 @@
 
 # Current Milestone
 
-## v1.0.0
+## v1.0.0 Beta
 
-Soft Launch Readiness
+Phase 1 Feature Complete
 
-- Final branding polish
-- Real contact details
-- Real eBay links
-- Ready-to-share checklist
-- Final customer/distributor review pass
+- Homepage, Pokemon, One Piece, products, sets, releases, wishlist, support pages and eBay buying journey are in place
+- Current focus is maintainability, real content, real product data and launch confidence
+- New major features should wait until real usage highlights the next priority
+- Direct checkout is not live yet; customer purchase journeys should remain eBay-first
 
 ---
 
@@ -153,6 +152,16 @@ Product Content and Imagery
 - Improve product descriptions
 - Add real release dates and preorder data
 - Add stronger collector-focused copy
+- Add real eBay product/listing links where available
+- Replace generic contact details with the confirmed business contact details
+
+## v1.0.2
+
+Trade Information Pack
+
+- Create a hidden distributor/trade information page
+- Summarise business overview, stocked games, eBay feedback, website progress and contact details
+- Keep the page professional, concise and suitable for supplier conversations
 
 ## v0.10.0
 
@@ -171,16 +180,14 @@ Collector Content
 - Release articles
 - Staff picks
 
-## v1.0.0
+## v1.1.0
 
-Launch-Ready Storefront
+Launch Learning Iteration
 
-- Real inventory
-- Checkout path or ecommerce integration
-- Policies
-- Analytics
-- Production SEO
-- Performance pass
+- Prioritise improvements based on real customer, supplier and owner feedback
+- Improve awkward journeys found while using the site
+- Expand content where visitors ask repeated questions
+- Revisit checkout only when the business is ready for direct ecommerce
 
 ---
 
