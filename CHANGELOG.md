@@ -6,6 +6,20 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.0.5
+
+Release Calendar Polish
+
+## Improved
+
+- Fixed release timeline month ordering by sorting groups from actual release dates
+- Added release countdown labels such as releases this month, recently released and releases in X days
+- Added source type and confidence badges to release cards and timeline rows
+- Added release image rendering support for safe official/publisher image URLs, with branded placeholders as the fallback
+- Improved release card and timeline spacing for mobile layouts
+
+---
+
 # v1.0.4
 
 Release Calendar Accuracy and Source Tracking

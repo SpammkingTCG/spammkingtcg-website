@@ -539,7 +539,7 @@ function filterReleases(items,state){
 }
 
 function sortReleases(items){
-    return [...items].sort((a,b) => a.displayOrder - b.displayOrder || new Date(a.releaseDate) - new Date(b.releaseDate));
+    return [...items].sort((a,b) => releaseTimestamp(a) - releaseTimestamp(b) || a.displayOrder - b.displayOrder || a.title.localeCompare(b.title));
 }
 
 function renderReleaseList(selector,items,emptyMessage){
@@ -555,22 +555,27 @@ function renderReleaseCalendar(items){
             return;
         }
 
-        const groups = items.reduce((months,release) => {
+        const groups = sortReleases(items).reduce((months,release) => {
             const key = release.releaseWindow || formatMonth(release.releaseDate);
             months[key] = months[key] || [];
             months[key].push(release);
             return months;
         },{});
 
-        calendar.innerHTML = Object.entries(groups).map(([month,monthReleases]) => `
+        calendar.innerHTML = Object.entries(groups).sort(([,a],[,b]) => releaseTimestamp(a[0]) - releaseTimestamp(b[0])).map(([month,monthReleases]) => `
             <article class="release-month">
                 <h3>${escapeHtml(month)}</h3>
                 <div class="release-timeline-list">
                     ${sortReleases(monthReleases).map((release) => `
                         <a href="${releaseCtaUrl(release)}" class="release-timeline-item">
-                            <span>${formatDate(release.releaseDate)}</span>
+                            <span class="release-date-chip">${releaseDateLabel(release)}</span>
                             <strong>${escapeHtml(release.title)}</strong>
-                            <em>${escapeHtml(release.game)} | ${escapeHtml(release.status)}</em>
+                            <em>
+                                <span>${escapeHtml(release.game)}</span>
+                                <span>${escapeHtml(release.status)}</span>
+                                <span>${escapeHtml(confidenceLabel(release.confidence))}</span>
+                                <span>${escapeHtml(timeUntilRelease(release))}</span>
+                            </em>
                         </a>
                     `).join("")}
                 </div>
@@ -582,28 +587,47 @@ function renderReleaseCalendar(items){
 function releaseCard(release){
     const cta = releaseCtaAttributes(release);
     const source = releaseSourceMarkup(release);
+    const media = releaseMediaMarkup(release);
 
     return `
         <article class="release-hub-card">
             <a href="${cta.href}" ${cta.external ? 'target="_blank" rel="noopener noreferrer"' : ""} aria-label="Track ${escapeHtml(release.title)}">
-                <div class="release-card-art" aria-hidden="true">
-                    <span>${setInitials(release.game)}</span>
-                </div>
+                ${media}
                 <div class="release-card-body">
-                    <p class="release-category">${escapeHtml(release.game)} | ${escapeHtml(release.productType)}</p>
+                    <p class="release-category">
+                        <span>${escapeHtml(release.game)}</span>
+                        <span>${escapeHtml(release.productType)}</span>
+                    </p>
                     <h3>${escapeHtml(release.title)}</h3>
                     <p>${escapeHtml(release.shortDescription)}</p>
                     <div class="set-card-meta">
                         <span>${escapeHtml(release.set)}</span>
-                        <span>${formatDate(release.releaseDate)}</span>
+                        <span>${releaseDateLabel(release)}</span>
                         <span>${escapeHtml(release.status)}</span>
-                        <span>${escapeHtml(confidenceLabel(release.confidence))}</span>
+                        <span>${escapeHtml(timeUntilRelease(release))}</span>
                     </div>
                     ${source}
                     <span class="category-link">${cta.external ? "Track Release" : "View Details"}</span>
                 </div>
             </a>
         </article>
+    `;
+}
+
+function releaseMediaMarkup(release){
+    if(release.imageUrl){
+        return `
+            <figure class="release-card-art release-card-image">
+                <img src="${escapeHtml(release.imageUrl)}" alt="${escapeHtml(release.imageAlt || release.title)}" loading="lazy">
+                ${release.imageSource ? `<figcaption>${escapeHtml(release.imageSource)}</figcaption>` : ""}
+            </figure>
+        `;
+    }
+
+    return `
+        <div class="release-card-art" aria-label="${escapeHtml(release.imageAlt || `${release.title} placeholder`)}">
+            <span>${setInitials(release.game)}</span>
+        </div>
     `;
 }
 
@@ -637,10 +661,12 @@ function releaseCtaUrl(release){
 function releaseSourceMarkup(release){
     const confidence = confidenceLabel(release.confidence);
     const source = release.sourceName || "Source to verify";
+    const sourceType = sourceTypeLabel(release.sourceType);
 
     return `
         <p class="release-source-row">
             <span>${escapeHtml(confidence)}</span>
+            <span>${escapeHtml(sourceType)}</span>
             <span>${escapeHtml(source)}</span>
         </p>
     `;
@@ -649,12 +675,65 @@ function releaseSourceMarkup(release){
 function confidenceLabel(value){
     const labels = {
         official:"Official",
-        distributor:"Distributor",
-        retailer:"Reputable Source",
+        distributor:"Distributor Source",
+        retailer:"Retailer Source",
         rumoured:"Rumoured / Unconfirmed"
     };
 
     return labels[value] || value || "Source to verify";
+}
+
+function sourceTypeLabel(value){
+    const labels = {
+        official:"Publisher",
+        distributor:"Distributor",
+        retailer:"Retailer",
+        news:"News Source",
+        reference:"Reference",
+        "release-watch":"Release Watch"
+    };
+
+    return labels[value] || value || "Source to verify";
+}
+
+function timeUntilRelease(release){
+    if(!release.releaseDate){
+        return "Date TBC";
+    }
+
+    const now = new Date();
+    const today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    const releaseDate = new Date(release.releaseDate);
+
+    if(Number.isNaN(releaseDate.getTime())){
+        return "Date TBC";
+    }
+
+    const releaseDay = new Date(releaseDate.getFullYear(),releaseDate.getMonth(),releaseDate.getDate());
+    const dayDiff = Math.ceil((releaseDay - today) / 86400000);
+
+    if(dayDiff < 0){
+        return "Recently released";
+    }
+
+    if(releaseDay.getMonth() === today.getMonth() && releaseDay.getFullYear() === today.getFullYear()){
+        return dayDiff === 0 ? "Releases today" : "Releases this month";
+    }
+
+    return `Releases in ${dayDiff} days`;
+}
+
+function releaseDateLabel(release){
+    return release.releaseDate ? formatDate(release.releaseDate) : release.releaseWindow || "Date TBC";
+}
+
+function releaseTimestamp(release){
+    if(!release?.releaseDate){
+        return Number.MAX_SAFE_INTEGER;
+    }
+
+    const value = new Date(release.releaseDate).getTime();
+    return Number.isNaN(value) ? Number.MAX_SAFE_INTEGER : value;
 }
 
 function formatMonth(value){
