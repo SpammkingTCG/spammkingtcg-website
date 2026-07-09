@@ -6,14 +6,15 @@
 
 # Current Milestone
 
-## v1.0.0 Beta
+## v1.0.1
 
-Phase 1 Feature Complete
+Trade Information Pack
 
-- Homepage, Pokemon, One Piece, products, sets, releases, wishlist, support pages and eBay buying journey are in place
-- Current focus is maintainability, real content, real product data and launch confidence
-- New major features should wait until real usage highlights the next priority
-- Direct checkout is not live yet; customer purchase journeys should remain eBay-first
+- Hidden `trade.html` supplier/distributor overview
+- Professional business summary for trade applications
+- Direct trade email CTA
+- Not linked in the main customer navigation
+- Marked `noindex` so it can be shared directly without becoming a public shop page
 
 ---
 
@@ -95,6 +96,14 @@ Mobile and Real Launch QA
 - Final link, sitemap, data and metadata checks
 - Customer wording review before soft launch
 
+## v1.0.0 Beta
+
+Phase 1 Feature Complete
+
+- Homepage, Pokemon, One Piece, products, sets, releases, wishlist, support pages and eBay buying journey are in place
+- Current focus moved to maintainability, real content, real product data and launch confidence
+- Direct checkout is not live yet; customer purchase journeys remain eBay-first
+
 ## v0.7.0
 
 Collection and Set System
@@ -154,14 +163,6 @@ Product Content and Imagery
 - Add stronger collector-focused copy
 - Add real eBay product/listing links where available
 - Replace generic contact details with the confirmed business contact details
-
-## v1.0.2
-
-Trade Information Pack
-
-- Create a hidden distributor/trade information page
-- Summarise business overview, stocked games, eBay feedback, website progress and contact details
-- Keep the page professional, concise and suitable for supplier conversations
 
 ## v0.10.0
 

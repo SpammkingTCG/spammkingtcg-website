@@ -6,6 +6,18 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.0.1
+
+Trade Information Pack
+
+## Added
+
+- Added hidden `trade.html` supplier information page for distributor and trade conversations
+- Included concise business overview, stocked/planned games, website readiness, current eBay sales route and trade contact CTA
+- Kept the trade page out of public navigation and marked it `noindex` so it can be shared directly without becoming a customer-facing page
+
+---
+
 # v1.0.0-beta
 
 Phase 1 Beta Code Quality Review

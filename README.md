@@ -146,6 +146,10 @@ These pages should stay honest and avoid legal or checkout claims until the full
 
 Newsletter forms currently act as passive interest forms. They should not submit visitor details until a real newsletter provider and privacy process are connected.
 
+## Trade Information Page
+
+`trade.html` is a hidden supplier/distributor information page. It is intentionally not linked from the main navigation and is marked `noindex` so it can be shared directly during trade applications without becoming a customer-facing shop page.
+
 ## Launch QA Notes
 
 The v0.9.5 pass focuses on keeping the current site mobile-ready and safe to share before v1.0. New features, new games and checkout should wait until the soft launch checklist is complete.
