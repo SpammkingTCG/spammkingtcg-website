@@ -6,15 +6,15 @@
 
 # Current Milestone
 
-## v1.0.1
+## v1.0.2
 
-Trade Information Pack
+Project Documentation and Operating Manual
 
-- Hidden `trade.html` supplier/distributor overview
-- Professional business summary for trade applications
-- Direct trade email CTA
-- Not linked in the main customer navigation
-- Marked `noindex` so it can be shared directly without becoming a public shop page
+- Developer documentation under `/docs`
+- Business operating manual
+- Architecture, data model, deployment and coding standards documented
+- Future feature decision rules documented
+- Project prepared for future handover or professional developer support
 
 ---
 
@@ -103,6 +103,16 @@ Phase 1 Feature Complete
 - Homepage, Pokemon, One Piece, products, sets, releases, wishlist, support pages and eBay buying journey are in place
 - Current focus moved to maintainability, real content, real product data and launch confidence
 - Direct checkout is not live yet; customer purchase journeys remain eBay-first
+
+## v1.0.1
+
+Trade Information Pack
+
+- Hidden `trade.html` supplier/distributor overview
+- Professional business summary for trade applications
+- Direct trade email CTA
+- Not linked in the main customer navigation
+- Marked `noindex` so it can be shared directly without becoming a public shop page
 
 ## v0.7.0
 

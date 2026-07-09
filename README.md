@@ -1,5 +1,17 @@
 Upload these files to your GitHub repository. Cloudflare Pages will deploy automatically.
 
+## Documentation Index
+
+Core project documentation:
+
+- `docs/architecture.md`: how the static storefront is structured
+- `docs/data-model.md`: product, collection and release JSON schemas
+- `docs/deployment.md`: GitHub and Cloudflare deployment process
+- `docs/coding-standards.md`: HTML, CSS, JavaScript, accessibility and SEO standards
+- `docs/contributing.md`: safe contribution workflow and commit guidance
+- `docs/future-features.md`: future feature backlog and decision rules
+- `SPAMMKING_TCG_OPERATING_MANUAL.md`: business operating manual for stock, sales, marketing and growth
+
 ## Product Data
 
 Product listings are stored in `data/products.json` and rendered by `script.js`.

@@ -6,6 +6,18 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.0.2
+
+Project Documentation and Operating Manual
+
+## Added
+
+- Added `/docs` with architecture, data model, deployment, coding standards, contributing and future feature documentation
+- Added `SPAMMKING_TCG_OPERATING_MANUAL.md` to document business operations, stock rules, sales process, marketing, finance notes and growth milestones
+- Added a documentation index to `README.md`
+
+---
+
 # v1.0.1
 
 Trade Information Pack
