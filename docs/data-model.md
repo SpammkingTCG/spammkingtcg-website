@@ -102,8 +102,27 @@ Each release should include:
 - `availableNow`
 - `releaseWindow`
 - `displayOrder`
+- `sourceName`
+- `sourceUrl`
+- `sourceType`
+- `confidence`
+- `imageUrl`
+- `imageAlt`
+- `imageSource`
+- `imageSourceUrl`
+- `imageUsageNote`
 
 `relatedProducts` should contain product IDs from `data/products.json`.
+
+Release calendar rules:
+
+- Use the release data as a collector release watch, not a confirmed SpammKing TCG stock list.
+- Use official publisher sources first.
+- Use distributor or reputable retailer sources second.
+- Mark unconfirmed entries with `confidence: "rumoured"`.
+- Do not use random Google Images.
+- Use official/publisher promotional imagery only where safe.
+- Leave `imageUrl` empty and rely on branded placeholder artwork if no safe official image is available.
 
 ## Data Quality Rules
 
@@ -114,4 +133,3 @@ Each release should include:
 - Avoid claims about stock, dispatch or preorder status unless true.
 - Use real eBay URLs when available.
 - Use placeholder image paths only until real photography is ready.
-

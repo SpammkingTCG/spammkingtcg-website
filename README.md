@@ -114,8 +114,28 @@ Each release should include:
 - `availableNow`: `true` or `false`
 - `releaseWindow`: display month, such as `August 2026`
 - `displayOrder`: manual sort order
+- `sourceName`: publisher, distributor, retailer or news/source name
+- `sourceUrl`: source URL where appropriate
+- `sourceType`: source category, such as `official`, `distributor`, `retailer`, `news`, `reference` or `release-watch`
+- `confidence`: release confidence, such as `official`, `distributor`, `retailer` or `rumoured`
+- `imageUrl`: official/publisher promotional image URL if safe to use
+- `imageAlt`: accessible image description
+- `imageSource`: image owner/source
+- `imageSourceUrl`: image source URL where appropriate
+- `imageUsageNote`: usage note, especially when using branded placeholders
 
 The Latest Releases page, homepage release section, Pokemon release watch and One Piece release sections all use this shared release data.
+
+Release data maintenance rules:
+
+- Treat `latest-releases.html` as a collector release calendar, not a stock promise
+- Use official publisher sources first
+- Use distributor or reputable retailer sources second
+- Mark rumours and unconfirmed releases clearly with `confidence: "rumoured"`
+- Do not use random Google Images
+- Use official/publisher promotional images only where safe
+- Leave `imageUrl` empty and use branded placeholder artwork when no safe official image is available
+- Do not claim SpammKing TCG availability unless a product has a real purchase URL or confirmed stock
 
 ## SEO and Routing
 

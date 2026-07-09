@@ -126,8 +126,17 @@ function normalizeRelease(release){
         status:"",
         shortDescription:"",
         image:"",
+        imageUrl:"",
+        imageAlt:"",
+        imageSource:"",
+        imageSourceUrl:"",
+        imageUsageNote:"",
         relatedProducts:[],
         slug:"",
+        sourceName:"",
+        sourceUrl:"",
+        sourceType:"",
+        confidence:"",
         priority:3,
         featured:false,
         comingSoon:false,
@@ -437,9 +446,11 @@ function setupReleaseHub(){
 
     const state = {
         controls:document.querySelector("[data-release-controls]"),
+        confidence:"",
         game:"",
         month:"",
         productType:"",
+        sourceType:"",
         status:""
     };
 
@@ -457,6 +468,8 @@ function populateReleaseFilters(state){
     populateSelect(state.controls.querySelector('[data-release-filter="productType"]'),uniqueReleaseValues("productType"));
     populateSelect(state.controls.querySelector('[data-release-filter="status"]'),uniqueReleaseValues("status"));
     populateSelect(state.controls.querySelector('[data-release-filter="month"]'),uniqueReleaseValues("releaseWindow"));
+    populateSelect(state.controls.querySelector('[data-release-filter="confidence"]'),uniqueReleaseValues("confidence"));
+    populateSelect(state.controls.querySelector('[data-release-filter="sourceType"]'),uniqueReleaseValues("sourceType"));
 }
 
 function uniqueReleaseValues(key){
@@ -518,8 +531,10 @@ function filterReleases(items,state){
         const matchesType = !state.productType || release.productType === state.productType;
         const matchesStatus = !state.status || release.status === state.status;
         const matchesMonth = !state.month || release.releaseWindow === state.month;
+        const matchesConfidence = !state.confidence || release.confidence === state.confidence;
+        const matchesSourceType = !state.sourceType || release.sourceType === state.sourceType;
 
-        return matchesGame && matchesType && matchesStatus && matchesMonth;
+        return matchesGame && matchesType && matchesStatus && matchesMonth && matchesConfidence && matchesSourceType;
     }));
 }
 
@@ -565,9 +580,12 @@ function renderReleaseCalendar(items){
 }
 
 function releaseCard(release){
+    const cta = releaseCtaAttributes(release);
+    const source = releaseSourceMarkup(release);
+
     return `
         <article class="release-hub-card">
-            <a href="${releaseCtaUrl(release)}" aria-label="View ${escapeHtml(release.title)}">
+            <a href="${cta.href}" ${cta.external ? 'target="_blank" rel="noopener noreferrer"' : ""} aria-label="Track ${escapeHtml(release.title)}">
                 <div class="release-card-art" aria-hidden="true">
                     <span>${setInitials(release.game)}</span>
                 </div>
@@ -579,17 +597,64 @@ function releaseCard(release){
                         <span>${escapeHtml(release.set)}</span>
                         <span>${formatDate(release.releaseDate)}</span>
                         <span>${escapeHtml(release.status)}</span>
+                        <span>${escapeHtml(confidenceLabel(release.confidence))}</span>
                     </div>
-                    <span class="category-link">View Details</span>
+                    ${source}
+                    <span class="category-link">${cta.external ? "Track Release" : "View Details"}</span>
                 </div>
             </a>
         </article>
     `;
 }
 
-function releaseCtaUrl(release){
+function releaseCtaAttributes(release){
     const firstProduct = release.relatedProducts?.[0];
-    return firstProduct ? `/product.html?id=${encodeURIComponent(firstProduct)}` : "/latest-releases.html";
+
+    if(firstProduct){
+        return {
+            href:`/product.html?id=${encodeURIComponent(firstProduct)}`,
+            external:false
+        };
+    }
+
+    if(release.sourceUrl){
+        return {
+            href:escapeHtml(release.sourceUrl),
+            external:true
+        };
+    }
+
+    return {
+        href:"/latest-releases.html",
+        external:false
+    };
+}
+
+function releaseCtaUrl(release){
+    return releaseCtaAttributes(release).href;
+}
+
+function releaseSourceMarkup(release){
+    const confidence = confidenceLabel(release.confidence);
+    const source = release.sourceName || "Source to verify";
+
+    return `
+        <p class="release-source-row">
+            <span>${escapeHtml(confidence)}</span>
+            <span>${escapeHtml(source)}</span>
+        </p>
+    `;
+}
+
+function confidenceLabel(value){
+    const labels = {
+        official:"Official",
+        distributor:"Distributor",
+        retailer:"Reputable Source",
+        rumoured:"Rumoured / Unconfirmed"
+    };
+
+    return labels[value] || value || "Source to verify";
 }
 
 function formatMonth(value){

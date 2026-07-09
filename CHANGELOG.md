@@ -6,6 +6,22 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.0.4
+
+Release Calendar Accuracy and Source Tracking
+
+## Improved
+
+- Rebuilt `data/releases.json` as release-watch/calendar data rather than confirmed stock data
+- Removed outdated Pokemon release entries such as White Flare and Black Bolt from upcoming release watch
+- Added release source tracking fields including source name, source URL, source type and confidence
+- Added official-image tracking fields while keeping branded placeholders where safe official imagery is not available
+- Added confidence and source-type filters to the release hub
+- Updated release cards to show source confidence and source name
+- Updated release documentation in `README.md` and `docs/data-model.md`
+
+---
+
 # v1.0.3
 
 Content Accuracy and Bug Fix Pass

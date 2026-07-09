@@ -1983,7 +1983,7 @@ input:focus-visible{
 }
 
 .release-controls{
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
 }
 
 .release-hub-grid{
@@ -2041,6 +2041,23 @@ input:focus-visible{
 
 .release-card-body .category-link{
     margin-top:1.1rem;
+}
+
+.release-source-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin-top:.75rem;
+    color:var(--muted);
+    font-size:.78rem;
+    font-weight:800;
+}
+
+.release-source-row span{
+    padding:.28rem .55rem;
+    border:1px solid var(--border);
+    border-radius:999px;
+    background:rgba(255,255,255,.035);
 }
 
 .release-calendar{
