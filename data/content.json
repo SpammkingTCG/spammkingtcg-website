@@ -1,0 +1,88 @@
+{
+  "featuredProduct": {
+    "productId": "pokemon-journey-together-booster-bundle",
+    "label": "Featured Product",
+    "headline": "Journey Together Booster Bundle",
+    "summary": "A collector-focused sealed product highlight. Availability through SpammKing TCG will be confirmed separately.",
+    "ctaLabel": "View Product",
+    "ctaUrl": "/product.html?id=pokemon-journey-together-booster-bundle"
+  },
+  "latestEbayListing": {
+    "label": "Latest eBay Listing",
+    "headline": "SpammKing TCG eBay Store",
+    "summary": "Current live purchases are completed through eBay while the direct website shop is being prepared.",
+    "ctaLabel": "Visit eBay Store",
+    "ctaUrl": "https://www.ebay.co.uk/usr/spammkingtcg",
+    "external": true
+  },
+  "latestArrival": {
+    "label": "Latest Arrival",
+    "headline": "New stock updates coming soon",
+    "summary": "Future stock arrivals will be highlighted here once real inventory and product photography are ready.",
+    "ctaLabel": "View Updates",
+    "ctaUrl": "/news-updates.html"
+  },
+  "cardOfTheWeek": {
+    "title": "Mewtwo Gold Star",
+    "game": "Pokemon TCG",
+    "set": "EX Holon Phantoms",
+    "year": "2006",
+    "population": "Population data varies by grading company and should be verified before publishing.",
+    "summary": "A standout Gold Star era card with strong collector appeal, iconic artwork and long-term nostalgia value.",
+    "whyCollectorsLoveIt": "Gold Star cards sit in a special place for many Pokemon collectors because of their rarity, era, artwork and chase-card history.",
+    "ctaLabel": "Read More",
+    "ctaUrl": "/news-updates.html#card-of-the-week"
+  },
+  "businessUpdates": [
+    {
+      "title": "Business email addresses added",
+      "date": "2026-07-13",
+      "type": "Website Update",
+      "summary": "SpammKing TCG now uses dedicated business inboxes for general, customer support, orders and trade enquiries."
+    },
+    {
+      "title": "Release calendar refined",
+      "date": "2026-07-13",
+      "type": "Website Update",
+      "summary": "The release hub now acts as a collector release-watch calendar rather than a promise of confirmed stock."
+    },
+    {
+      "title": "Trade information page prepared",
+      "date": "2026-07-12",
+      "type": "Business Milestone",
+      "summary": "A hidden distributor information page is available for trade and supplier applications."
+    }
+  ],
+  "milestones": [
+    {
+      "title": "Website launched",
+      "date": "2026-07-08",
+      "status": "Complete",
+      "summary": "The first public SpammKing TCG website went live through GitHub and Cloudflare Pages."
+    },
+    {
+      "title": "Business email connected",
+      "date": "2026-07-13",
+      "status": "Complete",
+      "summary": "Dedicated contact addresses were added for customers, orders and distributor enquiries."
+    },
+    {
+      "title": "First distributor approval",
+      "date": "",
+      "status": "Target",
+      "summary": "Future trade account approvals will be tracked here as the business grows."
+    },
+    {
+      "title": "100 eBay sales",
+      "date": "",
+      "status": "Target",
+      "summary": "A future customer-trust milestone for the SpammKing TCG sales journey."
+    },
+    {
+      "title": "First convention",
+      "date": "",
+      "status": "Target",
+      "summary": "A future in-person trading card event milestone."
+    }
+  ]
+}

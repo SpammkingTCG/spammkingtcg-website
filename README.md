@@ -137,6 +137,23 @@ Release data maintenance rules:
 - Leave `imageUrl` empty and use branded placeholder artwork when no safe official image is available
 - Do not claim SpammKing TCG availability unless a product has a real purchase URL or confirmed stock
 
+## Business Content Data
+
+Business and collector content is stored in `data/content.json` and rendered by `script.js`.
+
+The content file currently supports:
+
+- `featuredProduct`: homepage product highlight
+- `latestEbayListing`: current eBay-first buying highlight
+- `latestArrival`: latest stock or arrival note
+- `cardOfTheWeek`: collector feature content
+- `businessUpdates`: website, stock, supplier and business updates
+- `milestones`: business timeline items
+
+The homepage uses this content for the `Inside SpammKing TCG` section. `news-updates.html` uses the same data for business updates, Card of the Week and milestone timeline content.
+
+Keep this content honest and current. Do not present a product as available from SpammKing TCG unless it has a real purchase route or confirmed availability.
+
 ## SEO and Routing
 
 Core SEO files live at the site root:

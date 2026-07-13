@@ -1,27 +1,32 @@
 const PRODUCT_DATA_URL = "/data/products.json";
 const COLLECTION_DATA_URL = "/data/collections.json";
 const RELEASE_DATA_URL = "/data/releases.json";
+const CONTENT_DATA_URL = "/data/content.json";
 const WISHLIST_KEY = "spammking-wishlist";
 const RECENTLY_VIEWED_KEY = "spammking-recently-viewed";
 const DATA_SOURCES = {
     products:PRODUCT_DATA_URL,
     collections:COLLECTION_DATA_URL,
-    releases:RELEASE_DATA_URL
+    releases:RELEASE_DATA_URL,
+    content:CONTENT_DATA_URL
 };
 
 let products = [];
 let collections = [];
 let releases = [];
+let siteContent = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
     const needsProducts = Boolean(document.querySelector("[data-product-grid], [data-product-detail], [data-wishlist-grid], [data-recently-viewed], [data-coming-soon], [data-sets-grid], [data-set-detail], [data-related-products]"));
     const needsCollections = Boolean(document.querySelector("[data-sets-grid], [data-set-detail], [data-related-sets]"));
     const needsReleases = Boolean(document.querySelector("[data-release-hub], [data-release-grid], [data-release-calendar]"));
+    const needsContent = Boolean(document.querySelector("[data-content-highlights], [data-card-of-week], [data-business-updates], [data-business-milestones]"));
 
-    [products,collections,releases] = await Promise.all([
+    [products,collections,releases,siteContent] = await Promise.all([
         needsProducts ? loadProducts() : Promise.resolve([]),
         needsCollections ? loadCollections() : Promise.resolve([]),
-        needsReleases ? loadReleases() : Promise.resolve([])
+        needsReleases ? loadReleases() : Promise.resolve([]),
+        needsContent ? loadContent() : Promise.resolve({})
     ]);
 
     setupProductGrids();
@@ -33,6 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setupProductDetail();
     setupWishlistPage();
     setupRecentlyViewed();
+    setupContentSections();
     setupPassiveForms();
     setupStaticStructuredData();
 });
@@ -47,6 +53,22 @@ async function loadReleases(){
 
 async function loadCollections(){
     return loadJsonData(DATA_SOURCES.collections,normalizeCollection,"Collection data unavailable");
+}
+
+async function loadContent(){
+    try{
+        const response = await fetch(DATA_SOURCES.content);
+
+        if(!response.ok){
+            throw new Error("Content data unavailable");
+        }
+
+        const data = await response.json();
+        return data && typeof data === "object" ? data : {};
+    }catch(error){
+        console.warn(error.message);
+        return {};
+    }
 }
 
 async function loadJsonData(url,normalizer,errorMessage){
@@ -905,6 +927,130 @@ function setupRecentlyViewed(){
 
         bindWishlistButtons(grid);
     });
+}
+
+function setupContentSections(){
+    document.querySelectorAll("[data-content-highlights]").forEach(renderContentHighlights);
+    document.querySelectorAll("[data-card-of-week]").forEach(renderCardOfTheWeek);
+    document.querySelectorAll("[data-business-updates]").forEach(renderBusinessUpdates);
+    document.querySelectorAll("[data-business-milestones]").forEach(renderBusinessMilestones);
+}
+
+function renderContentHighlights(grid){
+    const highlights = [
+        siteContent.featuredProduct,
+        siteContent.latestEbayListing,
+        contentUpdateHighlight(),
+        siteContent.latestArrival,
+        cardOfWeekHighlight()
+    ].filter(Boolean);
+
+    grid.innerHTML = highlights.length
+        ? highlights.map(contentHighlightCard).join("")
+        : emptyState("Business updates will appear here as SpammKing TCG grows.","No Updates Yet");
+}
+
+function contentUpdateHighlight(){
+    const update = siteContent.businessUpdates?.[0];
+
+    if(!update){
+        return null;
+    }
+
+    return {
+        label:"Latest Business Update",
+        headline:update.title,
+        summary:update.summary,
+        ctaLabel:"View Updates",
+        ctaUrl:"/news-updates.html"
+    };
+}
+
+function cardOfWeekHighlight(){
+    const card = siteContent.cardOfTheWeek;
+
+    if(!card){
+        return null;
+    }
+
+    return {
+        label:"Card of the Week",
+        headline:card.title,
+        summary:card.summary,
+        ctaLabel:card.ctaLabel || "Read More",
+        ctaUrl:card.ctaUrl || "/news-updates.html#card-of-the-week"
+    };
+}
+
+function contentHighlightCard(item){
+    const href = item.ctaUrl || "/news-updates.html";
+    const external = Boolean(item.external || href.startsWith("http"));
+
+    return `
+        <article class="feature-card content-card">
+            <p class="section-kicker">${escapeHtml(item.label || "Update")}</p>
+            <h3>${escapeHtml(item.headline || item.title || "SpammKing TCG Update")}</h3>
+            <p>${escapeHtml(item.summary || "")}</p>
+            <a href="${escapeHtml(href)}" class="category-link" ${external ? 'target="_blank" rel="noopener noreferrer"' : ""}>${escapeHtml(item.ctaLabel || "View Update")}</a>
+        </article>
+    `;
+}
+
+function renderCardOfTheWeek(target){
+    const card = siteContent.cardOfTheWeek;
+
+    if(!card){
+        target.innerHTML = emptyState("A featured collector card will appear here soon.","Card of the Week");
+        return;
+    }
+
+    target.innerHTML = `
+        <article class="content-feature-card">
+            <div class="release-card-art" aria-hidden="true"><span>${escapeHtml(setInitials(card.title))}</span></div>
+            <div>
+                <p class="section-kicker">${escapeHtml(card.game || "Collector Feature")}</p>
+                <h3>${escapeHtml(card.title)}</h3>
+                <p>${escapeHtml(card.summary)}</p>
+                <dl class="product-spec-list">
+                    <div><dt>Set</dt><dd>${escapeHtml(card.set || "To confirm")}</dd></div>
+                    <div><dt>Year</dt><dd>${escapeHtml(card.year || "To confirm")}</dd></div>
+                    <div><dt>Population</dt><dd>${escapeHtml(card.population || "To verify")}</dd></div>
+                </dl>
+                <p>${escapeHtml(card.whyCollectorsLoveIt || "")}</p>
+            </div>
+        </article>
+    `;
+}
+
+function renderBusinessUpdates(list){
+    const updates = siteContent.businessUpdates || [];
+
+    list.innerHTML = updates.length
+        ? updates.map((update) => `
+            <article class="feature-card content-card">
+                <p class="section-kicker">${escapeHtml(update.type || "Update")} | ${escapeHtml(formatDate(update.date))}</p>
+                <h3>${escapeHtml(update.title)}</h3>
+                <p>${escapeHtml(update.summary)}</p>
+            </article>
+        `).join("")
+        : emptyState("Business and stock updates will appear here as the company grows.","No Updates Yet");
+}
+
+function renderBusinessMilestones(list){
+    const milestones = siteContent.milestones || [];
+
+    list.innerHTML = milestones.length
+        ? milestones.map((milestone) => `
+            <article class="release-timeline-item content-timeline-item">
+                <span class="release-date-chip">${escapeHtml(milestone.date ? formatDate(milestone.date) : milestone.status || "Target")}</span>
+                <strong>${escapeHtml(milestone.title)}</strong>
+                <em>
+                    <span>${escapeHtml(milestone.status || "Planned")}</span>
+                    <span>${escapeHtml(milestone.summary || "")}</span>
+                </em>
+            </article>
+        `).join("")
+        : emptyState("Business milestones will appear here as they happen.","No Milestones Yet");
 }
 
 function productCard(product){

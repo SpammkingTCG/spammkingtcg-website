@@ -827,6 +827,46 @@ input:focus-visible{
     font-size:.9rem;
 }
 
+.content-highlight-grid{
+    align-items:stretch;
+}
+
+.content-card{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.content-card .category-link{
+    margin-top:auto;
+}
+
+.content-feature-card{
+    display:grid;
+    grid-template-columns:minmax(220px,.65fr) 1fr;
+    gap:32px;
+    align-items:center;
+    padding:28px;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    background:linear-gradient(145deg,rgba(23,27,34,.94),rgba(11,13,16,.98));
+    box-shadow:var(--shadow);
+}
+
+.content-feature-card h3{
+    margin-bottom:14px;
+    font-size:clamp(1.8rem,3vw,3rem);
+}
+
+.content-milestone-list{
+    display:grid;
+    gap:16px;
+}
+
+.content-timeline-item{
+    cursor:default;
+}
+
 
 /* ==========================================================
    RELEASES
@@ -2457,6 +2497,10 @@ input:focus-visible{
     .release-timeline-item{
         grid-template-columns:1fr;
         gap:.55rem;
+    }
+
+    .content-feature-card{
+        grid-template-columns:1fr;
     }
 
     .release-timeline-item em{

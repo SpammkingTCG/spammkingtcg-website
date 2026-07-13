@@ -6,6 +6,25 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.1.0
+
+Collector and Business Content System
+
+## Added
+
+- Added `data/content.json` for business updates, homepage highlights, Card of the Week and milestone content
+- Added `news-updates.html` as a lightweight content hub for collector features and business updates
+- Added a dynamic homepage content section powered by the shared content data
+- Added business milestone and Card of the Week rendering helpers to `script.js`
+- Added the Updates page to `sitemap.xml`
+
+## Improved
+
+- Documented the business content data structure in `README.md`
+- Kept new content honest and non-transactional while the website remains eBay-first
+
+---
+
 # v1.0.6
 
 Business Email Integration Pass
