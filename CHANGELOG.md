@@ -6,6 +6,20 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.1.1
+
+Real Content Population Pass
+
+## Improved
+
+- Replaced starter content in `data/content.json` with verified launch-stage business updates and milestones
+- Removed the invented Card of the Week example and replaced it with honest owner-selection wording
+- Changed the featured product slot to route to the real eBay store until a specific product listing is verified
+- Removed unverified future milestone targets from the public content timeline
+- Added README maintenance guidance for updating featured product, arrivals, Card of the Week, updates and milestones
+
+---
+
 # v1.1.0
 
 Collector and Business Content System

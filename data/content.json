@@ -1,39 +1,46 @@
 {
   "featuredProduct": {
-    "productId": "pokemon-journey-together-booster-bundle",
+    "productId": "",
     "label": "Featured Product",
-    "headline": "Journey Together Booster Bundle",
-    "summary": "A collector-focused sealed product highlight. Availability through SpammKing TCG will be confirmed separately.",
-    "ctaLabel": "View Product",
-    "ctaUrl": "/product.html?id=pokemon-journey-together-booster-bundle"
+    "headline": "Live eBay Store",
+    "summary": "SpammKing TCG currently completes live purchases through eBay. A specific featured product will be added here once the listing, price and product photography are verified.",
+    "ctaLabel": "View eBay Store",
+    "ctaUrl": "https://www.ebay.co.uk/usr/spammkingtcg",
+    "external": true
   },
   "latestEbayListing": {
     "label": "Latest eBay Listing",
     "headline": "SpammKing TCG eBay Store",
-    "summary": "Current live purchases are completed through eBay while the direct website shop is being prepared.",
+    "summary": "Current public buying activity is routed through the SpammKing TCG eBay store while direct website checkout is not live.",
     "ctaLabel": "Visit eBay Store",
     "ctaUrl": "https://www.ebay.co.uk/usr/spammkingtcg",
     "external": true
   },
   "latestArrival": {
     "label": "Latest Arrival",
-    "headline": "New stock updates coming soon",
-    "summary": "Future stock arrivals will be highlighted here once real inventory and product photography are ready.",
+    "headline": "Stock arrival not published yet",
+    "summary": "No public stock arrival, purchase or grading submission has been verified in the website content yet. This slot should be updated when a real arrival is ready to share.",
     "ctaLabel": "View Updates",
     "ctaUrl": "/news-updates.html"
   },
   "cardOfTheWeek": {
-    "title": "Mewtwo Gold Star",
-    "game": "Pokemon TCG",
-    "set": "EX Holon Phantoms",
-    "year": "2006",
-    "population": "Population data varies by grading company and should be verified before publishing.",
-    "summary": "A standout Gold Star era card with strong collector appeal, iconic artwork and long-term nostalgia value.",
-    "whyCollectorsLoveIt": "Gold Star cards sit in a special place for many Pokemon collectors because of their rarity, era, artwork and chase-card history.",
+    "title": "Card of the Week to be selected",
+    "game": "Collector Feature",
+    "set": "To be confirmed",
+    "year": "To be confirmed",
+    "population": "No population figure published until verified from a reliable grading source.",
+    "summary": "The first Card of the Week will be added once Sean chooses a real card from his own collection.",
+    "whyCollectorsLoveIt": "This section is reserved for collector-led commentary based on a real owned card, without unsupported market or population claims.",
     "ctaLabel": "Read More",
     "ctaUrl": "/news-updates.html#card-of-the-week"
   },
   "businessUpdates": [
+    {
+      "title": "Collector content system added",
+      "date": "2026-07-13",
+      "type": "Website Update",
+      "summary": "A new content system now powers homepage highlights, business updates, Card of the Week and milestone content from one JSON file."
+    },
     {
       "title": "Business email addresses added",
       "date": "2026-07-13",
@@ -61,28 +68,22 @@
       "summary": "The first public SpammKing TCG website went live through GitHub and Cloudflare Pages."
     },
     {
+      "title": "Trade information page prepared",
+      "date": "2026-07-12",
+      "status": "Complete",
+      "summary": "A hidden noindex trade information page was created for distributor and supplier conversations."
+    },
+    {
       "title": "Business email connected",
       "date": "2026-07-13",
       "status": "Complete",
       "summary": "Dedicated contact addresses were added for customers, orders and distributor enquiries."
     },
     {
-      "title": "First distributor approval",
-      "date": "",
-      "status": "Target",
-      "summary": "Future trade account approvals will be tracked here as the business grows."
-    },
-    {
-      "title": "100 eBay sales",
-      "date": "",
-      "status": "Target",
-      "summary": "A future customer-trust milestone for the SpammKing TCG sales journey."
-    },
-    {
-      "title": "First convention",
-      "date": "",
-      "status": "Target",
-      "summary": "A future in-person trading card event milestone."
+      "title": "Collector content system launched",
+      "date": "2026-07-13",
+      "status": "Complete",
+      "summary": "Homepage highlights, business updates and Card of the Week content became data-driven."
     }
   ]
 }

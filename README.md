@@ -154,6 +154,14 @@ The homepage uses this content for the `Inside SpammKing TCG` section. `news-upd
 
 Keep this content honest and current. Do not present a product as available from SpammKing TCG unless it has a real purchase route or confirmed availability.
 
+Content maintenance guide:
+
+- To update the featured product, edit `featuredProduct` with the real product name, verified product URL or eBay URL, and an honest summary.
+- To update the latest arrival, edit `latestArrival` only when a real stock arrival, purchase or grading submission is ready to share publicly.
+- To update Card of the Week, edit `cardOfTheWeek` with a real card Sean owns and avoid unsupported market or population claims.
+- To add business updates, add new items to the top of `businessUpdates` with a real date, type and short summary.
+- To add milestones, add only verified achievements to `milestones`; do not add supplier approvals, sales figures or feedback numbers until they are true.
+
 ## SEO and Routing
 
 Core SEO files live at the site root:
