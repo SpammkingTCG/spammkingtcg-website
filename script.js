@@ -849,7 +849,7 @@ function setupProductDetail(){
                     </article>
                     <article>
                         <h2>Authenticity</h2>
-                        <p>Products are listed with genuine stock and buyer confidence in mind. <a href="/authenticity.html">Read authenticity standards</a>.</p>
+                        <p>Products are listed with genuine stock and buyer confidence in mind. <a href="/authenticity.html">Read authenticity standards</a> or email <a href="mailto:support@spammkingtcg.co.uk">support@spammkingtcg.co.uk</a>.</p>
                     </article>
                 </div>
             </div>
@@ -1244,6 +1244,33 @@ function setupStaticStructuredData(){
             "@type":"Organization",
             "name":"SpammKing TCG",
             "url":"https://spammkingtcg.co.uk/",
+            "email":"hello@spammkingtcg.co.uk",
+            "contactPoint":[
+                {
+                    "@type":"ContactPoint",
+                    "contactType":"general enquiries",
+                    "email":"hello@spammkingtcg.co.uk",
+                    "areaServed":"GB"
+                },
+                {
+                    "@type":"ContactPoint",
+                    "contactType":"customer support",
+                    "email":"support@spammkingtcg.co.uk",
+                    "areaServed":"GB"
+                },
+                {
+                    "@type":"ContactPoint",
+                    "contactType":"orders and returns",
+                    "email":"orders@spammkingtcg.co.uk",
+                    "areaServed":"GB"
+                },
+                {
+                    "@type":"ContactPoint",
+                    "contactType":"trade and supplier enquiries",
+                    "email":"trade@spammkingtcg.co.uk",
+                    "areaServed":"GB"
+                }
+            ],
             "sameAs":["https://www.ebay.co.uk/usr/spammkingtcg"]
         });
         injectJsonLd({

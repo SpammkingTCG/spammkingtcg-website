@@ -6,6 +6,20 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.0.6
+
+Business Email Integration Pass
+
+## Improved
+
+- Added dedicated general, customer support, orders and trade email routing across public contact touchpoints
+- Updated the contact page with separated enquiry sections and clickable `mailto:` links
+- Updated trade, shipping, returns, authenticity and product support references to use the correct business inboxes
+- Added business email contact points to Organization structured data
+- Documented the email routing rules in `README.md`
+
+---
+
 # v1.0.5
 
 Release Calendar Polish

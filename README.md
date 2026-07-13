@@ -178,6 +178,15 @@ These pages should stay honest and avoid legal or checkout claims until the full
 
 Newsletter forms currently act as passive interest forms. They should not submit visitor details until a real newsletter provider and privacy process are connected.
 
+Business email routing:
+
+- General enquiries: `hello@spammkingtcg.co.uk`
+- Customer support and product questions: `support@spammkingtcg.co.uk`
+- Order and returns enquiries: `orders@spammkingtcg.co.uk`
+- Trade, supplier and distributor enquiries: `trade@spammkingtcg.co.uk`
+
+Public email addresses should use `mailto:` links and avoid personal email accounts.
+
 ## Trade Information Page
 
 `trade.html` is a hidden supplier/distributor information page. It is intentionally not linked from the main navigation and is marked `noindex` so it can be shared directly during trade applications without becoming a customer-facing shop page.
