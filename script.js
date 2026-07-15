@@ -1,4 +1,5 @@
 const PRODUCT_DATA_URL = "/data/products.json";
+const CURRENT_STOCK_DATA_URL = "/data/current-stock.json";
 const COLLECTION_DATA_URL = "/data/collections.json";
 const RELEASE_DATA_URL = "/data/releases.json";
 const CONTENT_DATA_URL = "/data/content.json";
@@ -6,28 +7,33 @@ const WISHLIST_KEY = "spammking-wishlist";
 const RECENTLY_VIEWED_KEY = "spammking-recently-viewed";
 const DATA_SOURCES = {
     products:PRODUCT_DATA_URL,
+    currentStock:CURRENT_STOCK_DATA_URL,
     collections:COLLECTION_DATA_URL,
     releases:RELEASE_DATA_URL,
     content:CONTENT_DATA_URL
 };
 
 let products = [];
+let currentStockProducts = [];
 let collections = [];
 let releases = [];
 let siteContent = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const needsProducts = Boolean(document.querySelector("[data-product-grid], [data-product-detail], [data-wishlist-grid], [data-recently-viewed], [data-coming-soon], [data-sets-grid], [data-set-detail], [data-related-products]"));
+    const needsProducts = Boolean(document.querySelector("[data-product-grid], [data-product-detail], [data-wishlist-grid], [data-recently-viewed], [data-coming-soon], [data-current-stock], [data-sets-grid], [data-set-detail], [data-related-products]"));
     const needsCollections = Boolean(document.querySelector("[data-sets-grid], [data-set-detail], [data-related-sets]"));
     const needsReleases = Boolean(document.querySelector("[data-release-hub], [data-release-grid], [data-release-calendar]"));
     const needsContent = Boolean(document.querySelector("[data-content-highlights], [data-card-of-week], [data-business-updates], [data-business-milestones]"));
 
-    [products,collections,releases,siteContent] = await Promise.all([
+    [products,currentStockProducts,collections,releases,siteContent] = await Promise.all([
         needsProducts ? loadProducts() : Promise.resolve([]),
+        needsProducts ? loadCurrentStock() : Promise.resolve([]),
         needsCollections ? loadCollections() : Promise.resolve([]),
         needsReleases ? loadReleases() : Promise.resolve([]),
         needsContent ? loadContent() : Promise.resolve({})
     ]);
+
+    products = [...products,...currentStockProducts];
 
     setupProductGrids();
     setupSetLanding();
@@ -35,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setupReleaseHub();
     setupReleaseSections();
     setupComingSoon();
+    setupCurrentStock();
     setupProductDetail();
     setupWishlistPage();
     setupRecentlyViewed();
@@ -45,6 +52,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function loadProducts(){
     return loadJsonData(DATA_SOURCES.products,normalizeProduct,"Product data unavailable");
+}
+
+async function loadCurrentStock(){
+    return loadJsonData(DATA_SOURCES.currentStock,normalizeProduct,"Current stock data unavailable");
 }
 
 async function loadReleases(){
@@ -105,6 +116,8 @@ function normalizeProduct(product){
         salePrice:null,
         stock:0,
         images:[],
+        imageAlts:[],
+        imageVerified:false,
         description:"",
         releaseDate:"",
         tags:[],
@@ -375,6 +388,23 @@ function setupComingSoon(){
                 </article>
             `).join("")
             : emptyState("No coming soon products are listed yet.","Coming Soon");
+    });
+}
+
+function setupCurrentStock(){
+    document.querySelectorAll("[data-current-stock]").forEach((grid) => {
+        const game = grid.dataset.game || "";
+        const limit = Number(grid.dataset.limit || 4);
+        const currentStock = products
+            .filter((product) => product.tags?.includes("current-stock"))
+            .filter((product) => !game || product.game === game)
+            .slice(0,limit);
+
+        grid.innerHTML = currentStock.length
+            ? currentStock.map(productCard).join("")
+            : emptyState("Real stock photographs will appear here after owner review.","No Current Stock Published");
+
+        bindWishlistButtons(grid);
     });
 }
 
@@ -827,9 +857,7 @@ function setupProductDetail(){
         </nav>
         <section class="product-detail-section" aria-labelledby="product-title">
             <div class="product-detail-media">
-                <div class="shop-product-image product-detail-image" aria-hidden="true">
-                    <span>${productInitials(product)}</span>
-                </div>
+                ${productImageMarkup(product,"detail")}
                 <div class="product-gallery" aria-label="Product image gallery">
                     ${galleryButtons(product)}
                 </div>
@@ -879,7 +907,26 @@ function setupProductDetail(){
     `;
 
     bindWishlistButtons(target);
+    bindProductGallery(target);
     renderRelatedProducts(product);
+}
+
+function bindProductGallery(scope){
+    const mainImage = scope.querySelector("[data-main-product-image]");
+
+    if(!mainImage){
+        return;
+    }
+
+    scope.querySelectorAll("[data-gallery-image]").forEach((button) => {
+        button.addEventListener("click",() => {
+            mainImage.src = button.dataset.galleryImage;
+            mainImage.alt = button.dataset.galleryAlt || mainImage.alt;
+            scope.querySelectorAll("[data-gallery-image]").forEach((item) => {
+                item.setAttribute("aria-pressed",String(item === button));
+            });
+        });
+    });
 }
 
 function renderRelatedProducts(product){
@@ -1057,9 +1104,7 @@ function productCard(product){
     return `
         <article class="shop-product-card">
             <a href="/product.html?id=${encodeURIComponent(product.id)}" class="product-card-link" aria-label="View ${escapeHtml(product.name)}">
-                <div class="shop-product-image" aria-hidden="true">
-                    <span>${productInitials(product)}</span>
-                </div>
+                ${productImageMarkup(product,"card")}
                 <p class="release-category">${escapeHtml(product.game)} | ${escapeHtml(product.category)}</p>
                 <h3>${escapeHtml(product.name)}</h3>
                 <p>${escapeHtml(product.set)} | ${escapeHtml(product.condition)}</p>
@@ -1161,6 +1206,10 @@ function statusLabel(product){
 
     if(product.comingSoon){
         return "Coming Soon";
+    }
+
+    if(product.purchaseType === "unavailable" && product.status){
+        return product.status;
     }
 
     return product.stock > 0 ? "In Stock" : "Out of Stock";
@@ -1318,11 +1367,21 @@ function formatPrice(value){
 }
 
 function formatDate(value){
+    if(!value){
+        return "To confirm";
+    }
+
+    const date = new Date(value);
+
+    if(Number.isNaN(date.getTime())){
+        return "To confirm";
+    }
+
     return new Intl.DateTimeFormat("en-GB",{
         day:"numeric",
         month:"short",
         year:"numeric"
-    }).format(new Date(value));
+    }).format(date);
 }
 
 function productInitials(product){
@@ -1338,10 +1397,35 @@ function galleryButtons(product){
     const images = product.images.length ? product.images : [`assets/images/products/${product.id}-front.jpg`];
 
     return images.map((image,index) => `
-        <button type="button" class="gallery-thumb" aria-label="Product image ${index + 1}: ${escapeHtml(image)}">
-            ${index + 1}
+        <button type="button" class="gallery-thumb" data-gallery-image="/${escapeHtml(image)}" data-gallery-alt="${escapeHtml(imageAlt(product,index))}" aria-label="Show product image ${index + 1}: ${escapeHtml(imageAlt(product,index))}" aria-pressed="${index === 0 ? "true" : "false"}">
+            ${product.imageVerified ? `<img src="/${escapeHtml(image)}" alt="${escapeHtml(imageAlt(product,index))}" loading="lazy">` : `<span>${index + 1}</span>`}
         </button>
     `).join("");
+}
+
+function productImageMarkup(product,mode = "card"){
+    const hasVerifiedImage = Boolean(product.imageVerified && product.images?.[0]);
+    const baseClasses = mode === "detail" ? "shop-product-image product-detail-image" : "shop-product-image";
+    const classes = hasVerifiedImage ? `${baseClasses} has-product-photo` : baseClasses;
+    const loading = mode === "detail" ? "eager" : "lazy";
+
+    if(hasVerifiedImage){
+        return `
+            <figure class="${classes}">
+                <img src="/${escapeHtml(product.images[0])}" alt="${escapeHtml(imageAlt(product,0))}" loading="${loading}" ${mode === "detail" ? "data-main-product-image" : ""}>
+            </figure>
+        `;
+    }
+
+    return `
+        <div class="${classes}" aria-hidden="true">
+            <span>${productInitials(product)}</span>
+        </div>
+    `;
+}
+
+function imageAlt(product,index){
+    return product.imageAlts?.[index] || `${product.name} product photograph ${index + 1}`;
 }
 
 function gamePageUrl(game){

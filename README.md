@@ -34,6 +34,8 @@ Each product should use this schema:
 - `salePrice`: sale price as a number, or `null`
 - `stock`: current stock count as a number
 - `images`: array of future product image paths
+- `imageAlts`: optional array of accessible alt text matching the `images` array
+- `imageVerified`: `true` when image paths are real approved product photographs rather than placeholder paths
 - `description`: product description
 - `releaseDate`: ISO date in `YYYY-MM-DD` format
 - `tags`: searchable tags
@@ -51,6 +53,16 @@ Each product should use this schema:
 Use clear preview image paths until real photography is available, for example:
 
 `assets/images/products/pokemon/product-name-front.jpg`
+
+For real stock photographs:
+
+- Keep original photographs outside the public optimized assets folder
+- Create optimized WebP copies under `assets/images/products/`
+- Use descriptive product and angle filenames
+- Add matching `imageAlts`
+- Set `imageVerified` to `true`
+- Use the `current-stock` tag only for products physically held by SpammKing TCG
+- Leave price, quantity and purchase URLs blank until confirmed
 
 ### Purchase CTA Logic
 

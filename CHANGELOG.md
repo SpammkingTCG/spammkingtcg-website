@@ -6,6 +6,25 @@ This project follows semantic versioning where practical.
 
 ---
 
+# v1.1.2
+
+Real Stock Photography Pass
+
+## Added
+
+- Added optimized WebP product photographs for current Pokemon stock under `assets/images/products/pokemon/current-stock/`
+- Added current-stock Pokemon product entries with owner-review status, blank pricing and no purchase claims
+- Added a homepage `Stock we currently hold` section powered by product JSON data
+- Added verified image rendering and gallery thumbnail support for real product photographs
+
+## Improved
+
+- Added product image alt text support through product data
+- Updated blank date rendering to show `To confirm` instead of invalid dates
+- Documented real stock photograph data rules in `README.md`
+
+---
+
 # v1.1.1
 
 Real Content Population Pass
