@@ -45,7 +45,11 @@ function validEmail(value) {
 export async function onRequestPost(context) {
     const { request, env } = context;
 
-    if (!env.RESEND_API_KEY) {
+    if (
+        !env.RESEND_API_KEY ||
+        !env.CONTACT_NOTIFICATION_EMAIL ||
+        !validEmail(env.CONTACT_NOTIFICATION_EMAIL)
+    ) {
         return jsonResponse(
             { error: "The enquiry service is temporarily unavailable." },
             503
@@ -98,6 +102,7 @@ export async function onRequestPost(context) {
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
     const safeReason = escapeHtml(enquiry.label);
+    const safeInbox = escapeHtml(enquiry.inbox);
     const safeMessage = escapeHtml(message).replaceAll("\n", "<br>");
 
     const subject = `Website enquiry: ${enquiry.label} — ${name}`;
@@ -108,6 +113,7 @@ export async function onRequestPost(context) {
         `Name: ${name}`,
         `Email: ${email}`,
         `Reason: ${enquiry.label}`,
+        `Business inbox: ${enquiry.inbox}`,
         "",
         "Message:",
         message
@@ -119,6 +125,7 @@ export async function onRequestPost(context) {
             <p><strong>Name:</strong> ${safeName}</p>
             <p><strong>Email:</strong> ${safeEmail}</p>
             <p><strong>Reason:</strong> ${safeReason}</p>
+            <p><strong>Business inbox:</strong> ${safeInbox}</p>
             <hr>
             <p><strong>Message:</strong></p>
             <p>${safeMessage}</p>
@@ -136,7 +143,7 @@ export async function onRequestPost(context) {
             },
             body: JSON.stringify({
                 from: "SpammKing TCG Website <website@mail.spammkingtcg.co.uk>",
-                to: [enquiry.inbox],
+                to: [env.CONTACT_NOTIFICATION_EMAIL],
                 reply_to: email,
                 subject,
                 text,
